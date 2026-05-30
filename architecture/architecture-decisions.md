@@ -85,3 +85,94 @@ Benefits:
 - Stateless
 - Easy API protection
 - Industry standard
+
+## AD-006
+
+Decision:
+Use REST APIs for synchronous communication.
+
+Reason:
+Simple, widely adopted, and well-supported in Spring Boot.
+
+Benefits:
+- Easy integration
+- Clear contracts
+- Industry standard
+
+## AD-007
+
+Decision:
+Use asynchronous processing for AI analysis.
+
+Reason:
+OCR and AI operations may take several seconds.
+
+Benefits:
+- Faster API response times
+- Better user experience
+- Improved scalability
+- Service decoupling
+
+## AD-008
+
+Decision:
+Use AWS S3 as the primary document storage solution from Version 1.
+
+Reason:
+Insurance claims rely heavily on document management and cloud object storage is the industry standard.
+
+Benefits:
+- Scalable storage
+- High durability
+- Secure access control
+- Cost efficiency
+- Real-world enterprise architecture alignment
+
+Future Enhancements:
+- Pre-signed upload URLs
+- Lifecycle policies
+- Glacier archival
+- Virus scanning pipeline
+
+## AD-009
+
+Decision:
+Each microservice owns its own data.
+
+Reason:
+Avoid tight coupling and preserve service autonomy.
+
+Benefits:
+- Independent deployments
+- Better scalability
+- Easier maintenance
+- Improved reliability
+
+## AD-010
+
+Decision:
+Implement AI processing as a dedicated microservice.
+
+Reason:
+AI workloads are computationally intensive and have different scaling requirements from transactional services.
+
+Benefits:
+- Independent scaling
+- Service isolation
+- Easier AI model upgrades
+- Better fault tolerance
+- Cleaner architecture
+
+## AD-011
+
+Decision:
+Use Docker Compose for Version 1 deployment.
+
+Reason:
+Simplifies local development while preserving migration path to Kubernetes.
+
+Benefits:
+- Fast setup
+- Easy debugging
+- Lower complexity
+- Supports all required services
