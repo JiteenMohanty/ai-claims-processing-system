@@ -3,6 +3,7 @@ com\jiteen\claims\auth\config\OpenApiConfig.class
 com\jiteen\claims\auth\AuthServiceApplication.class
 com\jiteen\claims\auth\application\dto\request\LoginRequest.class
 com\jiteen\claims\auth\application\dto\response\LoginResponse.class
+com\jiteen\claims\auth\application\service\impl\AuthServiceImpl$1.class
 com\jiteen\claims\auth\application\dto\response\RegisterResponse$RegisterResponseBuilder.class
 com\jiteen\claims\auth\application\dto\response\LoginResponse$LoginResponseBuilder.class
 com\jiteen\claims\auth\domain\repository\UserRepository.class

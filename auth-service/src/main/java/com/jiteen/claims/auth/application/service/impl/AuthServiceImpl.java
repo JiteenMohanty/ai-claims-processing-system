@@ -11,6 +11,9 @@ import com.jiteen.claims.auth.domain.enums.Role;
 import com.jiteen.claims.auth.domain.enums.UserStatus;
 import com.jiteen.claims.auth.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+
+import java.time.LocalDateTime;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -95,19 +98,79 @@ public class AuthServiceImpl implements AuthService {
                 .build();
     }
 
-    /**
-     * Authenticates an existing user using the supplied credentials.
+        /**
+     * Authenticates an existing user using the supplied credentials and issues
+     * JWT access and refresh tokens upon success.
      *
-     * <p>This operation is not yet implemented and will be provided in a future
-     * iteration.</p>
+     * <p>The supplied email is normalized (trimmed and lowercased) and used to
+     * locate an active (non-deleted) user. The raw password is verified against
+     * the stored password hash, and the account status is checked to ensure the
+     * user is permitted to authenticate. Accounts in the
+     * {@link UserStatus#ACTIVE} or {@link UserStatus#PENDING_VERIFICATION} states
+     * may log in; accounts that are {@link UserStatus#INACTIVE} or
+     * {@link UserStatus#LOCKED} are denied.</p>
      *
-     * @param request the login request containing the user's email and password
-     * @return never returns normally in the current implementation
-     * @throws UnsupportedOperationException always, until login is implemented
+     * <p>On successful authentication, the user's last login timestamp is updated
+     * and freshly signed access and refresh tokens are returned.</p>
+     *
+     * @param request the login request containing the user's email and password;
+     *                must not be {@code null}
+     * @return a {@link LoginResponse} containing the issued tokens and associated
+     *         metadata
+     * @throws IllegalArgumentException if the credentials are invalid or the
+     *                                  account status does not permit login
      */
     @Override
     public LoginResponse login(final LoginRequest request) {
-        throw new UnsupportedOperationException("Login functionality not implemented yet");
+        final String normalizedEmail = normalizeEmail(request.getEmail());
+        log.debug("Processing login request for email [{}]", normalizedEmail);
+
+        final User user = userRepository.findByEmailAndDeletedAtIsNull(normalizedEmail)
+                .orElseThrow(() -> {
+                    log.warn("Login failed: no active user found for email [{}]", normalizedEmail);
+                    return new IllegalArgumentException("Invalid email or password");
+                });
+
+        if (!passwordEncoder.matches(request.getPassword(), user.getPasswordHash())) {
+            log.warn("Login failed: invalid password for email [{}]", normalizedEmail);
+            throw new IllegalArgumentException("Invalid email or password");
+        }
+
+        switch (user.getStatus()) {
+            case UserStatus.ACTIVE, UserStatus.PENDING_VERIFICATION -> log.debug(
+                    "User [{}] passed status check with status [{}]", normalizedEmail, user.getStatus());
+            case UserStatus.INACTIVE -> {
+                log.warn("Login denied: account is inactive for email [{}]", normalizedEmail);
+                throw new IllegalArgumentException("Account is inactive. Please contact support");
+            }
+            case UserStatus.LOCKED -> {
+                log.warn("Login denied: account is locked for email [{}]", normalizedEmail);
+                throw new IllegalArgumentException("Account is locked. Please contact support");
+            }
+            default -> {
+                log.warn("Login denied: unsupported account status [{}] for email [{}]",
+                        user.getStatus(), normalizedEmail);
+                throw new IllegalArgumentException("Account status does not permit login");
+            }
+        }
+
+        user.setLastLoginAt(LocalDateTime.now());
+        userRepository.save(user);
+
+        final String accessToken = jwtService.generateAccessToken(
+                user.getEmail(),
+                user.getRole().name(),
+                user.getStatus().name());
+        final String refreshToken = jwtService.generateRefreshToken(user.getEmail());
+
+        log.info("Successfully authenticated user with id [{}]", user.getId());
+
+        return LoginResponse.builder()
+                .accessToken(accessToken)
+                .refreshToken(refreshToken)
+                .tokenType("Bearer")
+                .expiresIn(900L)
+                .build();
     }
 
     /**
