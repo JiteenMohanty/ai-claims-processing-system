@@ -7,6 +7,8 @@ import com.jiteen.claims.auth.domain.enums.Role;
 import com.jiteen.claims.auth.domain.enums.UserStatus;
 import com.jiteen.claims.auth.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,6 +39,7 @@ public class AuthService {
      * Repository providing persistence operations for {@link User} entities.
      */
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     /**
      * Registers a new user within the claims authentication domain.
@@ -79,7 +82,7 @@ public class AuthService {
         final User user = User.builder()
                 .email(normalizedEmail)
                 // TODO: Replace with BCrypt-hashed password in the next step.
-                .passwordHash(request.getPassword())
+                .passwordHash(passwordEncoder.encode(request.getPassword()))
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
                 .role(Role.CUSTOMER)
