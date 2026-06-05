@@ -1,9 +1,14 @@
 C:\Projects\ai-claims-processing-system\auth-service\src\main\java\com\jiteen\claims\auth\api\controller\AuthController.java
+C:\Projects\ai-claims-processing-system\auth-service\src\main\java\com\jiteen\claims\auth\application\dto\request\LoginRequest.java
 C:\Projects\ai-claims-processing-system\auth-service\src\main\java\com\jiteen\claims\auth\application\dto\request\RegisterRequest.java
+C:\Projects\ai-claims-processing-system\auth-service\src\main\java\com\jiteen\claims\auth\application\dto\response\LoginResponse.java
 C:\Projects\ai-claims-processing-system\auth-service\src\main\java\com\jiteen\claims\auth\application\dto\response\RegisterResponse.java
 C:\Projects\ai-claims-processing-system\auth-service\src\main\java\com\jiteen\claims\auth\application\service\AuthService.java
+C:\Projects\ai-claims-processing-system\auth-service\src\main\java\com\jiteen\claims\auth\application\service\impl\AuthServiceImpl.java
+C:\Projects\ai-claims-processing-system\auth-service\src\main\java\com\jiteen\claims\auth\application\service\jwt\JwtService.java
 C:\Projects\ai-claims-processing-system\auth-service\src\main\java\com\jiteen\claims\auth\AuthServiceApplication.java
 C:\Projects\ai-claims-processing-system\auth-service\src\main\java\com\jiteen\claims\auth\config\OpenApiConfig.java
+C:\Projects\ai-claims-processing-system\auth-service\src\main\java\com\jiteen\claims\auth\config\properties\JwtProperties.java
 C:\Projects\ai-claims-processing-system\auth-service\src\main\java\com\jiteen\claims\auth\config\SecurityConfig.java
 C:\Projects\ai-claims-processing-system\auth-service\src\main\java\com\jiteen\claims\auth\domain\enums\Role.java
 C:\Projects\ai-claims-processing-system\auth-service\src\main\java\com\jiteen\claims\auth\domain\enums\UserStatus.java
