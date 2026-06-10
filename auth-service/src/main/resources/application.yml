@@ -60,7 +60,7 @@ springdoc:
 
 jwt:
   issuer: ${JWT_ISSUER:auth-service}
-  secret: ${JWT_SECRET:}
+  secret: ${JWT_SECRET:local-dev-auth-service-secret-key-change-in-production-2026}
   access-token-expiration: ${JWT_ACCESS_TOKEN_EXPIRATION:15m}
   refresh-token-expiration: ${JWT_REFRESH_TOKEN_EXPIRATION:7d}
 

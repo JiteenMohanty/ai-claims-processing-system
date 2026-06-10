@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/auth_service
+    username: postgres
+    password: postgres
+
+  flyway:
+    enabled: true
+
+jwt:
+  issuer: auth-service
+  secret: integration-test-secret-key-must-be-at-least-32-bytes
+  access-token-expiration: 15m
+  refresh-token-expiration: 7d

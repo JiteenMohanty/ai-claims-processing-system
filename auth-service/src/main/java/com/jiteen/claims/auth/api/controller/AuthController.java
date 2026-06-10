@@ -21,7 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.validation.annotation.Validated;
 
 import com.jiteen.claims.auth.application.dto.request.LoginRequest;
+import com.jiteen.claims.auth.application.dto.request.LogoutRequest;
+import com.jiteen.claims.auth.application.dto.request.RefreshTokenRequest;
 import com.jiteen.claims.auth.application.dto.response.LoginResponse;
+import com.jiteen.claims.auth.application.dto.response.RefreshTokenResponse;
 
 /**
  * REST controller exposing authentication-related endpoints for the claims
@@ -147,5 +150,109 @@ public class AuthController {
             @Valid @RequestBody final LoginRequest request) {
         final LoginResponse response = authService.login(request);
         return ResponseEntity.ok(response);
+    }
+
+    /**
+     * Refreshes a user's access token using a valid refresh token.
+     *
+     * <p>
+     * This endpoint validates the supplied refresh token and, upon success,
+     * returns a {@link RefreshTokenResponse} containing a newly issued access
+     * token and associated metadata. The user is not required to
+     * re-authenticate with their email and password. The request payload is
+     * validated at the API boundary prior to delegation.</p>
+     *
+     * @param request the refresh token request containing the previously issued
+     * refresh token; must be valid and non-{@code null}
+     * @return a {@link ResponseEntity} with HTTP 200 and the newly issued
+     * access token on successful refresh
+     */
+    @Operation(
+            summary = "Refresh an access token",
+            description = "Validates a refresh token and issues a new JWT access token without requiring re-authentication."
+    )
+    @ApiResponses(value = {
+        @ApiResponse(
+                responseCode = "200",
+                description = "Access token successfully refreshed",
+                content = @Content(
+                        mediaType = MediaType.APPLICATION_JSON_VALUE,
+                        schema = @Schema(implementation = RefreshTokenResponse.class)
+                )
+        ),
+        @ApiResponse(
+                responseCode = "400",
+                description = "Invalid refresh token or validation failure",
+                content = @Content
+        ),
+        @ApiResponse(
+                responseCode = "401",
+                description = "Unauthorized",
+                content = @Content
+        )
+    })
+    @PostMapping(
+            path = "/refresh",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<RefreshTokenResponse> refreshToken(
+            @Valid @RequestBody final RefreshTokenRequest request) {
+        final RefreshTokenResponse response = authService.refreshToken(request);
+        return ResponseEntity.ok(response);
+    }
+
+    /**
+     * Revokes the supplied refresh token and invalidates the user's session.
+     *
+     * <p>This endpoint is intentionally public — it does not require a JWT
+     * access token in the {@code Authorization} header. Logout is performed
+     * exclusively via the refresh token carried in the request body, which
+     * ensures that clients can always log out even after their short-lived
+     * access token has expired.</p>
+     *
+     * <p>On success the endpoint returns HTTP {@code 204 No Content}. The
+     * caller should discard both the refresh token and any access tokens held
+     * locally, as the refresh token can no longer be used to obtain new access
+     * tokens.</p>
+     *
+     * @param request a {@link LogoutRequest} containing the refresh token to
+     *                revoke; validated by Jakarta Validation before the
+     *                method body is entered
+     * @return a {@link ResponseEntity} with HTTP status {@code 204 No Content}
+     *         and an empty body on successful revocation
+     * @since 1.0
+     */
+    @Operation(
+            summary = "Logout user",
+            description = "Revokes a refresh token and invalidates the user's session."
+    )
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "204",
+                    description = "Logout successful — refresh token has been revoked"
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Invalid refresh token — token not found or already revoked",
+                    content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)
+            ),
+            @ApiResponse(
+                    responseCode = "401",
+                    description = "Unauthorized — request could not be authenticated",
+                    content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)
+            )
+    })
+    @PostMapping(
+            path = "/logout",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<Void> logout(
+            @Valid @RequestBody final LogoutRequest request) {
+ 
+        authService.logout(request);
+ 
+        return ResponseEntity.noContent().build();
     }
 }

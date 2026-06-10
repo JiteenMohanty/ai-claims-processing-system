@@ -18,6 +18,7 @@ import java.util.Date;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.UUID;
 
 import io.jsonwebtoken.io.DecodingException;
 
@@ -108,6 +109,20 @@ public class JwtService {
         return buildToken(email, ttl, Map.of(CLAIM_ROLE, role, CLAIM_STATUS, status));
     }
 
+    public String extractRole(final String token) {
+        return extractAllClaims(token).get(CLAIM_ROLE, String.class);
+    }
+
+    public String extractStatus(final String token) {
+        return extractAllClaims(token).get(CLAIM_STATUS, String.class);
+    }
+
+    public boolean isTokenExpired(final String token) {
+        return extractAllClaims(token)
+                .getExpiration()
+                .before(new Date());
+    }
+
     /**
      * Generates a signed JWT refresh token for the given user.
      *
@@ -194,19 +209,25 @@ public class JwtService {
      * @param extraClaims any additional claims to embed; may be empty
      * @return the compact, signed JWT string
      */
-    private String buildToken(final String subject, final Duration ttl, final Map<String, ?> extraClaims) {
-        final Instant now = Instant.now();
-        final Instant expiry = now.plus(ttl);
 
-        return Jwts.builder()
-                .issuer(jwtProperties.getIssuer())
-                .subject(subject)
-                .claims(extraClaims)
-                .issuedAt(Date.from(now))
-                .expiration(Date.from(expiry))
-                .signWith(signingKey)
-                .compact();
-    }
+private String buildToken(
+        final String subject,
+        final Duration ttl,
+        final Map<String, ?> extraClaims) {
+
+    final Instant now = Instant.now();
+    final Instant expiry = now.plus(ttl);
+
+    return Jwts.builder()
+            .id(UUID.randomUUID().toString()) // <-- add this
+            .issuer(jwtProperties.getIssuer())
+            .subject(subject)
+            .claims(extraClaims)
+            .issuedAt(Date.from(now))
+            .expiration(Date.from(expiry))
+            .signWith(signingKey)
+            .compact();
+}
 
     /**
      * Derives the HMAC-SHA signing key from the configured secret.
@@ -224,10 +245,10 @@ public class JwtService {
         final byte[] keyBytes;
         byte[] decoded;
         try {
-    decoded = Decoders.BASE64.decode(secret);
-} catch (DecodingException ex) {
-    decoded = secret.getBytes(java.nio.charset.StandardCharsets.UTF_8);
-}
+            decoded = Decoders.BASE64.decode(secret);
+        } catch (DecodingException ex) {
+            decoded = secret.getBytes(java.nio.charset.StandardCharsets.UTF_8);
+        }
         keyBytes = decoded;
         if (keyBytes.length < 32) {
             throw new IllegalArgumentException(
