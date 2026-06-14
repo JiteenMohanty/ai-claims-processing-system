@@ -1,0 +1,13 @@
+C:\Projects\ai-claims-processing-system\claim-service\src\main\java\com\jiteen\claims\claim\api\controller\ClaimController.java
+C:\Projects\ai-claims-processing-system\claim-service\src\main\java\com\jiteen\claims\claim\api\exception\ClaimNotFoundException.java
+C:\Projects\ai-claims-processing-system\claim-service\src\main\java\com\jiteen\claims\claim\api\exception\GlobalExceptionHandler.java
+C:\Projects\ai-claims-processing-system\claim-service\src\main\java\com\jiteen\claims\claim\application\dto\request\CreateClaimRequest.java
+C:\Projects\ai-claims-processing-system\claim-service\src\main\java\com\jiteen\claims\claim\application\dto\response\ClaimResponse.java
+C:\Projects\ai-claims-processing-system\claim-service\src\main\java\com\jiteen\claims\claim\application\service\ClaimService.java
+C:\Projects\ai-claims-processing-system\claim-service\src\main\java\com\jiteen\claims\claim\application\service\impl\ClaimServiceImpl.java
+C:\Projects\ai-claims-processing-system\claim-service\src\main\java\com\jiteen\claims\claim\ClaimServiceApplication.java
+C:\Projects\ai-claims-processing-system\claim-service\src\main\java\com\jiteen\claims\claim\config\OpenApiConfig.java
+C:\Projects\ai-claims-processing-system\claim-service\src\main\java\com\jiteen\claims\claim\domain\entity\AuditBaseEntity.java
+C:\Projects\ai-claims-processing-system\claim-service\src\main\java\com\jiteen\claims\claim\domain\entity\Claim.java
+C:\Projects\ai-claims-processing-system\claim-service\src\main\java\com\jiteen\claims\claim\domain\enums\ClaimStatus.java
+C:\Projects\ai-claims-processing-system\claim-service\src\main\java\com\jiteen\claims\claim\domain\repository\ClaimRepository.java
