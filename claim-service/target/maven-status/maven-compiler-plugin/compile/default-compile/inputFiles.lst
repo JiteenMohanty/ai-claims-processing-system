@@ -2,7 +2,9 @@ C:\Projects\ai-claims-processing-system\claim-service\src\main\java\com\jiteen\c
 C:\Projects\ai-claims-processing-system\claim-service\src\main\java\com\jiteen\claims\claim\api\exception\ClaimNotFoundException.java
 C:\Projects\ai-claims-processing-system\claim-service\src\main\java\com\jiteen\claims\claim\api\exception\GlobalExceptionHandler.java
 C:\Projects\ai-claims-processing-system\claim-service\src\main\java\com\jiteen\claims\claim\application\dto\request\CreateClaimRequest.java
+C:\Projects\ai-claims-processing-system\claim-service\src\main\java\com\jiteen\claims\claim\application\dto\request\UpdateClaimRequest.java
 C:\Projects\ai-claims-processing-system\claim-service\src\main\java\com\jiteen\claims\claim\application\dto\response\ClaimResponse.java
+C:\Projects\ai-claims-processing-system\claim-service\src\main\java\com\jiteen\claims\claim\application\mapper\ClaimMapper.java
 C:\Projects\ai-claims-processing-system\claim-service\src\main\java\com\jiteen\claims\claim\application\service\ClaimService.java
 C:\Projects\ai-claims-processing-system\claim-service\src\main\java\com\jiteen\claims\claim\application\service\impl\ClaimServiceImpl.java
 C:\Projects\ai-claims-processing-system\claim-service\src\main\java\com\jiteen\claims\claim\ClaimServiceApplication.java

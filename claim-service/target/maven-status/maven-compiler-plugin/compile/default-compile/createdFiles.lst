@@ -2,13 +2,17 @@ com\jiteen\claims\claim\application\dto\request\CreateClaimRequest$CreateClaimRe
 com\jiteen\claims\claim\domain\repository\ClaimRepository.class
 com\jiteen\claims\claim\application\dto\response\ClaimResponse$ClaimResponseBuilder.class
 com\jiteen\claims\claim\application\dto\response\ClaimResponse.class
+com\jiteen\claims\claim\application\dto\request\UpdateClaimRequest.class
+com\jiteen\claims\claim\application\dto\request\UpdateClaimRequest$UpdateClaimRequestBuilder.class
 com\jiteen\claims\claim\domain\entity\Claim$ClaimBuilder.class
 com\jiteen\claims\claim\domain\enums\ClaimStatus.class
 com\jiteen\claims\claim\domain\entity\Claim.class
+com\jiteen\claims\claim\application\mapper\ClaimMapperImpl.class
 com\jiteen\claims\claim\application\service\ClaimService.class
 com\jiteen\claims\claim\application\dto\request\CreateClaimRequest.class
 com\jiteen\claims\claim\api\exception\ClaimNotFoundException.class
 com\jiteen\claims\claim\domain\entity\AuditBaseEntity.class
+com\jiteen\claims\claim\application\mapper\ClaimMapper.class
 com\jiteen\claims\claim\api\controller\ClaimController.class
 com\jiteen\claims\claim\api\exception\GlobalExceptionHandler.class
 com\jiteen\claims\claim\config\OpenApiConfig.class

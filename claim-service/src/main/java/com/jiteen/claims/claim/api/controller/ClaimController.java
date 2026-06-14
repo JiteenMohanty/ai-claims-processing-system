@@ -1,6 +1,7 @@
 package com.jiteen.claims.claim.api.controller;
 
 import com.jiteen.claims.claim.application.dto.request.CreateClaimRequest;
+import com.jiteen.claims.claim.application.dto.request.UpdateClaimRequest;
 import com.jiteen.claims.claim.application.dto.response.ClaimResponse;
 import com.jiteen.claims.claim.application.service.ClaimService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -12,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -169,5 +171,24 @@ public class ClaimController {
     public ResponseEntity<ClaimResponse> rejectClaim(@PathVariable UUID claimId) {
         ClaimResponse claimResponse = claimService.rejectClaim(claimId);
         return ResponseEntity.ok(claimResponse);
+    }
+
+    @PutMapping("/{claimId}")
+    public ResponseEntity<ClaimResponse> updateClaim(
+            @PathVariable UUID claimId,
+            @Valid @RequestBody UpdateClaimRequest request) {
+
+        ClaimResponse response = claimService.updateClaim(claimId, request);
+
+        return ResponseEntity.ok(response);
+    }
+
+    @DeleteMapping("/{claimId}")
+    public ResponseEntity<Void> deleteClaim(
+            @PathVariable UUID claimId) {
+
+        claimService.deleteClaim(claimId);
+
+        return ResponseEntity.noContent().build();
     }
 }

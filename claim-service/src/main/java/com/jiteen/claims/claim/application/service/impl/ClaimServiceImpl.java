@@ -2,7 +2,9 @@ package com.jiteen.claims.claim.application.service.impl;
 
 import com.jiteen.claims.claim.api.exception.ClaimNotFoundException;
 import com.jiteen.claims.claim.application.dto.request.CreateClaimRequest;
+import com.jiteen.claims.claim.application.dto.request.UpdateClaimRequest;
 import com.jiteen.claims.claim.application.dto.response.ClaimResponse;
+import com.jiteen.claims.claim.application.mapper.ClaimMapper;
 import com.jiteen.claims.claim.application.service.ClaimService;
 import com.jiteen.claims.claim.domain.entity.Claim;
 import com.jiteen.claims.claim.domain.enums.ClaimStatus;
@@ -11,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -28,7 +31,7 @@ import java.util.UUID;
  * service, this class
  * relies on declarative transaction demarcation, constructor-based dependency
  * injection via Lombok,
- * and explicit manual DTO-to-Entity decomposition mapping to isolate
+ * and MapStruct-based DTO and entity transformations to isolate
  * infrastructure concerns.
  * </p>
  *
@@ -42,6 +45,8 @@ import java.util.UUID;
 public class ClaimServiceImpl implements ClaimService {
 
     private final ClaimRepository claimRepository;
+
+    private final ClaimMapper claimMapper;
 
     /**
      * Ingests and initializes a new insurance claim within the system of record.
@@ -61,18 +66,10 @@ public class ClaimServiceImpl implements ClaimService {
      */
     @Override
     public ClaimResponse createClaim(CreateClaimRequest request) {
-        Claim claim = Claim.builder()
-                .policyNumber(request.getPolicyNumber())
-                .claimantName(request.getClaimantName())
-                .claimType(request.getClaimType())
-                .incidentDate(request.getIncidentDate())
-                .claimAmount(request.getClaimAmount())
-                .description(request.getDescription())
-                .status(ClaimStatus.SUBMITTED)
-                .build();
+        Claim claim = claimMapper.toEntity(request);
 
         Claim savedClaim = claimRepository.save(claim);
-        return mapToResponse(savedClaim);
+        return claimMapper.toResponse(savedClaim);
     }
 
     /**
@@ -83,15 +80,16 @@ public class ClaimServiceImpl implements ClaimService {
      *                record entry
      * @return a fully populated {@link ClaimResponse} mapping the active entity
      *         data context
-     * @throws ClaimNotFoundException if no matching active claim is found within the data
-     *                          persistence layer
+     * @throws ClaimNotFoundException if no matching active claim is found within
+     *                                the data
+     *                                persistence layer
      */
     @Override
     @Transactional(readOnly = true)
     public ClaimResponse getClaimById(UUID claimId) {
         Claim claim = claimRepository.findByIdAndDeletedAtIsNull(claimId)
                 .orElseThrow(() -> new ClaimNotFoundException(claimId));
-        return mapToResponse(claim);
+        return claimMapper.toResponse(claim);
     }
 
     /**
@@ -112,9 +110,9 @@ public class ClaimServiceImpl implements ClaimService {
     @Transactional(readOnly = true)
     public List<ClaimResponse> getAllClaims() {
         return claimRepository.findByDeletedAtIsNull()
-        .stream()
-        .map(this::mapToResponse)
-        .toList();
+                .stream()
+                .map(claimMapper::toResponse)
+                .toList();
     }
 
     /**
@@ -125,8 +123,9 @@ public class ClaimServiceImpl implements ClaimService {
      *                claim entry
      * @return an updated {@link ClaimResponse} showing the successful shift to the
      *         approved state matrix
-     * @throws ClaimNotFoundException if the target claim cannot be found or has been
-     *                          soft-deleted
+     * @throws ClaimNotFoundException if the target claim cannot be found or has
+     *                                been
+     *                                soft-deleted
      */
     @Override
     public ClaimResponse approveClaim(UUID claimId) {
@@ -135,7 +134,7 @@ public class ClaimServiceImpl implements ClaimService {
 
         claim.setStatus(ClaimStatus.APPROVED);
         Claim updatedClaim = claimRepository.save(claim);
-        return mapToResponse(updatedClaim);
+        return claimMapper.toResponse(updatedClaim);
     }
 
     /**
@@ -146,8 +145,9 @@ public class ClaimServiceImpl implements ClaimService {
      *                claim entry
      * @return an updated {@link ClaimResponse} showing the permanent shift to the
      *         rejected state matrix
-     * @throws ClaimNotFoundException if the target claim cannot be found or has been
-     *                          soft-deleted
+     * @throws ClaimNotFoundException if the target claim cannot be found or has
+     *                                been
+     *                                soft-deleted
      */
     @Override
     public ClaimResponse rejectClaim(UUID claimId) {
@@ -156,35 +156,25 @@ public class ClaimServiceImpl implements ClaimService {
 
         claim.setStatus(ClaimStatus.REJECTED);
         Claim updatedClaim = claimRepository.save(claim);
-        return mapToResponse(updatedClaim);
+        return claimMapper.toResponse(updatedClaim);
     }
 
-    /**
-     * Decouples the persistent infrastructure context from the presentation
-     * delivery tier by cleanly
-     * mapping an internal entity instance to an immutable external presentation
-     * transfer object.
-     * <p>
-     * This utility explicitly omits soft-delete fields such as {@code deletedAt} to
-     * avoid leakage
-     * of operational database details outside the service ecosystem boundary.
-     * </p>
-     *
-     * @param claim the database-backed {@link Claim} relational model to map
-     * @return an instantiated, client-facing {@link ClaimResponse} transfer model
-     */
-    private ClaimResponse mapToResponse(Claim claim) {
-        return ClaimResponse.builder()
-                .id(claim.getId())
-                .policyNumber(claim.getPolicyNumber())
-                .claimantName(claim.getClaimantName())
-                .claimType(claim.getClaimType())
-                .incidentDate(claim.getIncidentDate())
-                .claimAmount(claim.getClaimAmount())
-                .status(claim.getStatus())
-                .description(claim.getDescription())
-                .createdAt(claim.getCreatedAt())
-                .updatedAt(claim.getUpdatedAt())
-                .build();
+    @Override
+    public ClaimResponse updateClaim(UUID claimId, UpdateClaimRequest request) {
+
+        Claim claim = claimRepository.findByIdAndDeletedAtIsNull(claimId)
+                .orElseThrow(() -> new ClaimNotFoundException(claimId));
+        claimMapper.updateClaimFromRequest(request, claim);
+        Claim updatedClaim = claimRepository.save(claim);
+
+        return claimMapper.toResponse(updatedClaim);
+    }
+
+    @Override
+    public void deleteClaim(UUID claimId) {
+        Claim claim = claimRepository.findByIdAndDeletedAtIsNull(claimId)
+                .orElseThrow(() -> new ClaimNotFoundException(claimId));
+        claim.setDeletedAt(LocalDateTime.now());
+        claimRepository.save(claim);
     }
 }

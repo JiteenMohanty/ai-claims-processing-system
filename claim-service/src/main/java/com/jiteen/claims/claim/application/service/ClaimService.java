@@ -1,6 +1,7 @@
 package com.jiteen.claims.claim.application.service;
 
 import com.jiteen.claims.claim.application.dto.request.CreateClaimRequest;
+import com.jiteen.claims.claim.application.dto.request.UpdateClaimRequest;
 import com.jiteen.claims.claim.application.dto.response.ClaimResponse;
 
 import java.util.List;
@@ -82,4 +83,11 @@ public interface ClaimService {
      * @return the updated {@link ClaimResponse} illustrating the terminal rejected status
      */
     ClaimResponse rejectClaim(UUID claimId);
+
+    ClaimResponse updateClaim(
+        UUID claimId,
+        UpdateClaimRequest request
+);
+
+void deleteClaim(UUID claimId);
 }

@@ -28,7 +28,6 @@ import java.util.UUID;
  * @since Java 21
  */
 @Getter
-@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
