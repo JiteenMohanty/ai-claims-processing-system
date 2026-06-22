@@ -1,2 +1,5 @@
 com\jiteen\claims\claim\domain\repository\ClaimRepositoryTest.class
+com\jiteen\claims\claim\api\controller\ClaimControllerTest.class
+com\jiteen\claims\claim\application\mapper\ClaimMapperTest.class
+com\jiteen\claims\claim\application\service\impl\ClaimServiceImplTest.class
 com\jiteen\claims\claim\ClaimServiceApplicationTests.class
