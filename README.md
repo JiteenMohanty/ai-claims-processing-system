@@ -75,7 +75,7 @@ Built as a portfolio showcase of enterprise Java backend engineering: Spring Boo
 | Containerisation    | Docker (multi-stage builds) + Docker Compose  | -         |
 | Testing             | JUnit 5, Mockito, Testcontainers, EmbeddedKafka | -       |
 | CI                  | GitHub Actions                                | -         |
-| AI / OCR            | OpenAI GPT · AWS Textract · Simulated fallback | -        |
+| AI / OCR            | Groq · AWS Textract · Simulated fallback | -        |
 | Storage             | AWS S3 / local filesystem (configurable)      | -         |
 
 ---
@@ -90,109 +90,6 @@ Built as a portfolio showcase of enterprise Java backend engineering: Spring Boo
 | `ai-processing-service`| 8083 | OCR → risk scoring → fraud detection → GPT summary pipeline    |
 | `notification-service` | 8084 | Email dispatch on claim approval/rejection                      |
 | Kafka UI               | 8090 | Topic and consumer group monitoring                             |
-
----
-
-## Quick Start — Docker Compose
-
-### Prerequisites
-- Docker Desktop 4.x or Docker Engine 24+
-- 4 GB of RAM available for containers
-
-### 1. Clone and configure
-
-```bash
-git clone <repo-url>
-cd ai-claims-processing-system
-
-cp .env.example .env
-# Open .env and set at minimum:
-#   JWT_SECRET=<random 64-char string>
-#   POSTGRES_AUTH_PASSWORD=<your password>
-#   POSTGRES_CLAIM_PASSWORD=<your password>
-```
-
-### 2. Start the full stack
-
-```bash
-docker compose up -d
-```
-
-Services start in dependency order. The full stack takes approximately 90 seconds to become healthy on a first run (Maven downloads dependencies inside the build stage).
-
-### 3. Verify
-
-```bash
-# All containers healthy
-docker compose ps
-
-# API Gateway health
-curl http://localhost:8080/actuator/health
-
-# Swagger UIs
-open http://localhost:8081/swagger-ui.html   # Auth Service
-open http://localhost:8082/swagger-ui.html   # Claim Service
-
-# Kafka topic monitoring
-open http://localhost:8090
-```
-
-### Stop
-
-```bash
-docker compose down          # stop containers, keep volumes
-docker compose down -v       # stop + delete all data volumes
-```
-
----
-
-## Quick Start — Local Development (no Docker)
-
-### Prerequisites
-- JDK 21
-- Maven 3.9+
-- PostgreSQL 16 running locally
-- Redis 7 running locally (`redis-server`)
-- Kafka running locally (or use `docker-compose.infrastructure.yml`)
-
-### 1. Start infrastructure only
-
-```bash
-docker compose -f docker-compose.infrastructure.yml up -d   # Kafka only
-# Plus local PostgreSQL + Redis already running
-```
-
-### 2. Create databases
-
-```sql
-CREATE DATABASE auth_service;
-CREATE DATABASE claim_service;
-```
-
-### 3. Set environment variables
-
-```bash
-export JWT_SECRET=local-dev-secret-key-at-least-32-characters
-```
-
-### 4. Run each service
-
-```bash
-# Auth Service
-cd auth-service && mvn spring-boot:run
-
-# Claim Service (new terminal)
-cd claim-service && mvn spring-boot:run
-
-# AI Processing Service (new terminal)
-cd ai-processing-service && mvn spring-boot:run
-
-# Notification Service (new terminal)
-cd notification-service && mvn spring-boot:run
-
-# API Gateway (new terminal)
-cd api-gateway && mvn spring-boot:run
-```
 
 ---
 
@@ -336,13 +233,6 @@ See [`.env.example`](.env.example) for the full list with descriptions. Required
 | `POSTGRES_CLAIM_PASSWORD`| PostgreSQL password for claim_service DB       |
 
 All other variables have sensible defaults for local development.
-
----
-
-## CI/CD
-
-GitHub Actions pipeline (`.github/workflows/ci.yml`) runs on every push to `main`/`develop` and all pull requests:
-
 1. **5 parallel jobs** — one per microservice — run `mvn verify`
 2. **Docker build validation** — builds each service image after all tests pass
 3. Test results uploaded as artifacts (7-day retention)
