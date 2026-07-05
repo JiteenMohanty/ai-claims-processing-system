@@ -1,0 +1,4 @@
+com\jiteen\claims\ai\application\service\impl\SimulatedOcrServiceTest.class
+com\jiteen\claims\ai\application\service\impl\AiAnalysisServiceImplTest.class
+com\jiteen\claims\ai\AiProcessingServiceApplicationTests.class
+com\jiteen\claims\ai\application\consumer\DocumentUploadedEventConsumerTest.class

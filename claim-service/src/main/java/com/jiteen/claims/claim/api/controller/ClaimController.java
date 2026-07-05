@@ -10,6 +10,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -44,7 +48,7 @@ import java.util.UUID;
  * @since Java 21
  */
 @RestController
-@RequestMapping("/api/claims")
+@RequestMapping("/api/v1/claims")
 @RequiredArgsConstructor
 @Validated
 @Tag(name = "Claim Management", description = "REST API interfaces managing insurance claim ingestion pipelines and workflow lifecycle transactions.")
@@ -103,21 +107,52 @@ public class ClaimController {
     }
 
     /**
-     * Compiles an array containing all active, un-deleted insurance claims managed
-     * across the platform context.
+     * Compiles a paginated slice of all active, un-deleted insurance claims managed
+     * across the platform context, with optional client-side status and free-text
+     * filtering applied prior to pagination.
      *
-     * @return a {@link ResponseEntity} wrapping a {@link List} of
+     * @param page   the zero-based page index to return (default {@code 0})
+     * @param size   the maximum number of records per page (default {@code 20})
+     * @param status optional exact {@link ClaimResponse#getStatus()} filter
+     * @param search optional case-insensitive substring matched against the
+     *               claimant name or policy number
+     * @return a {@link ResponseEntity} wrapping a Spring {@link Page} of
      *         {@link ClaimResponse} records along with an HTTP 200 OK header status
      */
     @GetMapping
-    @Operation(summary = "Retrieve a listing of all active claims", description = "Compiles an array tracking all non-deleted claim records currently registered across active infrastructure layers.")
+    @Operation(summary = "Retrieve a paginated listing of active claims", description = "Returns a page of non-deleted claim records, optionally filtered by status and a claimant/policy search term.")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Comprehensive listing of active claims compiled successfully"),
+            @ApiResponse(responseCode = "200", description = "Paginated listing of active claims compiled successfully"),
             @ApiResponse(responseCode = "500", description = "Internal processing boundary error occurred during extraction optimization operations")
     })
-    public ResponseEntity<List<ClaimResponse>> getAllClaims() {
-        List<ClaimResponse> claims = claimService.getAllClaims();
-        return ResponseEntity.ok(claims);
+    public ResponseEntity<Page<ClaimResponse>> getAllClaims(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "20") int size,
+            @RequestParam(required = false) String status,
+            @RequestParam(required = false) String search) {
+
+        List<ClaimResponse> filtered = claimService.getAllClaims().stream()
+                .filter(c -> status == null || status.isBlank()
+                        || (c.getStatus() != null && c.getStatus().name().equalsIgnoreCase(status)))
+                .filter(c -> search == null || search.isBlank()
+                        || matchesSearch(c, search.toLowerCase()))
+                .toList();
+
+        int safeSize = Math.max(size, 1);
+        int from = Math.min(page * safeSize, filtered.size());
+        int to = Math.min(from + safeSize, filtered.size());
+        List<ClaimResponse> content = filtered.subList(from, to);
+
+        Page<ClaimResponse> result =
+                new PageImpl<>(content, PageRequest.of(page, safeSize), filtered.size());
+        return ResponseEntity.ok(result);
+    }
+
+    private boolean matchesSearch(ClaimResponse claim, String term) {
+        return (claim.getClaimantName() != null
+                        && claim.getClaimantName().toLowerCase().contains(term))
+                || (claim.getPolicyNumber() != null
+                        && claim.getPolicyNumber().toLowerCase().contains(term));
     }
 
     /**
@@ -134,7 +169,7 @@ public class ClaimController {
      * @return a {@link ResponseEntity} holding the updated state
      *         {@link ClaimResponse} layout along with an HTTP 200 OK header status
      */
-    @PutMapping("/{claimId}/approve")
+    @PostMapping("/{claimId}/approve")
     @Operation(summary = "Approve an active insurance claim transaction", description = "Advances an active claim's internal workflow status variable explicitly to the APPROVED state vector matrix.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Target claim successfully advanced to authorized compliance phase"),
@@ -160,7 +195,7 @@ public class ClaimController {
      * @return a {@link ResponseEntity} holding the updated state
      *         {@link ClaimResponse} layout along with an HTTP 200 OK header status
      */
-    @PutMapping("/{claimId}/reject")
+    @PostMapping("/{claimId}/reject")
     @Operation(summary = "Formally deny and reject an active insurance claim transaction", description = "Advances an active claim's workflow track status variable into a terminal REJECTED denial loop phase.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Target claim successfully moved into a terminal rejection state loop"),

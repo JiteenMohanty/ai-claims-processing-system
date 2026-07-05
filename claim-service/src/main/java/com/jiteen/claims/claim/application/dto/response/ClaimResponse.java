@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -32,7 +34,10 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class ClaimResponse {
+public class ClaimResponse implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     /**
      * The unique identity tracking reference of the insurance claim record.

@@ -20,6 +20,9 @@ C:\Projects\ai-claims-processing-system\auth-service\src\main\java\com\jiteen\cl
 C:\Projects\ai-claims-processing-system\auth-service\src\main\java\com\jiteen\claims\auth\application\service\impl\AuthServiceImpl.java
 C:\Projects\ai-claims-processing-system\auth-service\src\main\java\com\jiteen\claims\auth\application\service\jwt\JwtService.java
 C:\Projects\ai-claims-processing-system\auth-service\src\main\java\com\jiteen\claims\auth\AuthServiceApplication.java
+C:\Projects\ai-claims-processing-system\auth-service\src\main\java\com\jiteen\claims\auth\config\CacheConfig.java
+C:\Projects\ai-claims-processing-system\auth-service\src\main\java\com\jiteen\claims\auth\config\CacheNames.java
+C:\Projects\ai-claims-processing-system\auth-service\src\main\java\com\jiteen\claims\auth\config\filter\CorrelationIdFilter.java
 C:\Projects\ai-claims-processing-system\auth-service\src\main\java\com\jiteen\claims\auth\config\OpenApiConfig.java
 C:\Projects\ai-claims-processing-system\auth-service\src\main\java\com\jiteen\claims\auth\config\properties\JwtProperties.java
 C:\Projects\ai-claims-processing-system\auth-service\src\main\java\com\jiteen\claims\auth\config\SecurityConfig.java

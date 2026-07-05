@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2026-06-22T20:00:53+0530",
-    comments = "version: 1.6.3, compiler: javac, environment: Java 21.0.9 (Eclipse Adoptium)"
+    date = "2026-07-03T18:17:51+0530",
+    comments = "version: 1.6.3, compiler: Eclipse JDT (IDE) 3.46.100.v20260624-0231, environment: Java 21.0.11 (Eclipse Adoptium)"
 )
 @Component
 public class ClaimMapperImpl implements ClaimMapper {
@@ -23,12 +23,12 @@ public class ClaimMapperImpl implements ClaimMapper {
 
         Claim.ClaimBuilder claim = Claim.builder();
 
-        claim.policyNumber( request.getPolicyNumber() );
-        claim.claimantName( request.getClaimantName() );
-        claim.claimType( request.getClaimType() );
-        claim.incidentDate( request.getIncidentDate() );
         claim.claimAmount( request.getClaimAmount() );
+        claim.claimType( request.getClaimType() );
+        claim.claimantName( request.getClaimantName() );
         claim.description( request.getDescription() );
+        claim.incidentDate( request.getIncidentDate() );
+        claim.policyNumber( request.getPolicyNumber() );
 
         claim.status( com.jiteen.claims.claim.domain.enums.ClaimStatus.SUBMITTED );
 
@@ -43,15 +43,15 @@ public class ClaimMapperImpl implements ClaimMapper {
 
         ClaimResponse.ClaimResponseBuilder claimResponse = ClaimResponse.builder();
 
-        claimResponse.id( claim.getId() );
-        claimResponse.policyNumber( claim.getPolicyNumber() );
-        claimResponse.claimantName( claim.getClaimantName() );
-        claimResponse.claimType( claim.getClaimType() );
-        claimResponse.incidentDate( claim.getIncidentDate() );
         claimResponse.claimAmount( claim.getClaimAmount() );
-        claimResponse.status( claim.getStatus() );
-        claimResponse.description( claim.getDescription() );
+        claimResponse.claimType( claim.getClaimType() );
+        claimResponse.claimantName( claim.getClaimantName() );
         claimResponse.createdAt( claim.getCreatedAt() );
+        claimResponse.description( claim.getDescription() );
+        claimResponse.id( claim.getId() );
+        claimResponse.incidentDate( claim.getIncidentDate() );
+        claimResponse.policyNumber( claim.getPolicyNumber() );
+        claimResponse.status( claim.getStatus() );
         claimResponse.updatedAt( claim.getUpdatedAt() );
 
         return claimResponse.build();
@@ -63,23 +63,23 @@ public class ClaimMapperImpl implements ClaimMapper {
             return;
         }
 
-        if ( request.getPolicyNumber() != null ) {
-            claim.setPolicyNumber( request.getPolicyNumber() );
-        }
-        if ( request.getClaimantName() != null ) {
-            claim.setClaimantName( request.getClaimantName() );
+        if ( request.getClaimAmount() != null ) {
+            claim.setClaimAmount( request.getClaimAmount() );
         }
         if ( request.getClaimType() != null ) {
             claim.setClaimType( request.getClaimType() );
         }
-        if ( request.getIncidentDate() != null ) {
-            claim.setIncidentDate( request.getIncidentDate() );
-        }
-        if ( request.getClaimAmount() != null ) {
-            claim.setClaimAmount( request.getClaimAmount() );
+        if ( request.getClaimantName() != null ) {
+            claim.setClaimantName( request.getClaimantName() );
         }
         if ( request.getDescription() != null ) {
             claim.setDescription( request.getDescription() );
+        }
+        if ( request.getIncidentDate() != null ) {
+            claim.setIncidentDate( request.getIncidentDate() );
+        }
+        if ( request.getPolicyNumber() != null ) {
+            claim.setPolicyNumber( request.getPolicyNumber() );
         }
     }
 }

@@ -7,11 +7,13 @@ com\jiteen\claims\auth\api\exception\UserAlreadyExistsException.class
 com\jiteen\claims\auth\application\dto\response\RegisterResponse$RegisterResponseBuilder.class
 com\jiteen\claims\auth\domain\entity\RefreshToken$RefreshTokenBuilder.class
 com\jiteen\claims\auth\api\exception\UserNotFoundException.class
+com\jiteen\claims\auth\config\filter\CorrelationIdFilter.class
 com\jiteen\claims\auth\api\exception\InvalidRefreshTokenException.class
 com\jiteen\claims\auth\domain\repository\UserRepository.class
 com\jiteen\claims\auth\domain\entity\AuditBaseEntity.class
 com\jiteen\claims\auth\config\SecurityConfig.class
 com\jiteen\claims\auth\application\dto\response\RefreshTokenResponse.class
+com\jiteen\claims\auth\config\CacheNames.class
 com\jiteen\claims\auth\application\dto\request\LogoutRequest$LogoutRequestBuilder.class
 com\jiteen\claims\auth\api\exception\AccountLockedException.class
 com\jiteen\claims\auth\application\dto\response\ErrorResponse$ErrorResponseBuilder.class
@@ -24,6 +26,7 @@ com\jiteen\claims\auth\config\OpenApiConfig.class
 com\jiteen\claims\auth\domain\repository\RefreshTokenRepository.class
 com\jiteen\claims\auth\AuthServiceApplication.class
 com\jiteen\claims\auth\api\exception\GlobalExceptionHandler.class
+com\jiteen\claims\auth\config\CacheConfig.class
 com\jiteen\claims\auth\application\dto\response\RefreshTokenResponse$RefreshTokenResponseBuilder.class
 com\jiteen\claims\auth\api\exception\AuthException.class
 com\jiteen\claims\auth\security\CustomUserDetailsService.class

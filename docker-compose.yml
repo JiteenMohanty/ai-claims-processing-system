@@ -1,0 +1,374 @@
+# ============================================================================
+# AI-Powered Insurance Claims Processing Platform
+# Unified Docker Compose — Full Platform Stack
+#
+# Starts all infrastructure and microservices in a single command:
+#   docker compose up -d
+#
+# Prerequisites:
+#   - Docker Desktop 4.x or Docker Engine 24+
+#   - Copy .env.example to .env and fill required values
+#
+# Ports at a glance:
+#   8080  api-gateway       (single ingress for all client traffic)
+#   8081  auth-service
+#   8082  claim-service
+#   8083  ai-processing-service
+#   8084  notification-service
+#   5432  postgres-auth
+#   5433  postgres-claim
+#   6379  redis
+#   9092  kafka
+#   8090  kafka-ui
+# ============================================================================
+
+name: ai-claims-platform
+
+services:
+
+  # ==========================================================================
+  # Infrastructure
+  # ==========================================================================
+
+  # --------------------------------------------------------------------------
+  # PostgreSQL — Auth Service database
+  # --------------------------------------------------------------------------
+  postgres-auth:
+    image: postgres:16-alpine
+    container_name: postgres-auth
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: auth_service
+      POSTGRES_USER: ${POSTGRES_AUTH_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_AUTH_PASSWORD:-postgres}
+    ports:
+      - "${POSTGRES_AUTH_PORT:-5432}:5432"
+    volumes:
+      - postgres-auth-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_AUTH_USER:-postgres} -d auth_service"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - claims-network
+
+  # --------------------------------------------------------------------------
+  # PostgreSQL — Claim Service database
+  # --------------------------------------------------------------------------
+  postgres-claim:
+    image: postgres:16-alpine
+    container_name: postgres-claim
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: claim_service
+      POSTGRES_USER: ${POSTGRES_CLAIM_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_CLAIM_PASSWORD:-postgres}
+    ports:
+      - "${POSTGRES_CLAIM_PORT:-5433}:5432"
+    volumes:
+      - postgres-claim-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_CLAIM_USER:-postgres} -d claim_service"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - claims-network
+
+  # --------------------------------------------------------------------------
+  # Redis — Shared distributed cache
+  # --------------------------------------------------------------------------
+  redis:
+    image: redis:7.2-alpine
+    container_name: redis
+    restart: unless-stopped
+    command: >
+      sh -c "redis-server
+      ${REDIS_PASSWORD:+--requirepass $REDIS_PASSWORD}
+      --maxmemory 256mb
+      --maxmemory-policy allkeys-lru"
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli ${REDIS_PASSWORD:+-a $REDIS_PASSWORD} --no-auth-warning ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - claims-network
+
+  # --------------------------------------------------------------------------
+  # Apache Kafka (KRaft mode — no ZooKeeper)
+  # --------------------------------------------------------------------------
+  kafka:
+    image: confluentinc/cp-kafka:7.6.0
+    container_name: kafka
+    restart: unless-stopped
+    ports:
+      - "${KAFKA_PORT:-9092}:9092"
+      - "9093:9093"
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_CONTROLLER_QUORUM_VOTERS: "1@kafka:9093"
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_NUM_PARTITIONS: 3
+      KAFKA_DEFAULT_REPLICATION_FACTOR: 1
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_LOG_RETENTION_HOURS: 168
+      CLUSTER_ID: "MkU3OEVBNTcwNTJENDM2Qk"
+    volumes:
+      - kafka-data:/var/lib/kafka/data
+    healthcheck:
+      test: ["CMD-SHELL", "kafka-broker-api-versions --bootstrap-server localhost:9092 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    networks:
+      - claims-network
+
+  # --------------------------------------------------------------------------
+  # Kafka UI — Topic and consumer-group monitoring dashboard
+  # --------------------------------------------------------------------------
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui
+    restart: unless-stopped
+    ports:
+      - "${KAFKA_UI_PORT:-8090}:8080"
+    environment:
+      KAFKA_CLUSTERS_0_NAME: claims-platform
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+    depends_on:
+      kafka:
+        condition: service_healthy
+    networks:
+      - claims-network
+
+  # ==========================================================================
+  # Microservices
+  # ==========================================================================
+
+  # --------------------------------------------------------------------------
+  # Auth Service — JWT authentication and user management
+  # --------------------------------------------------------------------------
+  auth-service:
+    build:
+      context: ./auth-service
+      dockerfile: Dockerfile
+    container_name: auth-service
+    restart: unless-stopped
+    depends_on:
+      postgres-auth:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      SERVER_PORT: 8081
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-prod}
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-auth:5432/auth_service
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_AUTH_USER:-postgres}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_AUTH_PASSWORD:-postgres}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_ISSUER: ${JWT_ISSUER:-auth-service}
+      JWT_ACCESS_TOKEN_EXPIRATION: ${JWT_ACCESS_TOKEN_EXPIRATION:-15m}
+      JWT_REFRESH_TOKEN_EXPIRATION: ${JWT_REFRESH_TOKEN_EXPIRATION:-7d}
+    ports:
+      - "${AUTH_SERVICE_PORT:-8081}:8081"
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:8081/actuator/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+    networks:
+      - claims-network
+
+  # --------------------------------------------------------------------------
+  # Claim Service — Core claims lifecycle management
+  # --------------------------------------------------------------------------
+  claim-service:
+    build:
+      context: ./claim-service
+      dockerfile: Dockerfile
+    container_name: claim-service
+    restart: unless-stopped
+    depends_on:
+      postgres-claim:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+    environment:
+      SERVER_PORT: 8082
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-prod}
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-claim:5432/claim_service
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_CLAIM_USER:-postgres}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_CLAIM_PASSWORD:-postgres}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      JWT_SECRET: ${JWT_SECRET}
+      STORAGE_PROVIDER: ${STORAGE_PROVIDER:-local}
+      STORAGE_LOCAL_UPLOAD_DIR: /app/uploads
+      AWS_REGION: ${AWS_REGION:-ap-south-1}
+      AWS_S3_BUCKET_NAME: ${AWS_S3_BUCKET_NAME:-}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-}
+    ports:
+      - "${CLAIM_SERVICE_PORT:-8082}:8082"
+    volumes:
+      - claim-uploads:/app/uploads
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:8082/actuator/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+    networks:
+      - claims-network
+
+  # --------------------------------------------------------------------------
+  # AI Processing Service — OCR, risk scoring, fraud detection pipeline
+  # --------------------------------------------------------------------------
+  ai-processing-service:
+    build:
+      context: ./ai-processing-service
+      dockerfile: Dockerfile
+    container_name: ai-processing-service
+    restart: unless-stopped
+    depends_on:
+      kafka:
+        condition: service_healthy
+    environment:
+      SERVER_PORT: 8083
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-prod}
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      AI_PROVIDER: ${AI_PROVIDER:-simulated}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      GEMINI_MODEL: ${GEMINI_MODEL:-gemini-2.0-flash}
+      CLAUDE_MODEL: ${CLAUDE_MODEL:-claude-opus-4-8}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      OCR_PROVIDER: ${OCR_PROVIDER:-simulated}
+      AWS_REGION: ${AWS_REGION:-ap-south-1}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-}
+    ports:
+      - "${AI_SERVICE_PORT:-8083}:8083"
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:8083/actuator/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+    networks:
+      - claims-network
+
+  # --------------------------------------------------------------------------
+  # Notification Service — Email dispatch for claim status changes
+  # --------------------------------------------------------------------------
+  notification-service:
+    build:
+      context: ./notification-service
+      dockerfile: Dockerfile
+    container_name: notification-service
+    restart: unless-stopped
+    depends_on:
+      kafka:
+        condition: service_healthy
+    environment:
+      SERVER_PORT: 8084
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-prod}
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      SMTP_HOST: ${SMTP_HOST:-smtp.gmail.com}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USERNAME: ${SMTP_USERNAME:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      NOTIFICATION_EMAIL_FROM: ${NOTIFICATION_EMAIL_FROM:-jiteen.dev@gmail.com}
+      NOTIFICATION_EMAIL_ENABLED: ${NOTIFICATION_EMAIL_ENABLED:-false}
+    ports:
+      - "${NOTIFICATION_SERVICE_PORT:-8084}:8084"
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:8084/actuator/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+    networks:
+      - claims-network
+
+  # --------------------------------------------------------------------------
+  # API Gateway — Unified ingress with JWT authentication and rate limiting
+  # --------------------------------------------------------------------------
+  api-gateway:
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    container_name: api-gateway
+    restart: unless-stopped
+    depends_on:
+      auth-service:
+        condition: service_healthy
+      claim-service:
+        condition: service_healthy
+    environment:
+      SERVER_PORT: 8080
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-prod}
+      AUTH_SERVICE_HOST: auth-service
+      AUTH_SERVICE_PORT: 8081
+      CLAIM_SERVICE_HOST: claim-service
+      CLAIM_SERVICE_PORT: 8082
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_ISSUER: ${JWT_ISSUER:-auth-service}
+    ports:
+      - "${API_GATEWAY_PORT:-8080}:8080"
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:8080/actuator/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+    networks:
+      - claims-network
+
+# ==========================================================================
+# Volumes
+# ==========================================================================
+volumes:
+  postgres-auth-data:
+    name: ai-claims-postgres-auth-data
+  postgres-claim-data:
+    name: ai-claims-postgres-claim-data
+  redis-data:
+    name: ai-claims-redis-data
+  kafka-data:
+    name: ai-claims-kafka-data
+  claim-uploads:
+    name: ai-claims-claim-uploads
+
+# ==========================================================================
+# Networks
+# ==========================================================================
+networks:
+  claims-network:
+    name: claims-network
+    driver: bridge

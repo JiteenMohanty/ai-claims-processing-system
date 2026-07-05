@@ -17,16 +17,19 @@ import com.jiteen.claims.claim.api.exception.FileStorageException;
 import com.jiteen.claims.claim.api.exception.InvalidFileTypeException;
 import com.jiteen.claims.claim.application.dto.response.DocumentResponse;
 import com.jiteen.claims.claim.application.dto.response.UploadDocumentResponse;
+import com.jiteen.claims.claim.application.event.ClaimEventPublisher;
 import com.jiteen.claims.claim.application.mapper.DocumentMapper;
 import com.jiteen.claims.claim.application.service.DocumentService;
 import com.jiteen.claims.claim.application.service.StorageService;
 import com.jiteen.claims.claim.domain.entity.Claim;
 import com.jiteen.claims.claim.domain.entity.Document;
 import com.jiteen.claims.claim.domain.enums.DocumentStatus;
+import com.jiteen.claims.claim.domain.event.DocumentUploadedEvent;
 import com.jiteen.claims.claim.domain.repository.ClaimRepository;
 import com.jiteen.claims.claim.domain.repository.DocumentRepository;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  * Enterprise service implementation managing the orchestrations, lifecycle
@@ -53,6 +56,10 @@ public class DocumentServiceImpl implements DocumentService {
     private final DocumentRepository documentRepository;
     private final StorageService storageService;
     private final DocumentMapper documentMapper;
+    private final ClaimEventPublisher claimEventPublisher;
+
+    @Value("${storage.provider:local}")
+    private String storageProvider;
 
     /**
      * Threshold maximum byte capacity for individual document uploads,
@@ -132,12 +139,24 @@ public class DocumentServiceImpl implements DocumentService {
                 .storagePath(storagePath)
                 .storedFileName(storedFileName)
                 .status(DocumentStatus.UPLOADED)
+                .storageProvider(storageProvider)
                 .build();
 
         // G. Commit metadata updates to database records
         Document savedDocument = documentRepository.save(document);
 
-        // H. Map entity layout securely into client data contracts
+        // H. Publish event to trigger downstream AI document analysis pipeline
+        claimEventPublisher.publishDocumentUploaded(DocumentUploadedEvent.builder()
+                .claimId(claimId)
+                .documentId(savedDocument.getId())
+                .storagePath(storagePath)
+                .storageProvider(storageProvider)
+                .originalFileName(file.getOriginalFilename())
+                .contentType(contentType)
+                .uploadedAt(savedDocument.getCreatedAt())
+                .build());
+
+        // I. Map entity layout securely into client data contracts
         return documentMapper.toUploadResponse(savedDocument);
     }
 

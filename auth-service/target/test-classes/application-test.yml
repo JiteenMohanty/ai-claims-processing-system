@@ -7,6 +7,9 @@ spring:
   flyway:
     enabled: true
 
+  cache:
+    type: none
+
 jwt:
   issuer: auth-service
   secret: integration-test-secret-key-must-be-at-least-32-bytes

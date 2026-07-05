@@ -1,0 +1,8 @@
+C:\Projects\ai-claims-processing-system\notification-service\src\main\java\com\jiteen\claims\notification\application\consumer\ClaimStatusEventConsumer.java
+C:\Projects\ai-claims-processing-system\notification-service\src\main\java\com\jiteen\claims\notification\application\service\EmailNotificationService.java
+C:\Projects\ai-claims-processing-system\notification-service\src\main\java\com\jiteen\claims\notification\application\service\impl\EmailNotificationServiceImpl.java
+C:\Projects\ai-claims-processing-system\notification-service\src\main\java\com\jiteen\claims\notification\config\KafkaConsumerConfig.java
+C:\Projects\ai-claims-processing-system\notification-service\src\main\java\com\jiteen\claims\notification\config\KafkaTopics.java
+C:\Projects\ai-claims-processing-system\notification-service\src\main\java\com\jiteen\claims\notification\domain\event\ClaimApprovedEvent.java
+C:\Projects\ai-claims-processing-system\notification-service\src\main\java\com\jiteen\claims\notification\domain\event\ClaimRejectedEvent.java
+C:\Projects\ai-claims-processing-system\notification-service\src\main\java\com\jiteen\claims\notification\NotificationServiceApplication.java
