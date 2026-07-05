@@ -3,6 +3,7 @@ package com.jiteen.claims.claim.application.service.impl;
 import com.jiteen.claims.claim.api.exception.FileStorageException;
 import com.jiteen.claims.claim.application.service.StorageService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -32,6 +33,7 @@ import java.util.UUID;
  * @since Java 21
  */
 @Service
+@ConditionalOnProperty(name = "storage.provider", havingValue = "local", matchIfMissing = true)
 public class LocalStorageService implements StorageService {
 
     private final Path rootLocation;

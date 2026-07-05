@@ -1,9 +1,15 @@
 package com.jiteen.claims.auth.api.controller;
 
+import com.jiteen.claims.auth.api.exception.UserNotFoundException;
+import com.jiteen.claims.auth.application.dto.response.UserProfileResponse;
+import com.jiteen.claims.auth.domain.entity.User;
+import com.jiteen.claims.auth.domain.repository.UserRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -16,8 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Map;
-
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 /**
  * Temporary REST controller used to verify that JWT-based authentication is
@@ -33,9 +37,42 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
  * @since 1.0
  */
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/v1/auth")
 @Tag(name = "User", description = "User-related endpoints")
 public class UserController {
+
+    private final UserRepository userRepository;
+
+    /**
+     * Returns the full profile of the currently authenticated user.
+     *
+     * @return a {@link ResponseEntity} with HTTP 200 and the user's profile
+     */
+    @Operation(summary = "Get user profile", description = "Returns the authenticated user's full profile.")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Profile returned"),
+        @ApiResponse(responseCode = "401", description = "Unauthorized"),
+        @ApiResponse(responseCode = "404", description = "User not found")
+    })
+    @GetMapping(path = "/profile", produces = MediaType.APPLICATION_JSON_VALUE)
+    @SecurityRequirement(name = "bearerAuth")
+    public ResponseEntity<UserProfileResponse> getProfile() {
+        final String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        final User user = userRepository.findByEmailAndDeletedAtIsNull(email)
+                .orElseThrow(() -> new UserNotFoundException("User not found: " + email));
+
+        final UserProfileResponse response = UserProfileResponse.builder()
+                .id(user.getId())
+                .email(user.getEmail())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .role(user.getRole())
+                .createdAt(user.getCreatedAt())
+                .build();
+
+        return ResponseEntity.ok(response);
+    }
 
     /**
      * Returns information about the currently authenticated user.

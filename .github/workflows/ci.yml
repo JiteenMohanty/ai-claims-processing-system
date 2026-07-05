@@ -1,0 +1,253 @@
+# ============================================================================
+# CI Pipeline — AI-Powered Insurance Claims Processing Platform
+#
+# Triggers: push to main, all pull requests
+# Jobs (parallel): build + test each microservice
+# Final job: build Docker images to validate Dockerfiles
+# ============================================================================
+
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+env:
+  JAVA_VERSION: '21'
+  JAVA_DISTRIBUTION: 'temurin'
+
+jobs:
+  # ============================================================================
+  # auth-service
+  # ============================================================================
+  auth-service:
+    name: Auth Service — Build & Test
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: auth_service
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U postgres -d auth_service"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    defaults:
+      run:
+        working-directory: auth-service
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Java ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+          distribution: ${{ env.JAVA_DISTRIBUTION }}
+          cache: maven
+
+      - name: Build and test
+        run: mvn -B -ntp verify
+        env:
+          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/auth_service
+          SPRING_DATASOURCE_USERNAME: postgres
+          SPRING_DATASOURCE_PASSWORD: postgres
+          JWT_SECRET: ci-test-secret-key-must-be-at-least-32-characters
+          JWT_ISSUER: auth-service
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: auth-service-test-results
+          path: auth-service/target/surefire-reports/
+          retention-days: 7
+
+  # ============================================================================
+  # claim-service
+  # ============================================================================
+  claim-service:
+    name: Claim Service — Build & Test
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: claim-service
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Java ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+          distribution: ${{ env.JAVA_DISTRIBUTION }}
+          cache: maven
+
+      - name: Build and test
+        run: mvn -B -ntp verify
+        env:
+          SPRING_PROFILES_ACTIVE: test
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: claim-service-test-results
+          path: claim-service/target/surefire-reports/
+          retention-days: 7
+
+  # ============================================================================
+  # ai-processing-service
+  # ============================================================================
+  ai-processing-service:
+    name: AI Processing Service — Build & Test
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ai-processing-service
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Java ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+          distribution: ${{ env.JAVA_DISTRIBUTION }}
+          cache: maven
+
+      - name: Build and test
+        run: mvn -B -ntp verify
+        env:
+          SPRING_PROFILES_ACTIVE: test
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-service-test-results
+          path: ai-processing-service/target/surefire-reports/
+          retention-days: 7
+
+  # ============================================================================
+  # notification-service
+  # ============================================================================
+  notification-service:
+    name: Notification Service — Build & Test
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: notification-service
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Java ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+          distribution: ${{ env.JAVA_DISTRIBUTION }}
+          cache: maven
+
+      - name: Build and test
+        run: mvn -B -ntp verify
+        env:
+          SPRING_PROFILES_ACTIVE: test
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: notification-service-test-results
+          path: notification-service/target/surefire-reports/
+          retention-days: 7
+
+  # ============================================================================
+  # api-gateway
+  # ============================================================================
+  api-gateway:
+    name: API Gateway — Build & Test
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: api-gateway
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Java ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+          distribution: ${{ env.JAVA_DISTRIBUTION }}
+          cache: maven
+
+      - name: Build and test
+        run: mvn -B -ntp verify
+        env:
+          JWT_SECRET: ci-test-secret-key-must-be-at-least-32-characters
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-gateway-test-results
+          path: api-gateway/target/surefire-reports/
+          retention-days: 7
+
+  # ============================================================================
+  # Docker image validation — runs after all service builds pass
+  # ============================================================================
+  docker-build-validation:
+    name: Docker Image Validation
+    runs-on: ubuntu-latest
+    needs:
+      - auth-service
+      - claim-service
+      - ai-processing-service
+      - notification-service
+      - api-gateway
+
+    strategy:
+      matrix:
+        service:
+          - auth-service
+          - claim-service
+          - ai-processing-service
+          - notification-service
+          - api-gateway
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image — ${{ matrix.service }}
+        uses: docker/build-push-action@v6
+        with:
+          context: ./${{ matrix.service }}
+          file: ./${{ matrix.service }}/Dockerfile
+          push: false
+          tags: ai-claims/${{ matrix.service }}:ci
+          cache-from: type=gha,scope=${{ matrix.service }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.service }}

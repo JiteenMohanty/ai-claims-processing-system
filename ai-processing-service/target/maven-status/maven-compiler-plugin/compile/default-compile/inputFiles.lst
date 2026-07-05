@@ -1,0 +1,15 @@
+C:\Projects\ai-claims-processing-system\ai-processing-service\src\main\java\com\jiteen\claims\ai\AiProcessingServiceApplication.java
+C:\Projects\ai-claims-processing-system\ai-processing-service\src\main\java\com\jiteen\claims\ai\application\consumer\ClaimCreatedEventConsumer.java
+C:\Projects\ai-claims-processing-system\ai-processing-service\src\main\java\com\jiteen\claims\ai\application\consumer\DocumentUploadedEventConsumer.java
+C:\Projects\ai-claims-processing-system\ai-processing-service\src\main\java\com\jiteen\claims\ai\application\publisher\AiAnalysisEventPublisher.java
+C:\Projects\ai-claims-processing-system\ai-processing-service\src\main\java\com\jiteen\claims\ai\application\publisher\impl\KafkaAiAnalysisEventPublisher.java
+C:\Projects\ai-claims-processing-system\ai-processing-service\src\main\java\com\jiteen\claims\ai\application\service\AiAnalysisService.java
+C:\Projects\ai-claims-processing-system\ai-processing-service\src\main\java\com\jiteen\claims\ai\application\service\impl\AiAnalysisServiceImpl.java
+C:\Projects\ai-claims-processing-system\ai-processing-service\src\main\java\com\jiteen\claims\ai\application\service\impl\SimulatedOcrService.java
+C:\Projects\ai-claims-processing-system\ai-processing-service\src\main\java\com\jiteen\claims\ai\application\service\OcrService.java
+C:\Projects\ai-claims-processing-system\ai-processing-service\src\main\java\com\jiteen\claims\ai\config\KafkaConsumerConfig.java
+C:\Projects\ai-claims-processing-system\ai-processing-service\src\main\java\com\jiteen\claims\ai\config\KafkaProducerConfig.java
+C:\Projects\ai-claims-processing-system\ai-processing-service\src\main\java\com\jiteen\claims\ai\config\KafkaTopics.java
+C:\Projects\ai-claims-processing-system\ai-processing-service\src\main\java\com\jiteen\claims\ai\domain\event\AiAnalysisCompletedEvent.java
+C:\Projects\ai-claims-processing-system\ai-processing-service\src\main\java\com\jiteen\claims\ai\domain\event\ClaimCreatedEvent.java
+C:\Projects\ai-claims-processing-system\ai-processing-service\src\main\java\com\jiteen\claims\ai\domain\event\DocumentUploadedEvent.java

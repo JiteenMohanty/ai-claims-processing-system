@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2026-06-22T20:00:54+0530",
-    comments = "version: 1.6.3, compiler: javac, environment: Java 21.0.9 (Eclipse Adoptium)"
+    date = "2026-07-03T18:17:51+0530",
+    comments = "version: 1.6.3, compiler: Eclipse JDT (IDE) 3.46.100.v20260624-0231, environment: Java 21.0.11 (Eclipse Adoptium)"
 )
 @Component
 public class DocumentMapperImpl implements DocumentMapper {
@@ -27,9 +27,9 @@ public class DocumentMapperImpl implements DocumentMapper {
         uploadDocumentResponse.documentId( document.getId() );
         uploadDocumentResponse.claimId( documentClaimId( document ) );
         uploadDocumentResponse.uploadedAt( document.getCreatedAt() );
-        uploadDocumentResponse.originalFileName( document.getOriginalFileName() );
         uploadDocumentResponse.contentType( document.getContentType() );
         uploadDocumentResponse.fileSize( document.getFileSize() );
+        uploadDocumentResponse.originalFileName( document.getOriginalFileName() );
         uploadDocumentResponse.status( document.getStatus() );
 
         return uploadDocumentResponse.build();
@@ -45,11 +45,11 @@ public class DocumentMapperImpl implements DocumentMapper {
 
         documentResponse.documentId( document.getId() );
         documentResponse.claimId( documentClaimId( document ) );
-        documentResponse.originalFileName( document.getOriginalFileName() );
         documentResponse.contentType( document.getContentType() );
-        documentResponse.fileSize( document.getFileSize() );
-        documentResponse.status( document.getStatus() );
         documentResponse.createdAt( document.getCreatedAt() );
+        documentResponse.fileSize( document.getFileSize() );
+        documentResponse.originalFileName( document.getOriginalFileName() );
+        documentResponse.status( document.getStatus() );
         documentResponse.updatedAt( document.getUpdatedAt() );
 
         return documentResponse.build();

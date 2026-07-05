@@ -104,6 +104,12 @@
             <artifactId>flyway-core</artifactId>
         </dependency>
 
+        <!-- Caching -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
         <!-- Productivity -->
         <dependency>
             <groupId>org.projectlombok</groupId>

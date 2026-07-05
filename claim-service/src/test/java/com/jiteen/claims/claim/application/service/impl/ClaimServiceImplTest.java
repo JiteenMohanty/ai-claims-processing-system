@@ -3,14 +3,21 @@ package com.jiteen.claims.claim.application.service.impl;
 import com.jiteen.claims.claim.application.dto.request.CreateClaimRequest;
 import com.jiteen.claims.claim.application.dto.request.UpdateClaimRequest;
 import com.jiteen.claims.claim.application.dto.response.ClaimResponse;
+import com.jiteen.claims.claim.application.event.ClaimEventPublisher;
 import com.jiteen.claims.claim.application.mapper.ClaimMapper;
 import com.jiteen.claims.claim.api.exception.ClaimNotFoundException;
 import com.jiteen.claims.claim.domain.entity.Claim;
+import com.jiteen.claims.claim.domain.entity.ClaimStatusHistory;
 import com.jiteen.claims.claim.domain.enums.ClaimStatus;
+import com.jiteen.claims.claim.domain.event.ClaimApprovedEvent;
+import com.jiteen.claims.claim.domain.event.ClaimCreatedEvent;
+import com.jiteen.claims.claim.domain.event.ClaimRejectedEvent;
 import com.jiteen.claims.claim.domain.repository.ClaimRepository;
+import com.jiteen.claims.claim.domain.repository.ClaimStatusHistoryRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -31,18 +38,18 @@ import static org.mockito.Mockito.when;
 /**
  * Pure unit test suite for verifying the core business logic implementations
  * inside {@link ClaimServiceImpl}.
+ *
  * <p>
  * This suite leverages JUnit 5, AssertJ, and Mockito with the
- * {@link MockitoExtension} to establish
- * high-performance, container-less isolation. It eliminates infrastructure
- * layer components such as
- * databases or Spring application contexts, focusing entirely on state
- * transformations, contract compliance,
- * exceptional paths, and repository interaction behaviors.
+ * {@link MockitoExtension} to establish high-performance, container-less isolation.
+ * It eliminates infrastructure layer components such as databases or Spring application
+ * contexts, focusing entirely on state transformations, contract compliance,
+ * exceptional paths, repository interaction behaviors, and Kafka event publishing
+ * verification.
  * </p>
  *
  * @author Jiteen
- * @version 1.0
+ * @version 2.0
  * @since Java 21
  */
 @ExtendWith(MockitoExtension.class)
@@ -55,11 +62,17 @@ class ClaimServiceImplTest {
     @Mock
     private ClaimMapper claimMapper;
 
+    @Mock
+    private ClaimEventPublisher claimEventPublisher;
+
+    @Mock
+    private ClaimStatusHistoryRepository claimStatusHistoryRepository;
+
     @InjectMocks
     private ClaimServiceImpl claimService;
 
     @Test
-    @DisplayName("Should create claim successfully, transition status, and persist record")
+    @DisplayName("Should create claim successfully, transition status, persist record, and publish ClaimCreatedEvent")
     void shouldCreateClaimSuccessfully() {
         // Given
         CreateClaimRequest request = CreateClaimRequest.builder()
@@ -121,6 +134,7 @@ class ClaimServiceImplTest {
         verify(claimMapper).toEntity(request);
         verify(claimRepository).save(unpersistedEntity);
         verify(claimMapper).toResponse(savedEntity);
+        verify(claimEventPublisher).publishClaimCreated(any(ClaimCreatedEvent.class));
     }
 
     @Test
@@ -178,48 +192,23 @@ class ClaimServiceImplTest {
     @DisplayName("Should return all active claims")
     void shouldGetAllClaimsSuccessfully() {
         // Given
-        Claim activeClaim1 = Claim.builder()
-                .id(UUID.randomUUID())
-                .policyNumber("POL-1")
-                .build();
+        Claim activeClaim1 = Claim.builder().id(UUID.randomUUID()).policyNumber("POL-1").build();
+        Claim activeClaim2 = Claim.builder().id(UUID.randomUUID()).policyNumber("POL-2").build();
 
-        Claim activeClaim2 = Claim.builder()
-                .id(UUID.randomUUID())
-                .policyNumber("POL-2")
-                .build();
+        ClaimResponse response1 = ClaimResponse.builder().id(activeClaim1.getId()).policyNumber("POL-1").build();
+        ClaimResponse response2 = ClaimResponse.builder().id(activeClaim2.getId()).policyNumber("POL-2").build();
 
-        ClaimResponse response1 = ClaimResponse.builder()
-                .id(activeClaim1.getId())
-                .policyNumber("POL-1")
-                .build();
-
-        ClaimResponse response2 = ClaimResponse.builder()
-                .id(activeClaim2.getId())
-                .policyNumber("POL-2")
-                .build();
-
-        when(claimRepository.findByDeletedAtIsNull())
-                .thenReturn(List.of(activeClaim1, activeClaim2));
-
-        when(claimMapper.toResponse(activeClaim1))
-                .thenReturn(response1);
-
-        when(claimMapper.toResponse(activeClaim2))
-                .thenReturn(response2);
+        when(claimRepository.findByDeletedAtIsNull()).thenReturn(List.of(activeClaim1, activeClaim2));
+        when(claimMapper.toResponse(activeClaim1)).thenReturn(response1);
+        when(claimMapper.toResponse(activeClaim2)).thenReturn(response2);
 
         // When
         List<ClaimResponse> resultList = claimService.getAllClaims();
 
         // Then
-        assertThat(resultList)
-                .isNotNull()
-                .hasSize(2);
-
-        assertThat(resultList.get(0).getPolicyNumber())
-                .isEqualTo("POL-1");
-
-        assertThat(resultList.get(1).getPolicyNumber())
-                .isEqualTo("POL-2");
+        assertThat(resultList).isNotNull().hasSize(2);
+        assertThat(resultList.get(0).getPolicyNumber()).isEqualTo("POL-1");
+        assertThat(resultList.get(1).getPolicyNumber()).isEqualTo("POL-2");
 
         verify(claimRepository).findByDeletedAtIsNull();
         verify(claimMapper).toResponse(activeClaim1);
@@ -227,12 +216,14 @@ class ClaimServiceImplTest {
     }
 
     @Test
-    @DisplayName("Should update status value to APPROVED and persist model changes")
+    @DisplayName("Should update status to APPROVED, record history, persist changes, and publish ClaimApprovedEvent")
     void shouldApproveClaimSuccessfully() {
         // Given
         UUID claimId = UUID.randomUUID();
         Claim existingClaim = Claim.builder()
                 .id(claimId)
+                .policyNumber("POL-APPROVE")
+                .claimantName("Sarah Connor")
                 .status(ClaimStatus.AI_REVIEW_COMPLETED)
                 .build();
 
@@ -249,28 +240,38 @@ class ClaimServiceImplTest {
         when(claimRepository.findByIdAndDeletedAtIsNull(claimId)).thenReturn(Optional.of(existingClaim));
         when(claimRepository.save(existingClaim)).thenReturn(approvedClaim);
         when(claimMapper.toResponse(approvedClaim)).thenReturn(expectedResponse);
+        when(claimStatusHistoryRepository.save(any(ClaimStatusHistory.class)))
+                .thenAnswer(invocation -> invocation.getArgument(0));
 
         // When
         ClaimResponse actualResponse = claimService.approveClaim(claimId);
 
-        assertThat(existingClaim.getStatus()).isEqualTo(ClaimStatus.APPROVED);
-
         // Then
+        assertThat(existingClaim.getStatus()).isEqualTo(ClaimStatus.APPROVED);
         assertThat(actualResponse).isNotNull();
         assertThat(actualResponse.getStatus()).isEqualTo(ClaimStatus.APPROVED);
 
         verify(claimRepository).findByIdAndDeletedAtIsNull(claimId);
         verify(claimRepository).save(existingClaim);
         verify(claimMapper).toResponse(approvedClaim);
+
+        ArgumentCaptor<ClaimStatusHistory> historyCaptor = ArgumentCaptor.forClass(ClaimStatusHistory.class);
+        verify(claimStatusHistoryRepository).save(historyCaptor.capture());
+        assertThat(historyCaptor.getValue().getOldStatus()).isEqualTo(ClaimStatus.AI_REVIEW_COMPLETED);
+        assertThat(historyCaptor.getValue().getNewStatus()).isEqualTo(ClaimStatus.APPROVED);
+
+        verify(claimEventPublisher).publishClaimApproved(any(ClaimApprovedEvent.class));
     }
 
     @Test
-    @DisplayName("Should update status value to REJECTED and persist model changes")
+    @DisplayName("Should update status to REJECTED, record history, persist changes, and publish ClaimRejectedEvent")
     void shouldRejectClaimSuccessfully() {
         // Given
         UUID claimId = UUID.randomUUID();
         Claim existingClaim = Claim.builder()
                 .id(claimId)
+                .policyNumber("POL-REJECT")
+                .claimantName("John Doe")
                 .status(ClaimStatus.AI_REVIEW_COMPLETED)
                 .build();
 
@@ -287,19 +288,27 @@ class ClaimServiceImplTest {
         when(claimRepository.findByIdAndDeletedAtIsNull(claimId)).thenReturn(Optional.of(existingClaim));
         when(claimRepository.save(existingClaim)).thenReturn(rejectedClaim);
         when(claimMapper.toResponse(rejectedClaim)).thenReturn(expectedResponse);
+        when(claimStatusHistoryRepository.save(any(ClaimStatusHistory.class)))
+                .thenAnswer(invocation -> invocation.getArgument(0));
 
         // When
         ClaimResponse actualResponse = claimService.rejectClaim(claimId);
 
-        assertThat(existingClaim.getStatus()).isEqualTo(ClaimStatus.REJECTED);
-
         // Then
+        assertThat(existingClaim.getStatus()).isEqualTo(ClaimStatus.REJECTED);
         assertThat(actualResponse).isNotNull();
         assertThat(actualResponse.getStatus()).isEqualTo(ClaimStatus.REJECTED);
 
         verify(claimRepository).findByIdAndDeletedAtIsNull(claimId);
         verify(claimRepository).save(existingClaim);
         verify(claimMapper).toResponse(rejectedClaim);
+
+        ArgumentCaptor<ClaimStatusHistory> historyCaptor = ArgumentCaptor.forClass(ClaimStatusHistory.class);
+        verify(claimStatusHistoryRepository).save(historyCaptor.capture());
+        assertThat(historyCaptor.getValue().getOldStatus()).isEqualTo(ClaimStatus.AI_REVIEW_COMPLETED);
+        assertThat(historyCaptor.getValue().getNewStatus()).isEqualTo(ClaimStatus.REJECTED);
+
+        verify(claimEventPublisher).publishClaimRejected(any(ClaimRejectedEvent.class));
     }
 
     @Test

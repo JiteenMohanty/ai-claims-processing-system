@@ -1,0 +1,42 @@
+version: '3.8'
+
+# ============================================================================
+# Project Archetype: AI-Powered Insurance Claims Processing Platform
+# Component: Notification Service Deployment Stack
+# Description: Deploys the asynchronous customer notification worker that
+#              consumes claim approval/rejection events and dispatches emails.
+# Network Topology: Joins the shared external claims-network for Kafka access.
+# ============================================================================
+
+services:
+  notification-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: notification-service
+    restart: unless-stopped
+
+    env_file:
+      - .env
+
+    ports:
+      - "8084:8084"
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "wget --no-verbose --tries=1 --spider http://localhost:8084/actuator/health || exit 1"
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+
+    networks:
+      - claims-network
+
+networks:
+  claims-network:
+    external: true

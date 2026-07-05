@@ -1,0 +1,94 @@
+version: '3.8'
+
+# ============================================================================
+# Project Archetype: AI-Powered Insurance Claims Processing Platform
+# Component: Shared Infrastructure Stack
+# Description: Provisions the Apache Kafka messaging backbone (using KRaft mode,
+#              no ZooKeeper required) shared by all platform microservices.
+#              Run this compose file FIRST before starting individual services.
+#
+# Startup Order:
+#   1. docker compose -f docker-compose.infrastructure.yml up -d
+#   2. docker compose -f auth-service/docker-compose.yml up -d
+#   3. docker compose -f claim-service/docker-compose.yml up -d
+#   4. docker compose -f ai-processing-service/docker-compose.yml up -d
+#   5. docker compose -f notification-service/docker-compose.yml up -d
+# ============================================================================
+
+services:
+
+  # --------------------------------------------------------------------------
+  # Apache Kafka (KRaft mode — no ZooKeeper dependency)
+  # --------------------------------------------------------------------------
+  kafka:
+    image: confluentinc/cp-kafka:7.6.0
+    container_name: kafka
+    restart: unless-stopped
+
+    ports:
+      - "9092:9092"
+      - "9093:9093"
+
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_CONTROLLER_QUORUM_VOTERS: "1@kafka:9093"
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_NUM_PARTITIONS: 3
+      KAFKA_DEFAULT_REPLICATION_FACTOR: 1
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_LOG_RETENTION_HOURS: 168
+      CLUSTER_ID: "MkU3OEVBNTcwNTJENDM2Qk"
+
+    volumes:
+      - kafka-data:/var/lib/kafka/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "kafka-broker-api-versions --bootstrap-server localhost:9092 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+    networks:
+      - claims-network
+
+  # --------------------------------------------------------------------------
+  # Kafka UI — Web-based topic and consumer group monitoring dashboard
+  # --------------------------------------------------------------------------
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui
+    restart: unless-stopped
+
+    ports:
+      - "8090:8080"
+
+    environment:
+      KAFKA_CLUSTERS_0_NAME: claims-platform
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+
+    depends_on:
+      kafka:
+        condition: service_healthy
+
+    networks:
+      - claims-network
+
+volumes:
+  kafka-data:
+    name: kafka-data
+
+networks:
+  claims-network:
+    name: claims-network
+    driver: bridge

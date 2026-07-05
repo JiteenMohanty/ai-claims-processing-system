@@ -8,6 +8,36 @@ spring:
   lifecycle:
     timeout-per-shutdown-phase: 30s
 
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      timeout: 2s
+      lettuce:
+        pool:
+          max-active: 10
+          max-idle: 5
+          min-idle: 1
+
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: all
+      retries: 3
+      properties:
+        enable.idempotence: true
+        spring.json.add.type.headers: false
+    consumer:
+      group-id: ${KAFKA_CONSUMER_GROUP_ID:claim-service-group}
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+        spring.json.use.type.headers: false
+
 server:
   port: ${SERVER_PORT:8082}
   shutdown: graceful
@@ -18,18 +48,53 @@ logging:
   level:
     root: INFO
     com.jiteen.claims.claim: DEBUG
+    io.github.resilience4j: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%X{correlationId:-}] %-5level %logger{36} - %msg%n"
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      kafkaPublisher:
+        registerHealthIndicator: true
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        slowCallRateThreshold: 80
+        slowCallDurationThreshold: 5s
+        waitDurationInOpenState: 30s
+        permittedNumberOfCallsInHalfOpenState: 5
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        minimumNumberOfCalls: 5
+  retry:
+    instances:
+      kafkaPublisher:
+        maxAttempts: 3
+        waitDuration: 500ms
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2
+        retryExceptions:
+          - org.apache.kafka.common.errors.TimeoutException
+          - java.io.IOException
+  timelimiter:
+    instances:
+      kafkaPublisher:
+        timeoutDuration: 10s
 
 management:
   endpoints:
     web:
       exposure:
-        include: health,info,metrics
+        include: health,info,metrics,circuitbreakers,retries
 
   endpoint:
     health:
       probes:
         enabled: true
-      show-details: never
+      show-details: always
+      group:
+        readiness:
+          include: db,redis
 
   info:
     env:
@@ -57,6 +122,16 @@ springdoc:
     tags-sorter: alpha
 
   packages-to-scan: com.jiteen.claims.claim
+
+cache:
+  ttl:
+    claims: ${CACHE_TTL_CLAIMS:900}
+    claims-list: ${CACHE_TTL_CLAIMS_LIST:300}
+
+storage:
+  provider: ${STORAGE_PROVIDER:local}
+  local:
+    upload-dir: ${STORAGE_LOCAL_UPLOAD_DIR:./uploads}
 
 aws:
   region: ${AWS_REGION:ap-south-1}

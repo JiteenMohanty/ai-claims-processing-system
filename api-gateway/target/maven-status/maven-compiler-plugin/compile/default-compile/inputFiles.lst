@@ -1,0 +1,4 @@
+C:\Projects\ai-claims-processing-system\api-gateway\src\main\java\com\jiteen\claims\gateway\ApiGatewayApplication.java
+C:\Projects\ai-claims-processing-system\api-gateway\src\main\java\com\jiteen\claims\gateway\config\properties\JwtProperties.java
+C:\Projects\ai-claims-processing-system\api-gateway\src\main\java\com\jiteen\claims\gateway\filter\CorrelationIdFilter.java
+C:\Projects\ai-claims-processing-system\api-gateway\src\main\java\com\jiteen\claims\gateway\filter\JwtAuthenticationFilter.java

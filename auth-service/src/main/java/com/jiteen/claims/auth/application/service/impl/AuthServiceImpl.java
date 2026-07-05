@@ -9,6 +9,7 @@ import com.jiteen.claims.auth.application.dto.response.RefreshTokenResponse;
 import com.jiteen.claims.auth.application.dto.response.RegisterResponse;
 import com.jiteen.claims.auth.application.service.AuthService;
 import com.jiteen.claims.auth.application.service.jwt.JwtService;
+import com.jiteen.claims.auth.security.CustomUserDetailsService;
 import com.jiteen.claims.auth.domain.entity.User;
 import com.jiteen.claims.auth.domain.enums.Role;
 import com.jiteen.claims.auth.domain.enums.UserStatus;
@@ -71,6 +72,11 @@ public class AuthServiceImpl implements AuthService {
      * Service responsible for issuing and validating JSON Web Tokens.
      */
     private final JwtService jwtService;
+
+    /**
+     * User details service used to evict stale cache entries on logout.
+     */
+    private final CustomUserDetailsService customUserDetailsService;
 
     /**
      * Registers a new user within the authentication domain.
@@ -353,8 +359,10 @@ public class AuthServiceImpl implements AuthService {
         storedToken.setRevoked(true);
         refreshTokenRepository.save(storedToken);
 
-        log.info("Successfully revoked refresh token for user [{}]",
-                storedToken.getUser().getEmail());
+        final String userEmail = storedToken.getUser().getEmail();
+        customUserDetailsService.evictUserCache(userEmail);
+
+        log.info("Successfully revoked refresh token for user [{}]", userEmail);
     }
 
     /**

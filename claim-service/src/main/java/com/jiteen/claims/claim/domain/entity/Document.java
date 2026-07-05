@@ -104,4 +104,14 @@ public class Document extends AuditBaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "upload_status", length = 50, nullable = false)
     private DocumentStatus status;
+
+    /**
+     * Identifier of the active storage backend that holds the binary asset.
+     * Values: {@code "local"} (Phase 4 default) or {@code "s3"} (Phase 6 cloud storage).
+     * Consumed by the AI Processing Service to determine whether Amazon Textract OCR
+     * is applicable for this document.
+     */
+    @Column(name = "storage_provider", length = 20, nullable = false)
+    @Builder.Default
+    private String storageProvider = "local";
 }

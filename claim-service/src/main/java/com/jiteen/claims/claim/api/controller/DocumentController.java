@@ -39,7 +39,7 @@ import lombok.RequiredArgsConstructor;
  */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/api/v1")
 @Tag(name = "Claim Documents", description = "REST APIs for supporting document upload, validation, and lifecycle metadata retrieval.")
 public class DocumentController {
 
@@ -57,7 +57,7 @@ public class DocumentController {
      * @param file the inbound raw binary {@link MultipartFile} wrapper carrying the payload block
      * @return a {@link ResponseEntity} wrapping the structural {@link UploadDocumentResponse} metadata payload with HTTP 201 Created status
      */
-    @PostMapping(value = "/claims/{claimId}/documents", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/documents/upload/{claimId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @Operation(summary = "Upload claim document", description = "Accepts a multipart file attachment (PDF/JPEG/PNG, max 10MB), persists it to storage, and registers it to the claim.")
     public ResponseEntity<UploadDocumentResponse> uploadDocument(
             @PathVariable UUID claimId,
@@ -73,7 +73,7 @@ public class DocumentController {
      * @param claimId the unique {@link UUID} master tracking tracking token mapping the target parent claim
      * @return a {@link ResponseEntity} wrapping a {@link List} of active {@link DocumentResponse} items with HTTP 200 OK status
      */
-    @GetMapping("/claims/{claimId}/documents")
+    @GetMapping("/documents/claim/{claimId}")
     @Operation(summary = "Get all documents for a claim", description = "Retrieves an indexed array listing of metadata profiles for all active supporting documents linked to the specified claim.")
     public ResponseEntity<List<DocumentResponse>> getDocumentsByClaimId(
             @PathVariable UUID claimId) {

@@ -1,0 +1,10 @@
+com\jiteen\claims\notification\NotificationServiceApplication.class
+com\jiteen\claims\notification\domain\event\ClaimRejectedEvent$ClaimRejectedEventBuilder.class
+com\jiteen\claims\notification\domain\event\ClaimApprovedEvent$ClaimApprovedEventBuilder.class
+com\jiteen\claims\notification\application\consumer\ClaimStatusEventConsumer.class
+com\jiteen\claims\notification\application\service\EmailNotificationService.class
+com\jiteen\claims\notification\application\service\impl\EmailNotificationServiceImpl.class
+com\jiteen\claims\notification\config\KafkaTopics.class
+com\jiteen\claims\notification\domain\event\ClaimApprovedEvent.class
+com\jiteen\claims\notification\domain\event\ClaimRejectedEvent.class
+com\jiteen\claims\notification\config\KafkaConsumerConfig.class

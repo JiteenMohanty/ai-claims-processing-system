@@ -1,0 +1,84 @@
+spring:
+  application:
+    name: api-gateway
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: auth-service
+              uri: http://${AUTH_SERVICE_HOST:localhost}:${AUTH_SERVICE_PORT:8081}
+              predicates:
+                - Path=/api/v1/auth/**
+              filters:
+                - AddRequestHeader=X-Gateway-Source, api-gateway
+            - id: claim-service
+              uri: http://${CLAIM_SERVICE_HOST:localhost}:${CLAIM_SERVICE_PORT:8082}
+              predicates:
+                - Path=/api/v1/claims/**,/api/v1/documents/**,/api/v1/ai-analysis/**
+              filters:
+                - AddRequestHeader=X-Gateway-Source, api-gateway
+          default-filters:
+            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+          globalcors:
+            cors-configurations:
+              '[/**]':
+                allowedOriginPatterns:
+                  - "*"
+                allowedMethods:
+                  - GET
+                  - POST
+                  - PUT
+                  - DELETE
+                  - OPTIONS
+                  - PATCH
+                allowedHeaders:
+                  - "*"
+                exposedHeaders:
+                  - X-Correlation-Id
+                  - X-Request-Id
+                allowCredentials: false
+                maxAge: 3600
+
+server:
+  port: ${SERVER_PORT:8080}
+  shutdown: graceful
+
+logging:
+  level:
+    root: INFO
+    com.jiteen.claims.gateway: DEBUG
+    org.springframework.cloud.gateway: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,gateway
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: never
+    gateway:
+      access: read_only
+  info:
+    env:
+      enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+info:
+  app:
+    name: ${spring.application.name}
+    version: 1.0.0
+    description: API Gateway for AI Claims Processing Platform
+
+jwt:
+  secret: ${JWT_SECRET:local-dev-auth-service-secret-key-change-in-production-2026}
+  issuer: ${JWT_ISSUER:auth-service}

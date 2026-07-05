@@ -1,0 +1,19 @@
+spring:
+  kafka:
+    bootstrap-servers: ${spring.embedded.kafka.brokers}
+    consumer:
+      group-id: notification-service-test-group
+      auto-offset-reset: earliest
+      properties:
+        spring.json.trusted.packages: "*"
+        spring.json.use.type.headers: false
+
+management:
+  health:
+    mail:
+      enabled: false
+
+notification:
+  email:
+    enabled: false
+    from: noreply@test.com

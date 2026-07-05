@@ -1,0 +1,1324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.jiteen.claims.notification.NotificationServiceApplicationTests" time="13.568" tests="1" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="jdk.tls.rejectClientInitiatedRenegotiation" value="true"/>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Projects\ai-claims-processing-system\notification-service\target\test-classes;C:\Projects\ai-claims-processing-system\notification-service\target\classes;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-web\3.5.0\spring-boot-starter-web-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter\3.5.0\spring-boot-starter-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot\3.5.0\spring-boot-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.5.0\spring-boot-autoconfigure-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-logging\3.5.0\spring-boot-starter-logging-3.5.0.jar;C:\Users\jitee\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.24.3\log4j-to-slf4j-2.24.3.jar;C:\Users\jitee\.m2\repository\org\apache\logging\log4j\log4j-api\2.24.3\log4j-api-2.24.3.jar;C:\Users\jitee\.m2\repository\org\slf4j\jul-to-slf4j\2.0.17\jul-to-slf4j-2.0.17.jar;C:\Users\jitee\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\jitee\.m2\repository\org\yaml\snakeyaml\2.4\snakeyaml-2.4.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-json\3.5.0\spring-boot-starter-json-3.5.0.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.19.0\jackson-databind-2.19.0.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.19.0\jackson-annotations-2.19.0.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.19.0\jackson-core-2.19.0.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.19.0\jackson-datatype-jdk8-2.19.0.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.19.0\jackson-datatype-jsr310-2.19.0.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.19.0\jackson-module-parameter-names-2.19.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\3.5.0\spring-boot-starter-tomcat-3.5.0.jar;C:\Users\jitee\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.41\tomcat-embed-core-10.1.41.jar;C:\Users\jitee\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.41\tomcat-embed-el-10.1.41.jar;C:\Users\jitee\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.41\tomcat-embed-websocket-10.1.41.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-web\6.2.7\spring-web-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-beans\6.2.7\spring-beans-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-webmvc\6.2.7\spring-webmvc-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-aop\6.2.7\spring-aop-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-expression\6.2.7\spring-expression-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\kafka\spring-kafka\3.3.6\spring-kafka-3.3.6.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-context\6.2.7\spring-context-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-messaging\6.2.7\spring-messaging-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-tx\6.2.7\spring-tx-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\retry\spring-retry\2.0.12\spring-retry-2.0.12.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-clients\3.9.1\kafka-clients-3.9.1.jar;C:\Users\jitee\.m2\repository\com\github\luben\zstd-jni\1.5.6-4\zstd-jni-1.5.6-4.jar;C:\Users\jitee\.m2\repository\org\lz4\lz4-java\1.8.0\lz4-java-1.8.0.jar;C:\Users\jitee\.m2\repository\org\xerial\snappy\snappy-java\1.1.10.5\snappy-java-1.1.10.5.jar;C:\Users\jitee\.m2\repository\org\slf4j\slf4j-api\2.0.17\slf4j-api-2.0.17.jar;C:\Users\jitee\.m2\repository\io\micrometer\micrometer-observation\1.15.0\micrometer-observation-1.15.0.jar;C:\Users\jitee\.m2\repository\io\micrometer\micrometer-commons\1.15.0\micrometer-commons-1.15.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-mail\3.5.0\spring-boot-starter-mail-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-context-support\6.2.7\spring-context-support-6.2.7.jar;C:\Users\jitee\.m2\repository\org\eclipse\angus\jakarta.mail\2.0.3\jakarta.mail-2.0.3.jar;C:\Users\jitee\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.3\jakarta.activation-api-2.1.3.jar;C:\Users\jitee\.m2\repository\org\eclipse\angus\angus-activation\2.0.2\angus-activation-2.0.2.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-thymeleaf\3.5.0\spring-boot-starter-thymeleaf-3.5.0.jar;C:\Users\jitee\.m2\repository\org\thymeleaf\thymeleaf-spring6\3.1.3.RELEASE\thymeleaf-spring6-3.1.3.RELEASE.jar;C:\Users\jitee\.m2\repository\org\thymeleaf\thymeleaf\3.1.3.RELEASE\thymeleaf-3.1.3.RELEASE.jar;C:\Users\jitee\.m2\repository\org\attoparser\attoparser\2.0.7.RELEASE\attoparser-2.0.7.RELEASE.jar;C:\Users\jitee\.m2\repository\org\unbescape\unbescape\1.1.6.RELEASE\unbescape-1.1.6.RELEASE.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-actuator\3.5.0\spring-boot-starter-actuator-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-actuator-autoconfigure\3.5.0\spring-boot-actuator-autoconfigure-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-actuator\3.5.0\spring-boot-actuator-3.5.0.jar;C:\Users\jitee\.m2\repository\io\micrometer\micrometer-jakarta9\1.15.0\micrometer-jakarta9-1.15.0.jar;C:\Users\jitee\.m2\repository\io\micrometer\micrometer-core\1.15.0\micrometer-core-1.15.0.jar;C:\Users\jitee\.m2\repository\org\hdrhistogram\HdrHistogram\2.2.2\HdrHistogram-2.2.2.jar;C:\Users\jitee\.m2\repository\org\latencyutils\LatencyUtils\2.0.3\LatencyUtils-2.0.3.jar;C:\Users\jitee\.m2\repository\org\projectlombok\lombok\1.18.38\lombok-1.18.38.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-test\3.5.0\spring-boot-starter-test-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-test\3.5.0\spring-boot-test-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-test-autoconfigure\3.5.0\spring-boot-test-autoconfigure-3.5.0.jar;C:\Users\jitee\.m2\repository\com\jayway\jsonpath\json-path\2.9.0\json-path-2.9.0.jar;C:\Users\jitee\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.2\jakarta.xml.bind-api-4.0.2.jar;C:\Users\jitee\.m2\repository\net\minidev\json-smart\2.5.2\json-smart-2.5.2.jar;C:\Users\jitee\.m2\repository\net\minidev\accessors-smart\2.5.2\accessors-smart-2.5.2.jar;C:\Users\jitee\.m2\repository\org\ow2\asm\asm\9.7.1\asm-9.7.1.jar;C:\Users\jitee\.m2\repository\org\assertj\assertj-core\3.27.3\assertj-core-3.27.3.jar;C:\Users\jitee\.m2\repository\org\awaitility\awaitility\4.3.0\awaitility-4.3.0.jar;C:\Users\jitee\.m2\repository\org\hamcrest\hamcrest\3.0\hamcrest-3.0.jar;C:\Users\jitee\.m2\repository\org\junit\jupiter\junit-jupiter\5.12.2\junit-jupiter-5.12.2.jar;C:\Users\jitee\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.12.2\junit-jupiter-params-5.12.2.jar;C:\Users\jitee\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.12.2\junit-jupiter-engine-5.12.2.jar;C:\Users\jitee\.m2\repository\org\mockito\mockito-junit-jupiter\5.17.0\mockito-junit-jupiter-5.17.0.jar;C:\Users\jitee\.m2\repository\org\skyscreamer\jsonassert\1.5.3\jsonassert-1.5.3.jar;C:\Users\jitee\.m2\repository\com\vaadin\external\google\android-json\0.0.20131108.vaadin1\android-json-0.0.20131108.vaadin1.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-core\6.2.7\spring-core-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-jcl\6.2.7\spring-jcl-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-test\6.2.7\spring-test-6.2.7.jar;C:\Users\jitee\.m2\repository\org\xmlunit\xmlunit-core\2.10.1\xmlunit-core-2.10.1.jar;C:\Users\jitee\.m2\repository\org\springframework\kafka\spring-kafka-test\3.3.6\spring-kafka-test-3.3.6.jar;C:\Users\jitee\.m2\repository\org\apache\zookeeper\zookeeper\3.8.4\zookeeper-3.8.4.jar;C:\Users\jitee\.m2\repository\org\apache\zookeeper\zookeeper-jute\3.8.4\zookeeper-jute-3.8.4.jar;C:\Users\jitee\.m2\repository\org\apache\yetus\audience-annotations\0.12.0\audience-annotations-0.12.0.jar;C:\Users\jitee\.m2\repository\io\netty\netty-handler\4.1.121.Final\netty-handler-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-common\4.1.121.Final\netty-common-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-resolver\4.1.121.Final\netty-resolver-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-buffer\4.1.121.Final\netty-buffer-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-transport\4.1.121.Final\netty-transport-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-transport-native-unix-common\4.1.121.Final\netty-transport-native-unix-common-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-codec\4.1.121.Final\netty-codec-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-transport-native-epoll\4.1.121.Final\netty-transport-native-epoll-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-transport-classes-epoll\4.1.121.Final\netty-transport-classes-epoll-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\ch\qos\logback\logback-core\1.5.18\logback-core-1.5.18.jar;C:\Users\jitee\.m2\repository\ch\qos\logback\logback-classic\1.5.18\logback-classic-1.5.18.jar;C:\Users\jitee\.m2\repository\commons-io\commons-io\2.11.0\commons-io-2.11.0.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-clients\3.9.1\kafka-clients-3.9.1-test.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-server\3.9.1\kafka-server-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-storage\3.9.1\kafka-storage-3.9.1.jar;C:\Users\jitee\.m2\repository\com\github\ben-manes\caffeine\caffeine\3.2.0\caffeine-3.2.0.jar;C:\Users\jitee\.m2\repository\org\jspecify\jspecify\1.0.0\jspecify-1.0.0.jar;C:\Users\jitee\.m2\repository\com\google\errorprone\error_prone_annotations\2.36.0\error_prone_annotations-2.36.0.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-group-coordinator\3.9.1\kafka-group-coordinator-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-transaction-coordinator\3.9.1\kafka-transaction-coordinator-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-raft\3.9.1\kafka-raft-3.9.1.jar;C:\Users\jitee\.m2\repository\com\yammer\metrics\metrics-core\2.2.0\metrics-core-2.2.0.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-metadata\3.9.1\kafka-metadata-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-server-common\3.9.1\kafka-server-common-3.9.1.jar;C:\Users\jitee\.m2\repository\net\sf\jopt-simple\jopt-simple\5.0.4\jopt-simple-5.0.4.jar;C:\Users\jitee\.m2\repository\org\pcollections\pcollections\4.0.1\pcollections-4.0.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-server-common\3.9.1\kafka-server-common-3.9.1-test.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-streams-test-utils\3.9.1\kafka-streams-test-utils-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-streams\3.9.1\kafka-streams-3.9.1.jar;C:\Users\jitee\.m2\repository\org\rocksdb\rocksdbjni\7.9.2\rocksdbjni-7.9.2.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka_2.13\3.9.1\kafka_2.13-3.9.1.jar;C:\Users\jitee\.m2\repository\org\scala-lang\scala-library\2.13.15\scala-library-2.13.15.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-group-coordinator-api\3.9.1\kafka-group-coordinator-api-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-storage-api\3.9.1\kafka-storage-api-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-tools-api\3.9.1\kafka-tools-api-3.9.1.jar;C:\Users\jitee\.m2\repository\net\sourceforge\argparse4j\argparse4j\0.7.0\argparse4j-0.7.0.jar;C:\Users\jitee\.m2\repository\commons-validator\commons-validator\1.7\commons-validator-1.7.jar;C:\Users\jitee\.m2\repository\commons-beanutils\commons-beanutils\1.9.4\commons-beanutils-1.9.4.jar;C:\Users\jitee\.m2\repository\commons-digester\commons-digester\2.1\commons-digester-2.1.jar;C:\Users\jitee\.m2\repository\commons-collections\commons-collections\3.2.2\commons-collections-3.2.2.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\module\jackson-module-scala_2.13\2.19.0\jackson-module-scala_2.13-2.19.0.jar;C:\Users\jitee\.m2\repository\com\thoughtworks\paranamer\paranamer\2.8.3\paranamer-2.8.3.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\dataformat\jackson-dataformat-csv\2.19.0\jackson-dataformat-csv-2.19.0.jar;C:\Users\jitee\.m2\repository\org\bitbucket\b_c\jose4j\0.9.4\jose4j-0.9.4.jar;C:\Users\jitee\.m2\repository\org\scala-lang\modules\scala-collection-compat_2.13\2.10.0\scala-collection-compat_2.13-2.10.0.jar;C:\Users\jitee\.m2\repository\org\scala-lang\modules\scala-java8-compat_2.13\1.0.2\scala-java8-compat_2.13-1.0.2.jar;C:\Users\jitee\.m2\repository\org\scala-lang\scala-reflect\2.13.15\scala-reflect-2.13.15.jar;C:\Users\jitee\.m2\repository\com\typesafe\scala-logging\scala-logging_2.13\3.9.5\scala-logging_2.13-3.9.5.jar;C:\Users\jitee\.m2\repository\io\dropwizard\metrics\metrics-core\4.1.12.1\metrics-core-4.1.12.1.jar;C:\Users\jitee\.m2\repository\commons-cli\commons-cli\1.4\commons-cli-1.4.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka_2.13\3.9.1\kafka_2.13-3.9.1-test.jar;C:\Users\jitee\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.12.2\junit-jupiter-api-5.12.2.jar;C:\Users\jitee\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\jitee\.m2\repository\org\junit\platform\junit-platform-commons\1.12.2\junit-platform-commons-1.12.2.jar;C:\Users\jitee\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\jitee\.m2\repository\org\junit\platform\junit-platform-launcher\1.12.2\junit-platform-launcher-1.12.2.jar;C:\Users\jitee\.m2\repository\org\junit\platform\junit-platform-engine\1.12.2\junit-platform-engine-1.12.2.jar;C:\Users\jitee\.m2\repository\org\mockito\mockito-core\5.17.0\mockito-core-5.17.0.jar;C:\Users\jitee\.m2\repository\net\bytebuddy\byte-buddy\1.17.5\byte-buddy-1.17.5.jar;C:\Users\jitee\.m2\repository\net\bytebuddy\byte-buddy-agent\1.17.5\byte-buddy-agent-1.17.5.jar;C:\Users\jitee\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;"/>
+    <property name="java.vm.vendor" value="Eclipse Adoptium"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://adoptium.net/"/>
+    <property name="user.timezone" value="Asia/Calcutta"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="APPLICATION_NAME" value="notification-service"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="IN"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-21.0.9.10-hotspot\bin"/>
+    <property name="sun.java.command" value="C:\Users\jitee\AppData\Local\Temp\surefire14265077069737889753\surefirebooter-20260627025358192_3.jar C:\Users\jitee\AppData\Local\Temp\surefire14265077069737889753 2026-06-27T02-53-57_928-jvmRun1 surefire-20260627025358192_1tmp surefire_0-20260627025358192_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Projects\ai-claims-processing-system\notification-service\target\test-classes;C:\Projects\ai-claims-processing-system\notification-service\target\classes;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-web\3.5.0\spring-boot-starter-web-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter\3.5.0\spring-boot-starter-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot\3.5.0\spring-boot-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.5.0\spring-boot-autoconfigure-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-logging\3.5.0\spring-boot-starter-logging-3.5.0.jar;C:\Users\jitee\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.24.3\log4j-to-slf4j-2.24.3.jar;C:\Users\jitee\.m2\repository\org\apache\logging\log4j\log4j-api\2.24.3\log4j-api-2.24.3.jar;C:\Users\jitee\.m2\repository\org\slf4j\jul-to-slf4j\2.0.17\jul-to-slf4j-2.0.17.jar;C:\Users\jitee\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\jitee\.m2\repository\org\yaml\snakeyaml\2.4\snakeyaml-2.4.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-json\3.5.0\spring-boot-starter-json-3.5.0.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.19.0\jackson-databind-2.19.0.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.19.0\jackson-annotations-2.19.0.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.19.0\jackson-core-2.19.0.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.19.0\jackson-datatype-jdk8-2.19.0.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.19.0\jackson-datatype-jsr310-2.19.0.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.19.0\jackson-module-parameter-names-2.19.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\3.5.0\spring-boot-starter-tomcat-3.5.0.jar;C:\Users\jitee\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.41\tomcat-embed-core-10.1.41.jar;C:\Users\jitee\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.41\tomcat-embed-el-10.1.41.jar;C:\Users\jitee\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.41\tomcat-embed-websocket-10.1.41.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-web\6.2.7\spring-web-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-beans\6.2.7\spring-beans-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-webmvc\6.2.7\spring-webmvc-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-aop\6.2.7\spring-aop-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-expression\6.2.7\spring-expression-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\kafka\spring-kafka\3.3.6\spring-kafka-3.3.6.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-context\6.2.7\spring-context-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-messaging\6.2.7\spring-messaging-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-tx\6.2.7\spring-tx-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\retry\spring-retry\2.0.12\spring-retry-2.0.12.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-clients\3.9.1\kafka-clients-3.9.1.jar;C:\Users\jitee\.m2\repository\com\github\luben\zstd-jni\1.5.6-4\zstd-jni-1.5.6-4.jar;C:\Users\jitee\.m2\repository\org\lz4\lz4-java\1.8.0\lz4-java-1.8.0.jar;C:\Users\jitee\.m2\repository\org\xerial\snappy\snappy-java\1.1.10.5\snappy-java-1.1.10.5.jar;C:\Users\jitee\.m2\repository\org\slf4j\slf4j-api\2.0.17\slf4j-api-2.0.17.jar;C:\Users\jitee\.m2\repository\io\micrometer\micrometer-observation\1.15.0\micrometer-observation-1.15.0.jar;C:\Users\jitee\.m2\repository\io\micrometer\micrometer-commons\1.15.0\micrometer-commons-1.15.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-mail\3.5.0\spring-boot-starter-mail-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-context-support\6.2.7\spring-context-support-6.2.7.jar;C:\Users\jitee\.m2\repository\org\eclipse\angus\jakarta.mail\2.0.3\jakarta.mail-2.0.3.jar;C:\Users\jitee\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.3\jakarta.activation-api-2.1.3.jar;C:\Users\jitee\.m2\repository\org\eclipse\angus\angus-activation\2.0.2\angus-activation-2.0.2.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-thymeleaf\3.5.0\spring-boot-starter-thymeleaf-3.5.0.jar;C:\Users\jitee\.m2\repository\org\thymeleaf\thymeleaf-spring6\3.1.3.RELEASE\thymeleaf-spring6-3.1.3.RELEASE.jar;C:\Users\jitee\.m2\repository\org\thymeleaf\thymeleaf\3.1.3.RELEASE\thymeleaf-3.1.3.RELEASE.jar;C:\Users\jitee\.m2\repository\org\attoparser\attoparser\2.0.7.RELEASE\attoparser-2.0.7.RELEASE.jar;C:\Users\jitee\.m2\repository\org\unbescape\unbescape\1.1.6.RELEASE\unbescape-1.1.6.RELEASE.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-actuator\3.5.0\spring-boot-starter-actuator-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-actuator-autoconfigure\3.5.0\spring-boot-actuator-autoconfigure-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-actuator\3.5.0\spring-boot-actuator-3.5.0.jar;C:\Users\jitee\.m2\repository\io\micrometer\micrometer-jakarta9\1.15.0\micrometer-jakarta9-1.15.0.jar;C:\Users\jitee\.m2\repository\io\micrometer\micrometer-core\1.15.0\micrometer-core-1.15.0.jar;C:\Users\jitee\.m2\repository\org\hdrhistogram\HdrHistogram\2.2.2\HdrHistogram-2.2.2.jar;C:\Users\jitee\.m2\repository\org\latencyutils\LatencyUtils\2.0.3\LatencyUtils-2.0.3.jar;C:\Users\jitee\.m2\repository\org\projectlombok\lombok\1.18.38\lombok-1.18.38.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-test\3.5.0\spring-boot-starter-test-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-test\3.5.0\spring-boot-test-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-test-autoconfigure\3.5.0\spring-boot-test-autoconfigure-3.5.0.jar;C:\Users\jitee\.m2\repository\com\jayway\jsonpath\json-path\2.9.0\json-path-2.9.0.jar;C:\Users\jitee\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.2\jakarta.xml.bind-api-4.0.2.jar;C:\Users\jitee\.m2\repository\net\minidev\json-smart\2.5.2\json-smart-2.5.2.jar;C:\Users\jitee\.m2\repository\net\minidev\accessors-smart\2.5.2\accessors-smart-2.5.2.jar;C:\Users\jitee\.m2\repository\org\ow2\asm\asm\9.7.1\asm-9.7.1.jar;C:\Users\jitee\.m2\repository\org\assertj\assertj-core\3.27.3\assertj-core-3.27.3.jar;C:\Users\jitee\.m2\repository\org\awaitility\awaitility\4.3.0\awaitility-4.3.0.jar;C:\Users\jitee\.m2\repository\org\hamcrest\hamcrest\3.0\hamcrest-3.0.jar;C:\Users\jitee\.m2\repository\org\junit\jupiter\junit-jupiter\5.12.2\junit-jupiter-5.12.2.jar;C:\Users\jitee\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.12.2\junit-jupiter-params-5.12.2.jar;C:\Users\jitee\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.12.2\junit-jupiter-engine-5.12.2.jar;C:\Users\jitee\.m2\repository\org\mockito\mockito-junit-jupiter\5.17.0\mockito-junit-jupiter-5.17.0.jar;C:\Users\jitee\.m2\repository\org\skyscreamer\jsonassert\1.5.3\jsonassert-1.5.3.jar;C:\Users\jitee\.m2\repository\com\vaadin\external\google\android-json\0.0.20131108.vaadin1\android-json-0.0.20131108.vaadin1.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-core\6.2.7\spring-core-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-jcl\6.2.7\spring-jcl-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-test\6.2.7\spring-test-6.2.7.jar;C:\Users\jitee\.m2\repository\org\xmlunit\xmlunit-core\2.10.1\xmlunit-core-2.10.1.jar;C:\Users\jitee\.m2\repository\org\springframework\kafka\spring-kafka-test\3.3.6\spring-kafka-test-3.3.6.jar;C:\Users\jitee\.m2\repository\org\apache\zookeeper\zookeeper\3.8.4\zookeeper-3.8.4.jar;C:\Users\jitee\.m2\repository\org\apache\zookeeper\zookeeper-jute\3.8.4\zookeeper-jute-3.8.4.jar;C:\Users\jitee\.m2\repository\org\apache\yetus\audience-annotations\0.12.0\audience-annotations-0.12.0.jar;C:\Users\jitee\.m2\repository\io\netty\netty-handler\4.1.121.Final\netty-handler-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-common\4.1.121.Final\netty-common-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-resolver\4.1.121.Final\netty-resolver-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-buffer\4.1.121.Final\netty-buffer-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-transport\4.1.121.Final\netty-transport-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-transport-native-unix-common\4.1.121.Final\netty-transport-native-unix-common-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-codec\4.1.121.Final\netty-codec-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-transport-native-epoll\4.1.121.Final\netty-transport-native-epoll-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-transport-classes-epoll\4.1.121.Final\netty-transport-classes-epoll-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\ch\qos\logback\logback-core\1.5.18\logback-core-1.5.18.jar;C:\Users\jitee\.m2\repository\ch\qos\logback\logback-classic\1.5.18\logback-classic-1.5.18.jar;C:\Users\jitee\.m2\repository\commons-io\commons-io\2.11.0\commons-io-2.11.0.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-clients\3.9.1\kafka-clients-3.9.1-test.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-server\3.9.1\kafka-server-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-storage\3.9.1\kafka-storage-3.9.1.jar;C:\Users\jitee\.m2\repository\com\github\ben-manes\caffeine\caffeine\3.2.0\caffeine-3.2.0.jar;C:\Users\jitee\.m2\repository\org\jspecify\jspecify\1.0.0\jspecify-1.0.0.jar;C:\Users\jitee\.m2\repository\com\google\errorprone\error_prone_annotations\2.36.0\error_prone_annotations-2.36.0.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-group-coordinator\3.9.1\kafka-group-coordinator-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-transaction-coordinator\3.9.1\kafka-transaction-coordinator-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-raft\3.9.1\kafka-raft-3.9.1.jar;C:\Users\jitee\.m2\repository\com\yammer\metrics\metrics-core\2.2.0\metrics-core-2.2.0.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-metadata\3.9.1\kafka-metadata-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-server-common\3.9.1\kafka-server-common-3.9.1.jar;C:\Users\jitee\.m2\repository\net\sf\jopt-simple\jopt-simple\5.0.4\jopt-simple-5.0.4.jar;C:\Users\jitee\.m2\repository\org\pcollections\pcollections\4.0.1\pcollections-4.0.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-server-common\3.9.1\kafka-server-common-3.9.1-test.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-streams-test-utils\3.9.1\kafka-streams-test-utils-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-streams\3.9.1\kafka-streams-3.9.1.jar;C:\Users\jitee\.m2\repository\org\rocksdb\rocksdbjni\7.9.2\rocksdbjni-7.9.2.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka_2.13\3.9.1\kafka_2.13-3.9.1.jar;C:\Users\jitee\.m2\repository\org\scala-lang\scala-library\2.13.15\scala-library-2.13.15.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-group-coordinator-api\3.9.1\kafka-group-coordinator-api-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-storage-api\3.9.1\kafka-storage-api-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-tools-api\3.9.1\kafka-tools-api-3.9.1.jar;C:\Users\jitee\.m2\repository\net\sourceforge\argparse4j\argparse4j\0.7.0\argparse4j-0.7.0.jar;C:\Users\jitee\.m2\repository\commons-validator\commons-validator\1.7\commons-validator-1.7.jar;C:\Users\jitee\.m2\repository\commons-beanutils\commons-beanutils\1.9.4\commons-beanutils-1.9.4.jar;C:\Users\jitee\.m2\repository\commons-digester\commons-digester\2.1\commons-digester-2.1.jar;C:\Users\jitee\.m2\repository\commons-collections\commons-collections\3.2.2\commons-collections-3.2.2.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\module\jackson-module-scala_2.13\2.19.0\jackson-module-scala_2.13-2.19.0.jar;C:\Users\jitee\.m2\repository\com\thoughtworks\paranamer\paranamer\2.8.3\paranamer-2.8.3.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\dataformat\jackson-dataformat-csv\2.19.0\jackson-dataformat-csv-2.19.0.jar;C:\Users\jitee\.m2\repository\org\bitbucket\b_c\jose4j\0.9.4\jose4j-0.9.4.jar;C:\Users\jitee\.m2\repository\org\scala-lang\modules\scala-collection-compat_2.13\2.10.0\scala-collection-compat_2.13-2.10.0.jar;C:\Users\jitee\.m2\repository\org\scala-lang\modules\scala-java8-compat_2.13\1.0.2\scala-java8-compat_2.13-1.0.2.jar;C:\Users\jitee\.m2\repository\org\scala-lang\scala-reflect\2.13.15\scala-reflect-2.13.15.jar;C:\Users\jitee\.m2\repository\com\typesafe\scala-logging\scala-logging_2.13\3.9.5\scala-logging_2.13-3.9.5.jar;C:\Users\jitee\.m2\repository\io\dropwizard\metrics\metrics-core\4.1.12.1\metrics-core-4.1.12.1.jar;C:\Users\jitee\.m2\repository\commons-cli\commons-cli\1.4\commons-cli-1.4.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka_2.13\3.9.1\kafka_2.13-3.9.1-test.jar;C:\Users\jitee\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.12.2\junit-jupiter-api-5.12.2.jar;C:\Users\jitee\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\jitee\.m2\repository\org\junit\platform\junit-platform-commons\1.12.2\junit-platform-commons-1.12.2.jar;C:\Users\jitee\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\jitee\.m2\repository\org\junit\platform\junit-platform-launcher\1.12.2\junit-platform-launcher-1.12.2.jar;C:\Users\jitee\.m2\repository\org\junit\platform\junit-platform-engine\1.12.2\junit-platform-engine-1.12.2.jar;C:\Users\jitee\.m2\repository\org\mockito\mockito-core\5.17.0\mockito-core-5.17.0.jar;C:\Users\jitee\.m2\repository\net\bytebuddy\byte-buddy\1.17.5\byte-buddy-1.17.5.jar;C:\Users\jitee\.m2\repository\net\bytebuddy\byte-buddy-agent\1.17.5\byte-buddy-agent-1.17.5.jar;C:\Users\jitee\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\jitee"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="spring.embedded.kafka.brokers" value="127.0.0.1:59087"/>
+    <property name="java.version.date" value="2025-10-21"/>
+    <property name="java.home" value="C:\Program Files\Eclipse Adoptium\jdk-21.0.9.10-hotspot"/>
+    <property name="zookeeper.forceSync" value="no"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Projects\ai-claims-processing-system\notification-service"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="FILE_LOG_CHARSET" value="UTF-8"/>
+    <property name="java.awt.headless" value="true"/>
+    <property name="surefire.real.class.path" value="C:\Users\jitee\AppData\Local\Temp\surefire14265077069737889753\surefirebooter-20260627025358192_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="21.0.9+10-LTS"/>
+    <property name="user.name" value="jitee"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Temurin-21.0.9+10"/>
+    <property name="localRepository" value="C:\Users\jitee\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
+    <property name="java.io.tmpdir" value="C:\Users\jitee\AppData\Local\Temp\"/>
+    <property name="java.version" value="21.0.9"/>
+    <property name="spring.kafka.bootstrap-servers" value="127.0.0.1:59087"/>
+    <property name="user.dir" value="C:\Projects\ai-claims-processing-system\notification-service"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="PID" value="17452"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-21.0.9.10-hotspot\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\jitee\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\jitee\bin;C:\Program Files\Eclipse Adoptium\jdk-21.0.9.10-hotspot\bin;C:\Python311\Scripts;C:\Python311;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\ProgramData\chocolatey\bin;C:\Program Files\MongoDB\Server\7.0\bin;C:\mongosh-2.0.1-win32-x64\bin;C:\Users\jitee\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\jitee\AppData\Local\Programs\cursor\resources\app\bin;C:\Program Files\Java\jdk-20\bin;C:\Program Files\Go\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\Program Files\Git\cmd;C:\Program Files\Cloudflare\Cloudflare WARP;C:\ProgramData\chocolatey\lib\maven\apache-maven-3.9.16\bin;C:\Program Files\Docker\Docker\resources\bin;C:\Users\jitee\AppData\Local\Microsoft\WindowsApps;C:\Users\jitee\AppData\Local\Programs\Microsoft VS Code\bin;C:\DevTools\flutter\bin;C:\Users\jitee\AppData\Local\Pub\Cache\bin;C:\Users\jitee\AppData\Roaming\npm;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.1.4\bin;C:\Program Files\JetBrains\PyCharm Community Edition 2023.2.1\bin;C:\Users\jitee\go\bin;C:\Users\jitee\AppData\Local\GitHubDesktop\bin;C:\Program Files\JetBrains\IntelliJ IDEA 2025.3.3\bin;C:\Users\jitee\AppData\Roaming\nvm\v20.12.2;C:\Users\jitee\AppData\Roaming\nvm\v18.16.1;C:\Users\jitee\AppData\Roaming\nvm\v16.14.2;C:\Python311;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl;C:\Users\jitee\AppData\Roaming\Claude\local-agent-mode-sessions\da6d7f6a-3089-49bb-b0e1-4072f84ed20d\790eaa28-49cb-4da0-8067-45e5253c9749\rpm\plugin_011v5h6QUzBZvas64y44XLhy\bin;C:\Users\jitee\AppData\Roaming\Claude\local-agent-mode-sessions\da6d7f6a-3089-49bb-b0e1-4072f84ed20d\790eaa28-49cb-4da0-8067-45e5253c9749\rpm\plugin_0155zZVATbJU3jHUmPP9NvMC\bin;C:\Users\jitee\AppData\Roaming\Claude\local-agent-mode-sessions\da6d7f6a-3089-49bb-b0e1-4072f84ed20d\790eaa28-49cb-4da0-8067-45e5253c9749\rpm\plugin_01FTLa86dhbVJ3HB1LdHdhN7\bin;C:\Users\jitee\AppData\Roaming\Claude\local-agent-mode-sessions\skills-plugin\790eaa28-49cb-4da0-8067-45e5253c9749\da6d7f6a-3089-49bb-b0e1-4072f84ed20d\bin;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Eclipse Adoptium"/>
+    <property name="spring.embedded.zookeeper.connect" value="127.0.0.1:59085"/>
+    <property name="java.vm.version" value="21.0.9+10-LTS"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="65.0"/>
+    <property name="LOGGED_APPLICATION_NAME" value="[notification-service] "/>
+  </properties>
+  <testcase name="contextLoads" classname="com.jiteen.claims.notification.NotificationServiceApplicationTests" time="0.212">
+    <system-out><![CDATA[02:53:59.808 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.jiteen.claims.notification.NotificationServiceApplicationTests]: NotificationServiceApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+02:54:00.005 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.jiteen.claims.notification.NotificationServiceApplication for test class com.jiteen.claims.notification.NotificationServiceApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.0)
+
+2026-06-27T02:54:01.440+05:30  INFO 17452 --- [notification-service] [           main] k.utils.Log4jControllerRegistration$     : Registered kafka:type=kafka.Log4jController MBean
+2026-06-27T02:54:01.615+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : 
+2026-06-27T02:54:01.615+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     :   ______                  _                                          
+2026-06-27T02:54:01.615+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     :  |___  /                 | |                                         
+2026-06-27T02:54:01.616+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     :     / /    ___     ___   | | __   ___    ___   _ __     ___   _ __   
+2026-06-27T02:54:01.616+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     :    / /    / _ \   / _ \  | |/ /  / _ \  / _ \ | '_ \   / _ \ | '__|
+2026-06-27T02:54:01.616+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     :   / /__  | (_) | | (_) | |   <  |  __/ |  __/ | |_) | |  __/ | |    
+2026-06-27T02:54:01.616+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     :  /_____|  \___/   \___/  |_|\_\  \___|  \___| | .__/   \___| |_|
+2026-06-27T02:54:01.617+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     :                                               | |                     
+2026-06-27T02:54:01.617+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     :                                               |_|                     
+2026-06-27T02:54:01.617+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : 
+2026-06-27T02:54:01.671+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : Server environment:zookeeper.version=3.8.4-9316c2a7a97e1666d8f4593f34dd6fc36ecc436c, built on 2024-02-12 22:16 UTC
+2026-06-27T02:54:01.671+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : Server environment:host.name=JiteenMSI
+2026-06-27T02:54:01.671+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : Server environment:java.version=21.0.9
+2026-06-27T02:54:01.672+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : Server environment:java.vendor=Eclipse Adoptium
+2026-06-27T02:54:01.672+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : Server environment:java.home=C:\Program Files\Eclipse Adoptium\jdk-21.0.9.10-hotspot
+2026-06-27T02:54:01.672+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : Server environment:java.class.path=C:\Projects\ai-claims-processing-system\notification-service\target\test-classes;C:\Projects\ai-claims-processing-system\notification-service\target\classes;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-web\3.5.0\spring-boot-starter-web-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter\3.5.0\spring-boot-starter-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot\3.5.0\spring-boot-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.5.0\spring-boot-autoconfigure-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-logging\3.5.0\spring-boot-starter-logging-3.5.0.jar;C:\Users\jitee\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.24.3\log4j-to-slf4j-2.24.3.jar;C:\Users\jitee\.m2\repository\org\apache\logging\log4j\log4j-api\2.24.3\log4j-api-2.24.3.jar;C:\Users\jitee\.m2\repository\org\slf4j\jul-to-slf4j\2.0.17\jul-to-slf4j-2.0.17.jar;C:\Users\jitee\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\jitee\.m2\repository\org\yaml\snakeyaml\2.4\snakeyaml-2.4.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-json\3.5.0\spring-boot-starter-json-3.5.0.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.19.0\jackson-databind-2.19.0.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.19.0\jackson-annotations-2.19.0.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.19.0\jackson-core-2.19.0.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.19.0\jackson-datatype-jdk8-2.19.0.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.19.0\jackson-datatype-jsr310-2.19.0.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.19.0\jackson-module-parameter-names-2.19.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\3.5.0\spring-boot-starter-tomcat-3.5.0.jar;C:\Users\jitee\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.41\tomcat-embed-core-10.1.41.jar;C:\Users\jitee\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.41\tomcat-embed-el-10.1.41.jar;C:\Users\jitee\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.41\tomcat-embed-websocket-10.1.41.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-web\6.2.7\spring-web-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-beans\6.2.7\spring-beans-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-webmvc\6.2.7\spring-webmvc-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-aop\6.2.7\spring-aop-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-expression\6.2.7\spring-expression-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\kafka\spring-kafka\3.3.6\spring-kafka-3.3.6.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-context\6.2.7\spring-context-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-messaging\6.2.7\spring-messaging-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-tx\6.2.7\spring-tx-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\retry\spring-retry\2.0.12\spring-retry-2.0.12.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-clients\3.9.1\kafka-clients-3.9.1.jar;C:\Users\jitee\.m2\repository\com\github\luben\zstd-jni\1.5.6-4\zstd-jni-1.5.6-4.jar;C:\Users\jitee\.m2\repository\org\lz4\lz4-java\1.8.0\lz4-java-1.8.0.jar;C:\Users\jitee\.m2\repository\org\xerial\snappy\snappy-java\1.1.10.5\snappy-java-1.1.10.5.jar;C:\Users\jitee\.m2\repository\org\slf4j\slf4j-api\2.0.17\slf4j-api-2.0.17.jar;C:\Users\jitee\.m2\repository\io\micrometer\micrometer-observation\1.15.0\micrometer-observation-1.15.0.jar;C:\Users\jitee\.m2\repository\io\micrometer\micrometer-commons\1.15.0\micrometer-commons-1.15.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-mail\3.5.0\spring-boot-starter-mail-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-context-support\6.2.7\spring-context-support-6.2.7.jar;C:\Users\jitee\.m2\repository\org\eclipse\angus\jakarta.mail\2.0.3\jakarta.mail-2.0.3.jar;C:\Users\jitee\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.3\jakarta.activation-api-2.1.3.jar;C:\Users\jitee\.m2\repository\org\eclipse\angus\angus-activation\2.0.2\angus-activation-2.0.2.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-thymeleaf\3.5.0\spring-boot-starter-thymeleaf-3.5.0.jar;C:\Users\jitee\.m2\repository\org\thymeleaf\thymeleaf-spring6\3.1.3.RELEASE\thymeleaf-spring6-3.1.3.RELEASE.jar;C:\Users\jitee\.m2\repository\org\thymeleaf\thymeleaf\3.1.3.RELEASE\thymeleaf-3.1.3.RELEASE.jar;C:\Users\jitee\.m2\repository\org\attoparser\attoparser\2.0.7.RELEASE\attoparser-2.0.7.RELEASE.jar;C:\Users\jitee\.m2\repository\org\unbescape\unbescape\1.1.6.RELEASE\unbescape-1.1.6.RELEASE.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-actuator\3.5.0\spring-boot-starter-actuator-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-actuator-autoconfigure\3.5.0\spring-boot-actuator-autoconfigure-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-actuator\3.5.0\spring-boot-actuator-3.5.0.jar;C:\Users\jitee\.m2\repository\io\micrometer\micrometer-jakarta9\1.15.0\micrometer-jakarta9-1.15.0.jar;C:\Users\jitee\.m2\repository\io\micrometer\micrometer-core\1.15.0\micrometer-core-1.15.0.jar;C:\Users\jitee\.m2\repository\org\hdrhistogram\HdrHistogram\2.2.2\HdrHistogram-2.2.2.jar;C:\Users\jitee\.m2\repository\org\latencyutils\LatencyUtils\2.0.3\LatencyUtils-2.0.3.jar;C:\Users\jitee\.m2\repository\org\projectlombok\lombok\1.18.38\lombok-1.18.38.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-test\3.5.0\spring-boot-starter-test-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-test\3.5.0\spring-boot-test-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-test-autoconfigure\3.5.0\spring-boot-test-autoconfigure-3.5.0.jar;C:\Users\jitee\.m2\repository\com\jayway\jsonpath\json-path\2.9.0\json-path-2.9.0.jar;C:\Users\jitee\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.2\jakarta.xml.bind-api-4.0.2.jar;C:\Users\jitee\.m2\repository\net\minidev\json-smart\2.5.2\json-smart-2.5.2.jar;C:\Users\jitee\.m2\repository\net\minidev\accessors-smart\2.5.2\accessors-smart-2.5.2.jar;C:\Users\jitee\.m2\repository\org\ow2\asm\asm\9.7.1\asm-9.7.1.jar;C:\Users\jitee\.m2\repository\org\assertj\assertj-core\3.27.3\assertj-core-3.27.3.jar;C:\Users\jitee\.m2\repository\org\awaitility\awaitility\4.3.0\awaitility-4.3.0.jar;C:\Users\jitee\.m2\repository\org\hamcrest\hamcrest\3.0\hamcrest-3.0.jar;C:\Users\jitee\.m2\repository\org\junit\jupiter\junit-jupiter\5.12.2\junit-jupiter-5.12.2.jar;C:\Users\jitee\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.12.2\junit-jupiter-params-5.12.2.jar;C:\Users\jitee\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.12.2\junit-jupiter-engine-5.12.2.jar;C:\Users\jitee\.m2\repository\org\mockito\mockito-junit-jupiter\5.17.0\mockito-junit-jupiter-5.17.0.jar;C:\Users\jitee\.m2\repository\org\skyscreamer\jsonassert\1.5.3\jsonassert-1.5.3.jar;C:\Users\jitee\.m2\repository\com\vaadin\external\google\android-json\0.0.20131108.vaadin1\android-json-0.0.20131108.vaadin1.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-core\6.2.7\spring-core-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-jcl\6.2.7\spring-jcl-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-test\6.2.7\spring-test-6.2.7.jar;C:\Users\jitee\.m2\repository\org\xmlunit\xmlunit-core\2.10.1\xmlunit-core-2.10.1.jar;C:\Users\jitee\.m2\repository\org\springframework\kafka\spring-kafka-test\3.3.6\spring-kafka-test-3.3.6.jar;C:\Users\jitee\.m2\repository\org\apache\zookeeper\zookeeper\3.8.4\zookeeper-3.8.4.jar;C:\Users\jitee\.m2\repository\org\apache\zookeeper\zookeeper-jute\3.8.4\zookeeper-jute-3.8.4.jar;C:\Users\jitee\.m2\repository\org\apache\yetus\audience-annotations\0.12.0\audience-annotations-0.12.0.jar;C:\Users\jitee\.m2\repository\io\netty\netty-handler\4.1.121.Final\netty-handler-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-common\4.1.121.Final\netty-common-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-resolver\4.1.121.Final\netty-resolver-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-buffer\4.1.121.Final\netty-buffer-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-transport\4.1.121.Final\netty-transport-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-transport-native-unix-common\4.1.121.Final\netty-transport-native-unix-common-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-codec\4.1.121.Final\netty-codec-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-transport-native-epoll\4.1.121.Final\netty-transport-native-epoll-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-transport-classes-epoll\4.1.121.Final\netty-transport-classes-epoll-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\ch\qos\logback\logback-core\1.5.18\logback-core-1.5.18.jar;C:\Users\jitee\.m2\repository\ch\qos\logback\logback-classic\1.5.18\logback-classic-1.5.18.jar;C:\Users\jitee\.m2\repository\commons-io\commons-io\2.11.0\commons-io-2.11.0.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-clients\3.9.1\kafka-clients-3.9.1-test.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-server\3.9.1\kafka-server-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-storage\3.9.1\kafka-storage-3.9.1.jar;C:\Users\jitee\.m2\repository\com\github\ben-manes\caffeine\caffeine\3.2.0\caffeine-3.2.0.jar;C:\Users\jitee\.m2\repository\org\jspecify\jspecify\1.0.0\jspecify-1.0.0.jar;C:\Users\jitee\.m2\repository\com\google\errorprone\error_prone_annotations\2.36.0\error_prone_annotations-2.36.0.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-group-coordinator\3.9.1\kafka-group-coordinator-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-transaction-coordinator\3.9.1\kafka-transaction-coordinator-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-raft\3.9.1\kafka-raft-3.9.1.jar;C:\Users\jitee\.m2\repository\com\yammer\metrics\metrics-core\2.2.0\metrics-core-2.2.0.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-metadata\3.9.1\kafka-metadata-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-server-common\3.9.1\kafka-server-common-3.9.1.jar;C:\Users\jitee\.m2\repository\net\sf\jopt-simple\jopt-simple\5.0.4\jopt-simple-5.0.4.jar;C:\Users\jitee\.m2\repository\org\pcollections\pcollections\4.0.1\pcollections-4.0.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-server-common\3.9.1\kafka-server-common-3.9.1-test.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-streams-test-utils\3.9.1\kafka-streams-test-utils-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-streams\3.9.1\kafka-streams-3.9.1.jar;C:\Users\jitee\.m2\repository\org\rocksdb\rocksdbjni\7.9.2\rocksdbjni-7.9.2.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka_2.13\3.9.1\kafka_2.13-3.9.1.jar;C:\Users\jitee\.m2\repository\org\scala-lang\scala-library\2.13.15\scala-library-2.13.15.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-group-coordinator-api\3.9.1\kafka-group-coordinator-api-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-storage-api\3.9.1\kafka-storage-api-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-tools-api\3.9.1\kafka-tools-api-3.9.1.jar;C:\Users\jitee\.m2\repository\net\sourceforge\argparse4j\argparse4j\0.7.0\argparse4j-0.7.0.jar;C:\Users\jitee\.m2\repository\commons-validator\commons-validator\1.7\commons-validator-1.7.jar;C:\Users\jitee\.m2\repository\commons-beanutils\commons-beanutils\1.9.4\commons-beanutils-1.9.4.jar;C:\Users\jitee\.m2\repository\commons-digester\commons-digester\2.1\commons-digester-2.1.jar;C:\Users\jitee\.m2\repository\commons-collections\commons-collections\3.2.2\commons-collections-3.2.2.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\module\jackson-module-scala_2.13\2.19.0\jackson-module-scala_2.13-2.19.0.jar;C:\Users\jitee\.m2\repository\com\thoughtworks\paranamer\paranamer\2.8.3\paranamer-2.8.3.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\dataformat\jackson-dataformat-csv\2.19.0\jackson-dataformat-csv-2.19.0.jar;C:\Users\jitee\.m2\repository\org\bitbucket\b_c\jose4j\0.9.4\jose4j-0.9.4.jar;C:\Users\jitee\.m2\repository\org\scala-lang\modules\scala-collection-compat_2.13\2.10.0\scala-collection-compat_2.13-2.10.0.jar;C:\Users\jitee\.m2\repository\org\scala-lang\modules\scala-java8-compat_2.13\1.0.2\scala-java8-compat_2.13-1.0.2.jar;C:\Users\jitee\.m2\repository\org\scala-lang\scala-reflect\2.13.15\scala-reflect-2.13.15.jar;C:\Users\jitee\.m2\repository\com\typesafe\scala-logging\scala-logging_2.13\3.9.5\scala-logging_2.13-3.9.5.jar;C:\Users\jitee\.m2\repository\io\dropwizard\metrics\metrics-core\4.1.12.1\metrics-core-4.1.12.1.jar;C:\Users\jitee\.m2\repository\commons-cli\commons-cli\1.4\commons-cli-1.4.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka_2.13\3.9.1\kafka_2.13-3.9.1-test.jar;C:\Users\jitee\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.12.2\junit-jupiter-api-5.12.2.jar;C:\Users\jitee\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\jitee\.m2\repository\org\junit\platform\junit-platform-commons\1.12.2\junit-platform-commons-1.12.2.jar;C:\Users\jitee\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\jitee\.m2\repository\org\junit\platform\junit-platform-launcher\1.12.2\junit-platform-launcher-1.12.2.jar;C:\Users\jitee\.m2\repository\org\junit\platform\junit-platform-engine\1.12.2\junit-platform-engine-1.12.2.jar;C:\Users\jitee\.m2\repository\org\mockito\mockito-core\5.17.0\mockito-core-5.17.0.jar;C:\Users\jitee\.m2\repository\net\bytebuddy\byte-buddy\1.17.5\byte-buddy-1.17.5.jar;C:\Users\jitee\.m2\repository\net\bytebuddy\byte-buddy-agent\1.17.5\byte-buddy-agent-1.17.5.jar;C:\Users\jitee\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;
+2026-06-27T02:54:01.676+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : Server environment:java.library.path=C:\Program Files\Eclipse Adoptium\jdk-21.0.9.10-hotspot\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\jitee\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\jitee\bin;C:\Program Files\Eclipse Adoptium\jdk-21.0.9.10-hotspot\bin;C:\Python311\Scripts;C:\Python311;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\ProgramData\chocolatey\bin;C:\Program Files\MongoDB\Server\7.0\bin;C:\mongosh-2.0.1-win32-x64\bin;C:\Users\jitee\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\jitee\AppData\Local\Programs\cursor\resources\app\bin;C:\Program Files\Java\jdk-20\bin;C:\Program Files\Go\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\Program Files\Git\cmd;C:\Program Files\Cloudflare\Cloudflare WARP;C:\ProgramData\chocolatey\lib\maven\apache-maven-3.9.16\bin;C:\Program Files\Docker\Docker\resources\bin;C:\Users\jitee\AppData\Local\Microsoft\WindowsApps;C:\Users\jitee\AppData\Local\Programs\Microsoft VS Code\bin;C:\DevTools\flutter\bin;C:\Users\jitee\AppData\Local\Pub\Cache\bin;C:\Users\jitee\AppData\Roaming\npm;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.1.4\bin;C:\Program Files\JetBrains\PyCharm Community Edition 2023.2.1\bin;C:\Users\jitee\go\bin;C:\Users\jitee\AppData\Local\GitHubDesktop\bin;C:\Program Files\JetBrains\IntelliJ IDEA 2025.3.3\bin;C:\Users\jitee\AppData\Roaming\nvm\v20.12.2;C:\Users\jitee\AppData\Roaming\nvm\v18.16.1;C:\Users\jitee\AppData\Roaming\nvm\v16.14.2;C:\Python311;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl;C:\Users\jitee\AppData\Roaming\Claude\local-agent-mode-sessions\da6d7f6a-3089-49bb-b0e1-4072f84ed20d\790eaa28-49cb-4da0-8067-45e5253c9749\rpm\plugin_011v5h6QUzBZvas64y44XLhy\bin;C:\Users\jitee\AppData\Roaming\Claude\local-agent-mode-sessions\da6d7f6a-3089-49bb-b0e1-4072f84ed20d\790eaa28-49cb-4da0-8067-45e5253c9749\rpm\plugin_0155zZVATbJU3jHUmPP9NvMC\bin;C:\Users\jitee\AppData\Roaming\Claude\local-agent-mode-sessions\da6d7f6a-3089-49bb-b0e1-4072f84ed20d\790eaa28-49cb-4da0-8067-45e5253c9749\rpm\plugin_01FTLa86dhbVJ3HB1LdHdhN7\bin;C:\Users\jitee\AppData\Roaming\Claude\local-agent-mode-sessions\skills-plugin\790eaa28-49cb-4da0-8067-45e5253c9749\da6d7f6a-3089-49bb-b0e1-4072f84ed20d\bin;.
+2026-06-27T02:54:01.678+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : Server environment:java.io.tmpdir=C:\Users\jitee\AppData\Local\Temp\
+2026-06-27T02:54:01.678+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : Server environment:java.compiler=<NA>
+2026-06-27T02:54:01.678+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : Server environment:os.name=Windows 11
+2026-06-27T02:54:01.678+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : Server environment:os.arch=amd64
+2026-06-27T02:54:01.679+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : Server environment:os.version=10.0
+2026-06-27T02:54:01.679+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : Server environment:user.name=jitee
+2026-06-27T02:54:01.679+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : Server environment:user.home=C:\Users\jitee
+2026-06-27T02:54:01.679+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : Server environment:user.dir=C:\Projects\ai-claims-processing-system\notification-service
+2026-06-27T02:54:01.680+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : Server environment:os.memory.free=24MB
+2026-06-27T02:54:01.680+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : Server environment:os.memory.max=4058MB
+2026-06-27T02:54:01.680+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : Server environment:os.memory.total=54MB
+2026-06-27T02:54:01.680+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : zookeeper.enableEagerACLCheck = false
+2026-06-27T02:54:01.693+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : zookeeper.digest.enabled = true
+2026-06-27T02:54:01.693+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : zookeeper.closeSessionTxn.enabled = true
+2026-06-27T02:54:01.694+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : zookeeper.flushDelay = 0 ms
+2026-06-27T02:54:01.694+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : zookeeper.maxWriteQueuePollTime = 0 ms
+2026-06-27T02:54:01.694+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : zookeeper.maxBatchSize=1000
+2026-06-27T02:54:01.695+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : zookeeper.intBufferStartingSizeBytes = 1024
+2026-06-27T02:54:01.709+05:30  INFO 17452 --- [notification-service] [           main] o.a.z.server.persistence.FileTxnSnapLog  : zookeeper.snapshot.trust.empty : false
+2026-06-27T02:54:01.833+05:30  INFO 17452 --- [notification-service] [           main] o.a.z.server.watch.WatchManagerFactory   : Using org.apache.zookeeper.server.watch.WatchManager as watch manager
+2026-06-27T02:54:01.834+05:30  INFO 17452 --- [notification-service] [           main] o.a.z.server.watch.WatchManagerFactory   : Using org.apache.zookeeper.server.watch.WatchManager as watch manager
+2026-06-27T02:54:01.834+05:30  INFO 17452 --- [notification-service] [           main] org.apache.zookeeper.server.ZKDatabase   : zookeeper.snapshotSizeFactor = 0.33
+2026-06-27T02:54:01.836+05:30  INFO 17452 --- [notification-service] [           main] org.apache.zookeeper.server.ZKDatabase   : zookeeper.commitLogCount=500
+2026-06-27T02:54:01.845+05:30  INFO 17452 --- [notification-service] [           main] o.apache.zookeeper.server.BlueThrottle   : Weighed connection throttling is disabled
+2026-06-27T02:54:01.852+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : minSessionTimeout set to 1600 ms
+2026-06-27T02:54:01.852+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : maxSessionTimeout set to 16000 ms
+2026-06-27T02:54:01.856+05:30  INFO 17452 --- [notification-service] [           main] o.apache.zookeeper.server.ResponseCache  : getData response cache size is initialized with value 400.
+2026-06-27T02:54:01.857+05:30  INFO 17452 --- [notification-service] [           main] o.apache.zookeeper.server.ResponseCache  : getChildren response cache size is initialized with value 400.
+2026-06-27T02:54:01.859+05:30  INFO 17452 --- [notification-service] [           main] o.a.z.s.u.RequestPathMetricsCollector    : zookeeper.pathStats.slotCapacity = 60
+2026-06-27T02:54:01.860+05:30  INFO 17452 --- [notification-service] [           main] o.a.z.s.u.RequestPathMetricsCollector    : zookeeper.pathStats.slotDuration = 15
+2026-06-27T02:54:01.860+05:30  INFO 17452 --- [notification-service] [           main] o.a.z.s.u.RequestPathMetricsCollector    : zookeeper.pathStats.maxDepth = 6
+2026-06-27T02:54:01.860+05:30  INFO 17452 --- [notification-service] [           main] o.a.z.s.u.RequestPathMetricsCollector    : zookeeper.pathStats.initialDelay = 5
+2026-06-27T02:54:01.861+05:30  INFO 17452 --- [notification-service] [           main] o.a.z.s.u.RequestPathMetricsCollector    : zookeeper.pathStats.delay = 5
+2026-06-27T02:54:01.861+05:30  INFO 17452 --- [notification-service] [           main] o.a.z.s.u.RequestPathMetricsCollector    : zookeeper.pathStats.enabled = false
+2026-06-27T02:54:01.865+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : The max bytes for all large requests are set to 104857600
+2026-06-27T02:54:01.866+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : The large request threshold is set to -1
+2026-06-27T02:54:01.867+05:30  INFO 17452 --- [notification-service] [           main] o.a.z.server.AuthenticationHelper        : zookeeper.enforce.auth.enabled = false
+2026-06-27T02:54:01.868+05:30  INFO 17452 --- [notification-service] [           main] o.a.z.server.AuthenticationHelper        : zookeeper.enforce.auth.schemes = []
+2026-06-27T02:54:01.869+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : Created server with tickTime 800 ms minSessionTimeout 1600 ms maxSessionTimeout 16000 ms clientPortListenBacklog -1 datadir C:\Users\jitee\AppData\Local\Temp\kafka-17903711577514197278\version-2 snapdir C:\Users\jitee\AppData\Local\Temp\kafka-2122763315805963321\version-2
+2026-06-27T02:54:01.884+05:30  WARN 17452 --- [notification-service] [           main] o.a.zookeeper.server.ServerCnxnFactory   : maxCnxns is not configured, using default value 0.
+2026-06-27T02:54:01.889+05:30  INFO 17452 --- [notification-service] [           main] o.a.z.server.NIOServerCnxnFactory        : Configuring NIO connection handler with 10s sessionless connection timeout, 2 selector thread(s), 24 worker threads, and 64 kB direct buffers.
+2026-06-27T02:54:01.937+05:30  INFO 17452 --- [notification-service] [           main] o.a.z.server.NIOServerCnxnFactory        : binding to port /127.0.0.1:0
+2026-06-27T02:54:01.986+05:30  INFO 17452 --- [notification-service] [           main] o.a.z.server.persistence.SnapStream      : zookeeper.snapshot.compression.method = CHECKED
+2026-06-27T02:54:01.986+05:30  INFO 17452 --- [notification-service] [           main] o.a.z.server.persistence.FileTxnSnapLog  : Snapshotting: 0x0 to C:\Users\jitee\AppData\Local\Temp\kafka-2122763315805963321\version-2\snapshot.0
+2026-06-27T02:54:01.996+05:30  INFO 17452 --- [notification-service] [           main] org.apache.zookeeper.server.ZKDatabase   : Snapshot loaded in 48 ms, highest zxid is 0x0, digest is 1371985504
+2026-06-27T02:54:01.998+05:30  INFO 17452 --- [notification-service] [           main] o.a.z.server.persistence.FileTxnSnapLog  : Snapshotting: 0x0 to C:\Users\jitee\AppData\Local\Temp\kafka-2122763315805963321\version-2\snapshot.0
+2026-06-27T02:54:02.000+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.ZooKeeperServer     : Snapshot taken in 2 ms
+2026-06-27T02:54:02.028+05:30  INFO 17452 --- [notification-service] [0 cport:59085):] o.a.z.server.PrepRequestProcessor        : PrepRequestProcessor (sid:0) started, reconfigEnabled=false
+2026-06-27T02:54:02.029+05:30  INFO 17452 --- [notification-service] [           main] o.a.zookeeper.server.RequestThrottler    : zookeeper.request_throttler.shutdownTimeout = 10000 ms
+2026-06-27T02:54:02.403+05:30  INFO 17452 --- [notification-service] [           main] kafka.server.KafkaConfig                 : KafkaConfig values: 
+	advertised.listeners = null
+	alter.config.policy.class.name = null
+	alter.log.dirs.replication.quota.window.num = 11
+	alter.log.dirs.replication.quota.window.size.seconds = 1
+	authorizer.class.name = 
+	auto.create.topics.enable = true
+	auto.include.jmx.reporter = true
+	auto.leader.rebalance.enable = true
+	background.threads = 2
+	broker.heartbeat.interval.ms = 2000
+	broker.id = 0
+	broker.id.generation.enable = true
+	broker.rack = null
+	broker.session.timeout.ms = 9000
+	client.quota.callback.class = null
+	compression.gzip.level = -1
+	compression.lz4.level = 9
+	compression.type = producer
+	compression.zstd.level = 3
+	connection.failed.authentication.delay.ms = 100
+	connections.max.idle.ms = 600000
+	connections.max.reauth.ms = 0
+	control.plane.listener.name = null
+	controlled.shutdown.enable = false
+	controlled.shutdown.max.retries = 3
+	controlled.shutdown.retry.backoff.ms = 100
+	controller.listener.names = null
+	controller.quorum.append.linger.ms = 25
+	controller.quorum.bootstrap.servers = []
+	controller.quorum.election.backoff.max.ms = 1000
+	controller.quorum.election.timeout.ms = 1000
+	controller.quorum.fetch.timeout.ms = 2000
+	controller.quorum.request.timeout.ms = 2000
+	controller.quorum.retry.backoff.ms = 20
+	controller.quorum.voters = []
+	controller.quota.window.num = 11
+	controller.quota.window.size.seconds = 1
+	controller.socket.timeout.ms = 1000
+	create.topic.policy.class.name = null
+	default.replication.factor = 1
+	delegation.token.expiry.check.interval.ms = 3600000
+	delegation.token.expiry.time.ms = 86400000
+	delegation.token.master.key = null
+	delegation.token.max.lifetime.ms = 604800000
+	delegation.token.secret.key = null
+	delete.records.purgatory.purge.interval.requests = 1
+	delete.topic.enable = true
+	early.start.listeners = null
+	eligible.leader.replicas.enable = false
+	fetch.max.bytes = 57671680
+	fetch.purgatory.purge.interval.requests = 1000
+	group.consumer.assignors = [org.apache.kafka.coordinator.group.assignor.UniformAssignor, org.apache.kafka.coordinator.group.assignor.RangeAssignor]
+	group.consumer.heartbeat.interval.ms = 5000
+	group.consumer.max.heartbeat.interval.ms = 15000
+	group.consumer.max.session.timeout.ms = 60000
+	group.consumer.max.size = 2147483647
+	group.consumer.migration.policy = disabled
+	group.consumer.min.heartbeat.interval.ms = 5000
+	group.consumer.min.session.timeout.ms = 45000
+	group.consumer.session.timeout.ms = 45000
+	group.coordinator.append.linger.ms = 10
+	group.coordinator.new.enable = false
+	group.coordinator.rebalance.protocols = [classic]
+	group.coordinator.threads = 1
+	group.initial.rebalance.delay.ms = 0
+	group.max.session.timeout.ms = 1800000
+	group.max.size = 2147483647
+	group.min.session.timeout.ms = 6000
+	group.share.delivery.count.limit = 5
+	group.share.enable = false
+	group.share.heartbeat.interval.ms = 5000
+	group.share.max.groups = 10
+	group.share.max.heartbeat.interval.ms = 15000
+	group.share.max.record.lock.duration.ms = 60000
+	group.share.max.session.timeout.ms = 60000
+	group.share.max.size = 200
+	group.share.min.heartbeat.interval.ms = 5000
+	group.share.min.record.lock.duration.ms = 15000
+	group.share.min.session.timeout.ms = 45000
+	group.share.partition.max.record.locks = 200
+	group.share.record.lock.duration.ms = 30000
+	group.share.session.timeout.ms = 45000
+	initial.broker.registration.timeout.ms = 60000
+	inter.broker.listener.name = null
+	inter.broker.protocol.version = 3.9-IV0
+	kafka.metrics.polling.interval.secs = 10
+	kafka.metrics.reporters = []
+	leader.imbalance.check.interval.seconds = 300
+	leader.imbalance.per.broker.percentage = 10
+	listener.security.protocol.map = SASL_SSL:SASL_SSL,PLAINTEXT:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT
+	listeners = PLAINTEXT://localhost:0
+	log.cleaner.backoff.ms = 15000
+	log.cleaner.dedupe.buffer.size = 2097152
+	log.cleaner.delete.retention.ms = 86400000
+	log.cleaner.enable = true
+	log.cleaner.io.buffer.load.factor = 0.9
+	log.cleaner.io.buffer.size = 524288
+	log.cleaner.io.max.bytes.per.second = 1.7976931348623157E308
+	log.cleaner.max.compaction.lag.ms = 9223372036854775807
+	log.cleaner.min.cleanable.ratio = 0.5
+	log.cleaner.min.compaction.lag.ms = 0
+	log.cleaner.threads = 1
+	log.cleanup.policy = [delete]
+	log.dir = C:\Users\jitee\AppData\Local\Temp\spring.kafka.ac936aa1-2031-447e-bafe-a0d34a475ca615441773443179439406
+	log.dir.failure.timeout.ms = 30000
+	log.dirs = null
+	log.flush.interval.messages = 9223372036854775807
+	log.flush.interval.ms = null
+	log.flush.offset.checkpoint.interval.ms = 60000
+	log.flush.scheduler.interval.ms = 9223372036854775807
+	log.flush.start.offset.checkpoint.interval.ms = 60000
+	log.index.interval.bytes = 4096
+	log.index.size.max.bytes = 10485760
+	log.initial.task.delay.ms = 100
+	log.local.retention.bytes = -2
+	log.local.retention.ms = -2
+	log.message.downconversion.enable = true
+	log.message.format.version = 3.0-IV1
+	log.message.timestamp.after.max.ms = 9223372036854775807
+	log.message.timestamp.before.max.ms = 9223372036854775807
+	log.message.timestamp.difference.max.ms = 9223372036854775807
+	log.message.timestamp.type = CreateTime
+	log.preallocate = false
+	log.retention.bytes = -1
+	log.retention.check.interval.ms = 300000
+	log.retention.hours = 168
+	log.retention.minutes = null
+	log.retention.ms = null
+	log.roll.hours = 168
+	log.roll.jitter.hours = 0
+	log.roll.jitter.ms = null
+	log.roll.ms = null
+	log.segment.bytes = 1073741824
+	log.segment.delete.delay.ms = 1000
+	max.connection.creation.rate = 2147483647
+	max.connections = 2147483647
+	max.connections.per.ip = 2147483647
+	max.connections.per.ip.overrides = 
+	max.incremental.fetch.session.cache.slots = 1000
+	max.request.partition.size.limit = 2000
+	message.max.bytes = 1048588
+	metadata.log.dir = null
+	metadata.log.max.record.bytes.between.snapshots = 20971520
+	metadata.log.max.snapshot.interval.ms = 3600000
+	metadata.log.segment.bytes = 1073741824
+	metadata.log.segment.min.bytes = 8388608
+	metadata.log.segment.ms = 604800000
+	metadata.max.idle.interval.ms = 500
+	metadata.max.retention.bytes = 104857600
+	metadata.max.retention.ms = 604800000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	min.insync.replicas = 1
+	node.id = 0
+	num.io.threads = 8
+	num.network.threads = 2
+	num.partitions = 1
+	num.recovery.threads.per.data.dir = 1
+	num.replica.alter.log.dirs.threads = null
+	num.replica.fetchers = 1
+	offset.metadata.max.bytes = 4096
+	offsets.commit.required.acks = -1
+	offsets.commit.timeout.ms = 5000
+	offsets.load.buffer.size = 5242880
+	offsets.retention.check.interval.ms = 600000
+	offsets.retention.minutes = 10080
+	offsets.topic.compression.codec = 0
+	offsets.topic.num.partitions = 5
+	offsets.topic.replication.factor = 1
+	offsets.topic.segment.bytes = 104857600
+	password.encoder.cipher.algorithm = AES/CBC/PKCS5Padding
+	password.encoder.iterations = 4096
+	password.encoder.key.length = 128
+	password.encoder.keyfactory.algorithm = null
+	password.encoder.old.secret = null
+	password.encoder.secret = null
+	principal.builder.class = class org.apache.kafka.common.security.authenticator.DefaultKafkaPrincipalBuilder
+	process.roles = []
+	producer.id.expiration.check.interval.ms = 600000
+	producer.id.expiration.ms = 86400000
+	producer.purgatory.purge.interval.requests = 1000
+	queued.max.request.bytes = -1
+	queued.max.requests = 500
+	quota.window.num = 11
+	quota.window.size.seconds = 1
+	remote.fetch.max.wait.ms = 500
+	remote.log.index.file.cache.total.size.bytes = 1073741824
+	remote.log.manager.copier.thread.pool.size = -1
+	remote.log.manager.copy.max.bytes.per.second = 9223372036854775807
+	remote.log.manager.copy.quota.window.num = 11
+	remote.log.manager.copy.quota.window.size.seconds = 1
+	remote.log.manager.expiration.thread.pool.size = -1
+	remote.log.manager.fetch.max.bytes.per.second = 9223372036854775807
+	remote.log.manager.fetch.quota.window.num = 11
+	remote.log.manager.fetch.quota.window.size.seconds = 1
+	remote.log.manager.task.interval.ms = 30000
+	remote.log.manager.task.retry.backoff.max.ms = 30000
+	remote.log.manager.task.retry.backoff.ms = 500
+	remote.log.manager.task.retry.jitter = 0.2
+	remote.log.manager.thread.pool.size = 10
+	remote.log.metadata.custom.metadata.max.bytes = 128
+	remote.log.metadata.manager.class.name = org.apache.kafka.server.log.remote.metadata.storage.TopicBasedRemoteLogMetadataManager
+	remote.log.metadata.manager.class.path = null
+	remote.log.metadata.manager.impl.prefix = rlmm.config.
+	remote.log.metadata.manager.listener.name = null
+	remote.log.reader.max.pending.tasks = 100
+	remote.log.reader.threads = 10
+	remote.log.storage.manager.class.name = null
+	remote.log.storage.manager.class.path = null
+	remote.log.storage.manager.impl.prefix = rsm.config.
+	remote.log.storage.system.enable = false
+	replica.fetch.backoff.ms = 1000
+	replica.fetch.max.bytes = 1048576
+	replica.fetch.min.bytes = 1
+	replica.fetch.response.max.bytes = 10485760
+	replica.fetch.wait.max.ms = 500
+	replica.high.watermark.checkpoint.interval.ms = 9223372036854775807
+	replica.lag.time.max.ms = 30000
+	replica.selector.class = null
+	replica.socket.receive.buffer.bytes = 65536
+	replica.socket.timeout.ms = 1000
+	replication.quota.window.num = 11
+	replication.quota.window.size.seconds = 1
+	request.timeout.ms = 30000
+	reserved.broker.max.id = 1000
+	sasl.client.callback.handler.class = null
+	sasl.enabled.mechanisms = [GSSAPI]
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.principal.to.local.rules = [DEFAULT]
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism.controller.protocol = GSSAPI
+	sasl.mechanism.inter.broker.protocol = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	sasl.server.callback.handler.class = null
+	sasl.server.max.receive.size = 524288
+	security.inter.broker.protocol = PLAINTEXT
+	security.providers = null
+	server.max.startup.time.ms = 9223372036854775807
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	socket.listen.backlog.size = 50
+	socket.receive.buffer.bytes = 102400
+	socket.request.max.bytes = 104857600
+	socket.send.buffer.bytes = 102400
+	ssl.allow.dn.changes = false
+	ssl.allow.san.changes = false
+	ssl.cipher.suites = []
+	ssl.client.auth = none
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.principal.mapping.rules = DEFAULT
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	telemetry.max.bytes = 1048576
+	transaction.abort.timed.out.transaction.cleanup.interval.ms = 10000
+	transaction.max.timeout.ms = 900000
+	transaction.partition.verification.enable = true
+	transaction.remove.expired.transaction.cleanup.interval.ms = 3600000
+	transaction.state.log.load.buffer.size = 5242880
+	transaction.state.log.min.isr = 2
+	transaction.state.log.num.partitions = 50
+	transaction.state.log.replication.factor = 1
+	transaction.state.log.segment.bytes = 104857600
+	transactional.id.expiration.ms = 604800000
+	unclean.leader.election.enable = false
+	unclean.leader.election.interval.ms = 300000
+	unstable.api.versions.enable = true
+	unstable.feature.versions.enable = true
+	zookeeper.clientCnxnSocket = null
+	zookeeper.connect = 127.0.0.1:59085
+	zookeeper.connection.timeout.ms = 10000
+	zookeeper.max.in.flight.requests = 10
+	zookeeper.metadata.migration.enable = false
+	zookeeper.metadata.migration.min.batch.size = 200
+	zookeeper.session.timeout.ms = 18000
+	zookeeper.set.acl = false
+	zookeeper.ssl.cipher.suites = null
+	zookeeper.ssl.client.enable = false
+	zookeeper.ssl.crl.enable = false
+	zookeeper.ssl.enabled.protocols = null
+	zookeeper.ssl.endpoint.identification.algorithm = HTTPS
+	zookeeper.ssl.keystore.location = null
+	zookeeper.ssl.keystore.password = null
+	zookeeper.ssl.keystore.type = null
+	zookeeper.ssl.ocsp.enable = false
+	zookeeper.ssl.protocol = TLSv1.2
+	zookeeper.ssl.truststore.location = null
+	zookeeper.ssl.truststore.password = null
+	zookeeper.ssl.truststore.type = null
+
+2026-06-27T02:54:02.501+05:30  INFO 17452 --- [notification-service] [           main] org.apache.zookeeper.common.X509Util     : Setting -D jdk.tls.rejectClientInitiatedRenegotiation=true to disable client-initiated TLS renegotiation
+2026-06-27T02:54:02.673+05:30  INFO 17452 --- [notification-service] [           main] kafka.server.KafkaServer                 : starting
+2026-06-27T02:54:02.675+05:30  INFO 17452 --- [notification-service] [           main] kafka.server.KafkaServer                 : Connecting to zookeeper on 127.0.0.1:59085
+2026-06-27T02:54:02.718+05:30  INFO 17452 --- [notification-service] [           main] kafka.zookeeper.ZooKeeperClient          : [ZooKeeperClient Kafka server] Initializing a new session to 127.0.0.1:59085.
+2026-06-27T02:54:02.723+05:30  INFO 17452 --- [notification-service] [           main] org.apache.zookeeper.ZooKeeper           : Client environment:zookeeper.version=3.8.4-9316c2a7a97e1666d8f4593f34dd6fc36ecc436c, built on 2024-02-12 22:16 UTC
+2026-06-27T02:54:02.723+05:30  INFO 17452 --- [notification-service] [           main] org.apache.zookeeper.ZooKeeper           : Client environment:host.name=JiteenMSI
+2026-06-27T02:54:02.724+05:30  INFO 17452 --- [notification-service] [           main] org.apache.zookeeper.ZooKeeper           : Client environment:java.version=21.0.9
+2026-06-27T02:54:02.724+05:30  INFO 17452 --- [notification-service] [           main] org.apache.zookeeper.ZooKeeper           : Client environment:java.vendor=Eclipse Adoptium
+2026-06-27T02:54:02.724+05:30  INFO 17452 --- [notification-service] [           main] org.apache.zookeeper.ZooKeeper           : Client environment:java.home=C:\Program Files\Eclipse Adoptium\jdk-21.0.9.10-hotspot
+2026-06-27T02:54:02.724+05:30  INFO 17452 --- [notification-service] [           main] org.apache.zookeeper.ZooKeeper           : Client environment:java.class.path=C:\Projects\ai-claims-processing-system\notification-service\target\test-classes;C:\Projects\ai-claims-processing-system\notification-service\target\classes;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-web\3.5.0\spring-boot-starter-web-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter\3.5.0\spring-boot-starter-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot\3.5.0\spring-boot-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.5.0\spring-boot-autoconfigure-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-logging\3.5.0\spring-boot-starter-logging-3.5.0.jar;C:\Users\jitee\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.24.3\log4j-to-slf4j-2.24.3.jar;C:\Users\jitee\.m2\repository\org\apache\logging\log4j\log4j-api\2.24.3\log4j-api-2.24.3.jar;C:\Users\jitee\.m2\repository\org\slf4j\jul-to-slf4j\2.0.17\jul-to-slf4j-2.0.17.jar;C:\Users\jitee\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\jitee\.m2\repository\org\yaml\snakeyaml\2.4\snakeyaml-2.4.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-json\3.5.0\spring-boot-starter-json-3.5.0.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.19.0\jackson-databind-2.19.0.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.19.0\jackson-annotations-2.19.0.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.19.0\jackson-core-2.19.0.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.19.0\jackson-datatype-jdk8-2.19.0.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.19.0\jackson-datatype-jsr310-2.19.0.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.19.0\jackson-module-parameter-names-2.19.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\3.5.0\spring-boot-starter-tomcat-3.5.0.jar;C:\Users\jitee\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.41\tomcat-embed-core-10.1.41.jar;C:\Users\jitee\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.41\tomcat-embed-el-10.1.41.jar;C:\Users\jitee\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.41\tomcat-embed-websocket-10.1.41.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-web\6.2.7\spring-web-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-beans\6.2.7\spring-beans-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-webmvc\6.2.7\spring-webmvc-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-aop\6.2.7\spring-aop-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-expression\6.2.7\spring-expression-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\kafka\spring-kafka\3.3.6\spring-kafka-3.3.6.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-context\6.2.7\spring-context-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-messaging\6.2.7\spring-messaging-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-tx\6.2.7\spring-tx-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\retry\spring-retry\2.0.12\spring-retry-2.0.12.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-clients\3.9.1\kafka-clients-3.9.1.jar;C:\Users\jitee\.m2\repository\com\github\luben\zstd-jni\1.5.6-4\zstd-jni-1.5.6-4.jar;C:\Users\jitee\.m2\repository\org\lz4\lz4-java\1.8.0\lz4-java-1.8.0.jar;C:\Users\jitee\.m2\repository\org\xerial\snappy\snappy-java\1.1.10.5\snappy-java-1.1.10.5.jar;C:\Users\jitee\.m2\repository\org\slf4j\slf4j-api\2.0.17\slf4j-api-2.0.17.jar;C:\Users\jitee\.m2\repository\io\micrometer\micrometer-observation\1.15.0\micrometer-observation-1.15.0.jar;C:\Users\jitee\.m2\repository\io\micrometer\micrometer-commons\1.15.0\micrometer-commons-1.15.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-mail\3.5.0\spring-boot-starter-mail-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-context-support\6.2.7\spring-context-support-6.2.7.jar;C:\Users\jitee\.m2\repository\org\eclipse\angus\jakarta.mail\2.0.3\jakarta.mail-2.0.3.jar;C:\Users\jitee\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.3\jakarta.activation-api-2.1.3.jar;C:\Users\jitee\.m2\repository\org\eclipse\angus\angus-activation\2.0.2\angus-activation-2.0.2.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-thymeleaf\3.5.0\spring-boot-starter-thymeleaf-3.5.0.jar;C:\Users\jitee\.m2\repository\org\thymeleaf\thymeleaf-spring6\3.1.3.RELEASE\thymeleaf-spring6-3.1.3.RELEASE.jar;C:\Users\jitee\.m2\repository\org\thymeleaf\thymeleaf\3.1.3.RELEASE\thymeleaf-3.1.3.RELEASE.jar;C:\Users\jitee\.m2\repository\org\attoparser\attoparser\2.0.7.RELEASE\attoparser-2.0.7.RELEASE.jar;C:\Users\jitee\.m2\repository\org\unbescape\unbescape\1.1.6.RELEASE\unbescape-1.1.6.RELEASE.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-actuator\3.5.0\spring-boot-starter-actuator-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-actuator-autoconfigure\3.5.0\spring-boot-actuator-autoconfigure-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-actuator\3.5.0\spring-boot-actuator-3.5.0.jar;C:\Users\jitee\.m2\repository\io\micrometer\micrometer-jakarta9\1.15.0\micrometer-jakarta9-1.15.0.jar;C:\Users\jitee\.m2\repository\io\micrometer\micrometer-core\1.15.0\micrometer-core-1.15.0.jar;C:\Users\jitee\.m2\repository\org\hdrhistogram\HdrHistogram\2.2.2\HdrHistogram-2.2.2.jar;C:\Users\jitee\.m2\repository\org\latencyutils\LatencyUtils\2.0.3\LatencyUtils-2.0.3.jar;C:\Users\jitee\.m2\repository\org\projectlombok\lombok\1.18.38\lombok-1.18.38.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-starter-test\3.5.0\spring-boot-starter-test-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-test\3.5.0\spring-boot-test-3.5.0.jar;C:\Users\jitee\.m2\repository\org\springframework\boot\spring-boot-test-autoconfigure\3.5.0\spring-boot-test-autoconfigure-3.5.0.jar;C:\Users\jitee\.m2\repository\com\jayway\jsonpath\json-path\2.9.0\json-path-2.9.0.jar;C:\Users\jitee\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.2\jakarta.xml.bind-api-4.0.2.jar;C:\Users\jitee\.m2\repository\net\minidev\json-smart\2.5.2\json-smart-2.5.2.jar;C:\Users\jitee\.m2\repository\net\minidev\accessors-smart\2.5.2\accessors-smart-2.5.2.jar;C:\Users\jitee\.m2\repository\org\ow2\asm\asm\9.7.1\asm-9.7.1.jar;C:\Users\jitee\.m2\repository\org\assertj\assertj-core\3.27.3\assertj-core-3.27.3.jar;C:\Users\jitee\.m2\repository\org\awaitility\awaitility\4.3.0\awaitility-4.3.0.jar;C:\Users\jitee\.m2\repository\org\hamcrest\hamcrest\3.0\hamcrest-3.0.jar;C:\Users\jitee\.m2\repository\org\junit\jupiter\junit-jupiter\5.12.2\junit-jupiter-5.12.2.jar;C:\Users\jitee\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.12.2\junit-jupiter-params-5.12.2.jar;C:\Users\jitee\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.12.2\junit-jupiter-engine-5.12.2.jar;C:\Users\jitee\.m2\repository\org\mockito\mockito-junit-jupiter\5.17.0\mockito-junit-jupiter-5.17.0.jar;C:\Users\jitee\.m2\repository\org\skyscreamer\jsonassert\1.5.3\jsonassert-1.5.3.jar;C:\Users\jitee\.m2\repository\com\vaadin\external\google\android-json\0.0.20131108.vaadin1\android-json-0.0.20131108.vaadin1.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-core\6.2.7\spring-core-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-jcl\6.2.7\spring-jcl-6.2.7.jar;C:\Users\jitee\.m2\repository\org\springframework\spring-test\6.2.7\spring-test-6.2.7.jar;C:\Users\jitee\.m2\repository\org\xmlunit\xmlunit-core\2.10.1\xmlunit-core-2.10.1.jar;C:\Users\jitee\.m2\repository\org\springframework\kafka\spring-kafka-test\3.3.6\spring-kafka-test-3.3.6.jar;C:\Users\jitee\.m2\repository\org\apache\zookeeper\zookeeper\3.8.4\zookeeper-3.8.4.jar;C:\Users\jitee\.m2\repository\org\apache\zookeeper\zookeeper-jute\3.8.4\zookeeper-jute-3.8.4.jar;C:\Users\jitee\.m2\repository\org\apache\yetus\audience-annotations\0.12.0\audience-annotations-0.12.0.jar;C:\Users\jitee\.m2\repository\io\netty\netty-handler\4.1.121.Final\netty-handler-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-common\4.1.121.Final\netty-common-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-resolver\4.1.121.Final\netty-resolver-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-buffer\4.1.121.Final\netty-buffer-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-transport\4.1.121.Final\netty-transport-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-transport-native-unix-common\4.1.121.Final\netty-transport-native-unix-common-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-codec\4.1.121.Final\netty-codec-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-transport-native-epoll\4.1.121.Final\netty-transport-native-epoll-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\io\netty\netty-transport-classes-epoll\4.1.121.Final\netty-transport-classes-epoll-4.1.121.Final.jar;C:\Users\jitee\.m2\repository\ch\qos\logback\logback-core\1.5.18\logback-core-1.5.18.jar;C:\Users\jitee\.m2\repository\ch\qos\logback\logback-classic\1.5.18\logback-classic-1.5.18.jar;C:\Users\jitee\.m2\repository\commons-io\commons-io\2.11.0\commons-io-2.11.0.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-clients\3.9.1\kafka-clients-3.9.1-test.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-server\3.9.1\kafka-server-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-storage\3.9.1\kafka-storage-3.9.1.jar;C:\Users\jitee\.m2\repository\com\github\ben-manes\caffeine\caffeine\3.2.0\caffeine-3.2.0.jar;C:\Users\jitee\.m2\repository\org\jspecify\jspecify\1.0.0\jspecify-1.0.0.jar;C:\Users\jitee\.m2\repository\com\google\errorprone\error_prone_annotations\2.36.0\error_prone_annotations-2.36.0.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-group-coordinator\3.9.1\kafka-group-coordinator-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-transaction-coordinator\3.9.1\kafka-transaction-coordinator-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-raft\3.9.1\kafka-raft-3.9.1.jar;C:\Users\jitee\.m2\repository\com\yammer\metrics\metrics-core\2.2.0\metrics-core-2.2.0.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-metadata\3.9.1\kafka-metadata-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-server-common\3.9.1\kafka-server-common-3.9.1.jar;C:\Users\jitee\.m2\repository\net\sf\jopt-simple\jopt-simple\5.0.4\jopt-simple-5.0.4.jar;C:\Users\jitee\.m2\repository\org\pcollections\pcollections\4.0.1\pcollections-4.0.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-server-common\3.9.1\kafka-server-common-3.9.1-test.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-streams-test-utils\3.9.1\kafka-streams-test-utils-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-streams\3.9.1\kafka-streams-3.9.1.jar;C:\Users\jitee\.m2\repository\org\rocksdb\rocksdbjni\7.9.2\rocksdbjni-7.9.2.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka_2.13\3.9.1\kafka_2.13-3.9.1.jar;C:\Users\jitee\.m2\repository\org\scala-lang\scala-library\2.13.15\scala-library-2.13.15.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-group-coordinator-api\3.9.1\kafka-group-coordinator-api-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-storage-api\3.9.1\kafka-storage-api-3.9.1.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka-tools-api\3.9.1\kafka-tools-api-3.9.1.jar;C:\Users\jitee\.m2\repository\net\sourceforge\argparse4j\argparse4j\0.7.0\argparse4j-0.7.0.jar;C:\Users\jitee\.m2\repository\commons-validator\commons-validator\1.7\commons-validator-1.7.jar;C:\Users\jitee\.m2\repository\commons-beanutils\commons-beanutils\1.9.4\commons-beanutils-1.9.4.jar;C:\Users\jitee\.m2\repository\commons-digester\commons-digester\2.1\commons-digester-2.1.jar;C:\Users\jitee\.m2\repository\commons-collections\commons-collections\3.2.2\commons-collections-3.2.2.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\module\jackson-module-scala_2.13\2.19.0\jackson-module-scala_2.13-2.19.0.jar;C:\Users\jitee\.m2\repository\com\thoughtworks\paranamer\paranamer\2.8.3\paranamer-2.8.3.jar;C:\Users\jitee\.m2\repository\com\fasterxml\jackson\dataformat\jackson-dataformat-csv\2.19.0\jackson-dataformat-csv-2.19.0.jar;C:\Users\jitee\.m2\repository\org\bitbucket\b_c\jose4j\0.9.4\jose4j-0.9.4.jar;C:\Users\jitee\.m2\repository\org\scala-lang\modules\scala-collection-compat_2.13\2.10.0\scala-collection-compat_2.13-2.10.0.jar;C:\Users\jitee\.m2\repository\org\scala-lang\modules\scala-java8-compat_2.13\1.0.2\scala-java8-compat_2.13-1.0.2.jar;C:\Users\jitee\.m2\repository\org\scala-lang\scala-reflect\2.13.15\scala-reflect-2.13.15.jar;C:\Users\jitee\.m2\repository\com\typesafe\scala-logging\scala-logging_2.13\3.9.5\scala-logging_2.13-3.9.5.jar;C:\Users\jitee\.m2\repository\io\dropwizard\metrics\metrics-core\4.1.12.1\metrics-core-4.1.12.1.jar;C:\Users\jitee\.m2\repository\commons-cli\commons-cli\1.4\commons-cli-1.4.jar;C:\Users\jitee\.m2\repository\org\apache\kafka\kafka_2.13\3.9.1\kafka_2.13-3.9.1-test.jar;C:\Users\jitee\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.12.2\junit-jupiter-api-5.12.2.jar;C:\Users\jitee\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\jitee\.m2\repository\org\junit\platform\junit-platform-commons\1.12.2\junit-platform-commons-1.12.2.jar;C:\Users\jitee\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\jitee\.m2\repository\org\junit\platform\junit-platform-launcher\1.12.2\junit-platform-launcher-1.12.2.jar;C:\Users\jitee\.m2\repository\org\junit\platform\junit-platform-engine\1.12.2\junit-platform-engine-1.12.2.jar;C:\Users\jitee\.m2\repository\org\mockito\mockito-core\5.17.0\mockito-core-5.17.0.jar;C:\Users\jitee\.m2\repository\net\bytebuddy\byte-buddy\1.17.5\byte-buddy-1.17.5.jar;C:\Users\jitee\.m2\repository\net\bytebuddy\byte-buddy-agent\1.17.5\byte-buddy-agent-1.17.5.jar;C:\Users\jitee\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;
+2026-06-27T02:54:02.726+05:30  INFO 17452 --- [notification-service] [           main] org.apache.zookeeper.ZooKeeper           : Client environment:java.library.path=C:\Program Files\Eclipse Adoptium\jdk-21.0.9.10-hotspot\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\jitee\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\jitee\bin;C:\Program Files\Eclipse Adoptium\jdk-21.0.9.10-hotspot\bin;C:\Python311\Scripts;C:\Python311;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\ProgramData\chocolatey\bin;C:\Program Files\MongoDB\Server\7.0\bin;C:\mongosh-2.0.1-win32-x64\bin;C:\Users\jitee\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\jitee\AppData\Local\Programs\cursor\resources\app\bin;C:\Program Files\Java\jdk-20\bin;C:\Program Files\Go\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\Program Files\Git\cmd;C:\Program Files\Cloudflare\Cloudflare WARP;C:\ProgramData\chocolatey\lib\maven\apache-maven-3.9.16\bin;C:\Program Files\Docker\Docker\resources\bin;C:\Users\jitee\AppData\Local\Microsoft\WindowsApps;C:\Users\jitee\AppData\Local\Programs\Microsoft VS Code\bin;C:\DevTools\flutter\bin;C:\Users\jitee\AppData\Local\Pub\Cache\bin;C:\Users\jitee\AppData\Roaming\npm;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.1.4\bin;C:\Program Files\JetBrains\PyCharm Community Edition 2023.2.1\bin;C:\Users\jitee\go\bin;C:\Users\jitee\AppData\Local\GitHubDesktop\bin;C:\Program Files\JetBrains\IntelliJ IDEA 2025.3.3\bin;C:\Users\jitee\AppData\Roaming\nvm\v20.12.2;C:\Users\jitee\AppData\Roaming\nvm\v18.16.1;C:\Users\jitee\AppData\Roaming\nvm\v16.14.2;C:\Python311;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl;C:\Users\jitee\AppData\Roaming\Claude\local-agent-mode-sessions\da6d7f6a-3089-49bb-b0e1-4072f84ed20d\790eaa28-49cb-4da0-8067-45e5253c9749\rpm\plugin_011v5h6QUzBZvas64y44XLhy\bin;C:\Users\jitee\AppData\Roaming\Claude\local-agent-mode-sessions\da6d7f6a-3089-49bb-b0e1-4072f84ed20d\790eaa28-49cb-4da0-8067-45e5253c9749\rpm\plugin_0155zZVATbJU3jHUmPP9NvMC\bin;C:\Users\jitee\AppData\Roaming\Claude\local-agent-mode-sessions\da6d7f6a-3089-49bb-b0e1-4072f84ed20d\790eaa28-49cb-4da0-8067-45e5253c9749\rpm\plugin_01FTLa86dhbVJ3HB1LdHdhN7\bin;C:\Users\jitee\AppData\Roaming\Claude\local-agent-mode-sessions\skills-plugin\790eaa28-49cb-4da0-8067-45e5253c9749\da6d7f6a-3089-49bb-b0e1-4072f84ed20d\bin;.
+2026-06-27T02:54:02.727+05:30  INFO 17452 --- [notification-service] [           main] org.apache.zookeeper.ZooKeeper           : Client environment:java.io.tmpdir=C:\Users\jitee\AppData\Local\Temp\
+2026-06-27T02:54:02.727+05:30  INFO 17452 --- [notification-service] [           main] org.apache.zookeeper.ZooKeeper           : Client environment:java.compiler=<NA>
+2026-06-27T02:54:02.727+05:30  INFO 17452 --- [notification-service] [           main] org.apache.zookeeper.ZooKeeper           : Client environment:os.name=Windows 11
+2026-06-27T02:54:02.727+05:30  INFO 17452 --- [notification-service] [           main] org.apache.zookeeper.ZooKeeper           : Client environment:os.arch=amd64
+2026-06-27T02:54:02.727+05:30  INFO 17452 --- [notification-service] [           main] org.apache.zookeeper.ZooKeeper           : Client environment:os.version=10.0
+2026-06-27T02:54:02.727+05:30  INFO 17452 --- [notification-service] [           main] org.apache.zookeeper.ZooKeeper           : Client environment:user.name=jitee
+2026-06-27T02:54:02.727+05:30  INFO 17452 --- [notification-service] [           main] org.apache.zookeeper.ZooKeeper           : Client environment:user.home=C:\Users\jitee
+2026-06-27T02:54:02.728+05:30  INFO 17452 --- [notification-service] [           main] org.apache.zookeeper.ZooKeeper           : Client environment:user.dir=C:\Projects\ai-claims-processing-system\notification-service
+2026-06-27T02:54:02.728+05:30  INFO 17452 --- [notification-service] [           main] org.apache.zookeeper.ZooKeeper           : Client environment:os.memory.free=22MB
+2026-06-27T02:54:02.728+05:30  INFO 17452 --- [notification-service] [           main] org.apache.zookeeper.ZooKeeper           : Client environment:os.memory.max=4058MB
+2026-06-27T02:54:02.728+05:30  INFO 17452 --- [notification-service] [           main] org.apache.zookeeper.ZooKeeper           : Client environment:os.memory.total=54MB
+2026-06-27T02:54:02.733+05:30  INFO 17452 --- [notification-service] [           main] org.apache.zookeeper.ZooKeeper           : Initiating client connection, connectString=127.0.0.1:59085 sessionTimeout=18000 watcher=kafka.zookeeper.ZooKeeperClient$ZooKeeperClientWatcher$@57cb70be
+2026-06-27T02:54:02.739+05:30  INFO 17452 --- [notification-service] [           main] org.apache.zookeeper.ClientCnxnSocket    : jute.maxbuffer value is 4194304 Bytes
+2026-06-27T02:54:02.746+05:30  INFO 17452 --- [notification-service] [           main] org.apache.zookeeper.ClientCnxn          : zookeeper.request.timeout value is 0. feature enabled=false
+2026-06-27T02:54:02.748+05:30  INFO 17452 --- [notification-service] [27.0.0.1:59085)] org.apache.zookeeper.ClientCnxn          : Opening socket connection to server /127.0.0.1:59085.
+2026-06-27T02:54:02.748+05:30  INFO 17452 --- [notification-service] [           main] kafka.zookeeper.ZooKeeperClient          : [ZooKeeperClient Kafka server] Waiting until connected.
+2026-06-27T02:54:02.751+05:30  INFO 17452 --- [notification-service] [27.0.0.1:59085)] org.apache.zookeeper.ClientCnxn          : Socket connection established, initiating session, client: /127.0.0.1:59086, server: /127.0.0.1:59085
+2026-06-27T02:54:02.763+05:30  INFO 17452 --- [notification-service] [   SyncThread:0] o.a.z.server.persistence.FileTxnLog      : Creating new log file: log.1
+2026-06-27T02:54:02.782+05:30  INFO 17452 --- [notification-service] [   SyncThread:0] o.a.zookeeper.audit.ZKAuditProvider      : ZooKeeper audit is disabled.
+2026-06-27T02:54:02.789+05:30  INFO 17452 --- [notification-service] [27.0.0.1:59085)] org.apache.zookeeper.ClientCnxn          : Session establishment complete on server /127.0.0.1:59085, session id = 0x10010b15f300000, negotiated timeout = 16000
+2026-06-27T02:54:02.795+05:30  INFO 17452 --- [notification-service] [           main] kafka.zookeeper.ZooKeeperClient          : [ZooKeeperClient Kafka server] Connected.
+2026-06-27T02:54:03.020+05:30  INFO 17452 --- [notification-service] [           main] kafka.server.KafkaServer                 : Cluster ID = Dzsc0qpSTyKNPu6rmEBY2w
+2026-06-27T02:54:03.099+05:30  INFO 17452 --- [notification-service] [           main] kafka.server.KafkaConfig                 : KafkaConfig values: 
+	advertised.listeners = null
+	alter.config.policy.class.name = null
+	alter.log.dirs.replication.quota.window.num = 11
+	alter.log.dirs.replication.quota.window.size.seconds = 1
+	authorizer.class.name = 
+	auto.create.topics.enable = true
+	auto.include.jmx.reporter = true
+	auto.leader.rebalance.enable = true
+	background.threads = 2
+	broker.heartbeat.interval.ms = 2000
+	broker.id = 0
+	broker.id.generation.enable = true
+	broker.rack = null
+	broker.session.timeout.ms = 9000
+	client.quota.callback.class = null
+	compression.gzip.level = -1
+	compression.lz4.level = 9
+	compression.type = producer
+	compression.zstd.level = 3
+	connection.failed.authentication.delay.ms = 100
+	connections.max.idle.ms = 600000
+	connections.max.reauth.ms = 0
+	control.plane.listener.name = null
+	controlled.shutdown.enable = false
+	controlled.shutdown.max.retries = 3
+	controlled.shutdown.retry.backoff.ms = 100
+	controller.listener.names = null
+	controller.quorum.append.linger.ms = 25
+	controller.quorum.bootstrap.servers = []
+	controller.quorum.election.backoff.max.ms = 1000
+	controller.quorum.election.timeout.ms = 1000
+	controller.quorum.fetch.timeout.ms = 2000
+	controller.quorum.request.timeout.ms = 2000
+	controller.quorum.retry.backoff.ms = 20
+	controller.quorum.voters = []
+	controller.quota.window.num = 11
+	controller.quota.window.size.seconds = 1
+	controller.socket.timeout.ms = 1000
+	create.topic.policy.class.name = null
+	default.replication.factor = 1
+	delegation.token.expiry.check.interval.ms = 3600000
+	delegation.token.expiry.time.ms = 86400000
+	delegation.token.master.key = null
+	delegation.token.max.lifetime.ms = 604800000
+	delegation.token.secret.key = null
+	delete.records.purgatory.purge.interval.requests = 1
+	delete.topic.enable = true
+	early.start.listeners = null
+	eligible.leader.replicas.enable = false
+	fetch.max.bytes = 57671680
+	fetch.purgatory.purge.interval.requests = 1000
+	group.consumer.assignors = [org.apache.kafka.coordinator.group.assignor.UniformAssignor, org.apache.kafka.coordinator.group.assignor.RangeAssignor]
+	group.consumer.heartbeat.interval.ms = 5000
+	group.consumer.max.heartbeat.interval.ms = 15000
+	group.consumer.max.session.timeout.ms = 60000
+	group.consumer.max.size = 2147483647
+	group.consumer.migration.policy = disabled
+	group.consumer.min.heartbeat.interval.ms = 5000
+	group.consumer.min.session.timeout.ms = 45000
+	group.consumer.session.timeout.ms = 45000
+	group.coordinator.append.linger.ms = 10
+	group.coordinator.new.enable = false
+	group.coordinator.rebalance.protocols = [classic]
+	group.coordinator.threads = 1
+	group.initial.rebalance.delay.ms = 0
+	group.max.session.timeout.ms = 1800000
+	group.max.size = 2147483647
+	group.min.session.timeout.ms = 6000
+	group.share.delivery.count.limit = 5
+	group.share.enable = false
+	group.share.heartbeat.interval.ms = 5000
+	group.share.max.groups = 10
+	group.share.max.heartbeat.interval.ms = 15000
+	group.share.max.record.lock.duration.ms = 60000
+	group.share.max.session.timeout.ms = 60000
+	group.share.max.size = 200
+	group.share.min.heartbeat.interval.ms = 5000
+	group.share.min.record.lock.duration.ms = 15000
+	group.share.min.session.timeout.ms = 45000
+	group.share.partition.max.record.locks = 200
+	group.share.record.lock.duration.ms = 30000
+	group.share.session.timeout.ms = 45000
+	initial.broker.registration.timeout.ms = 60000
+	inter.broker.listener.name = null
+	inter.broker.protocol.version = 3.9-IV0
+	kafka.metrics.polling.interval.secs = 10
+	kafka.metrics.reporters = []
+	leader.imbalance.check.interval.seconds = 300
+	leader.imbalance.per.broker.percentage = 10
+	listener.security.protocol.map = SASL_SSL:SASL_SSL,PLAINTEXT:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT
+	listeners = PLAINTEXT://localhost:0
+	log.cleaner.backoff.ms = 15000
+	log.cleaner.dedupe.buffer.size = 2097152
+	log.cleaner.delete.retention.ms = 86400000
+	log.cleaner.enable = true
+	log.cleaner.io.buffer.load.factor = 0.9
+	log.cleaner.io.buffer.size = 524288
+	log.cleaner.io.max.bytes.per.second = 1.7976931348623157E308
+	log.cleaner.max.compaction.lag.ms = 9223372036854775807
+	log.cleaner.min.cleanable.ratio = 0.5
+	log.cleaner.min.compaction.lag.ms = 0
+	log.cleaner.threads = 1
+	log.cleanup.policy = [delete]
+	log.dir = C:\Users\jitee\AppData\Local\Temp\spring.kafka.ac936aa1-2031-447e-bafe-a0d34a475ca615441773443179439406
+	log.dir.failure.timeout.ms = 30000
+	log.dirs = null
+	log.flush.interval.messages = 9223372036854775807
+	log.flush.interval.ms = null
+	log.flush.offset.checkpoint.interval.ms = 60000
+	log.flush.scheduler.interval.ms = 9223372036854775807
+	log.flush.start.offset.checkpoint.interval.ms = 60000
+	log.index.interval.bytes = 4096
+	log.index.size.max.bytes = 10485760
+	log.initial.task.delay.ms = 100
+	log.local.retention.bytes = -2
+	log.local.retention.ms = -2
+	log.message.downconversion.enable = true
+	log.message.format.version = 3.0-IV1
+	log.message.timestamp.after.max.ms = 9223372036854775807
+	log.message.timestamp.before.max.ms = 9223372036854775807
+	log.message.timestamp.difference.max.ms = 9223372036854775807
+	log.message.timestamp.type = CreateTime
+	log.preallocate = false
+	log.retention.bytes = -1
+	log.retention.check.interval.ms = 300000
+	log.retention.hours = 168
+	log.retention.minutes = null
+	log.retention.ms = null
+	log.roll.hours = 168
+	log.roll.jitter.hours = 0
+	log.roll.jitter.ms = null
+	log.roll.ms = null
+	log.segment.bytes = 1073741824
+	log.segment.delete.delay.ms = 1000
+	max.connection.creation.rate = 2147483647
+	max.connections = 2147483647
+	max.connections.per.ip = 2147483647
+	max.connections.per.ip.overrides = 
+	max.incremental.fetch.session.cache.slots = 1000
+	max.request.partition.size.limit = 2000
+	message.max.bytes = 1048588
+	metadata.log.dir = null
+	metadata.log.max.record.bytes.between.snapshots = 20971520
+	metadata.log.max.snapshot.interval.ms = 3600000
+	metadata.log.segment.bytes = 1073741824
+	metadata.log.segment.min.bytes = 8388608
+	metadata.log.segment.ms = 604800000
+	metadata.max.idle.interval.ms = 500
+	metadata.max.retention.bytes = 104857600
+	metadata.max.retention.ms = 604800000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	min.insync.replicas = 1
+	node.id = 0
+	num.io.threads = 8
+	num.network.threads = 2
+	num.partitions = 1
+	num.recovery.threads.per.data.dir = 1
+	num.replica.alter.log.dirs.threads = null
+	num.replica.fetchers = 1
+	offset.metadata.max.bytes = 4096
+	offsets.commit.required.acks = -1
+	offsets.commit.timeout.ms = 5000
+	offsets.load.buffer.size = 5242880
+	offsets.retention.check.interval.ms = 600000
+	offsets.retention.minutes = 10080
+	offsets.topic.compression.codec = 0
+	offsets.topic.num.partitions = 5
+	offsets.topic.replication.factor = 1
+	offsets.topic.segment.bytes = 104857600
+	password.encoder.cipher.algorithm = AES/CBC/PKCS5Padding
+	password.encoder.iterations = 4096
+	password.encoder.key.length = 128
+	password.encoder.keyfactory.algorithm = null
+	password.encoder.old.secret = null
+	password.encoder.secret = null
+	principal.builder.class = class org.apache.kafka.common.security.authenticator.DefaultKafkaPrincipalBuilder
+	process.roles = []
+	producer.id.expiration.check.interval.ms = 600000
+	producer.id.expiration.ms = 86400000
+	producer.purgatory.purge.interval.requests = 1000
+	queued.max.request.bytes = -1
+	queued.max.requests = 500
+	quota.window.num = 11
+	quota.window.size.seconds = 1
+	remote.fetch.max.wait.ms = 500
+	remote.log.index.file.cache.total.size.bytes = 1073741824
+	remote.log.manager.copier.thread.pool.size = -1
+	remote.log.manager.copy.max.bytes.per.second = 9223372036854775807
+	remote.log.manager.copy.quota.window.num = 11
+	remote.log.manager.copy.quota.window.size.seconds = 1
+	remote.log.manager.expiration.thread.pool.size = -1
+	remote.log.manager.fetch.max.bytes.per.second = 9223372036854775807
+	remote.log.manager.fetch.quota.window.num = 11
+	remote.log.manager.fetch.quota.window.size.seconds = 1
+	remote.log.manager.task.interval.ms = 30000
+	remote.log.manager.task.retry.backoff.max.ms = 30000
+	remote.log.manager.task.retry.backoff.ms = 500
+	remote.log.manager.task.retry.jitter = 0.2
+	remote.log.manager.thread.pool.size = 10
+	remote.log.metadata.custom.metadata.max.bytes = 128
+	remote.log.metadata.manager.class.name = org.apache.kafka.server.log.remote.metadata.storage.TopicBasedRemoteLogMetadataManager
+	remote.log.metadata.manager.class.path = null
+	remote.log.metadata.manager.impl.prefix = rlmm.config.
+	remote.log.metadata.manager.listener.name = null
+	remote.log.reader.max.pending.tasks = 100
+	remote.log.reader.threads = 10
+	remote.log.storage.manager.class.name = null
+	remote.log.storage.manager.class.path = null
+	remote.log.storage.manager.impl.prefix = rsm.config.
+	remote.log.storage.system.enable = false
+	replica.fetch.backoff.ms = 1000
+	replica.fetch.max.bytes = 1048576
+	replica.fetch.min.bytes = 1
+	replica.fetch.response.max.bytes = 10485760
+	replica.fetch.wait.max.ms = 500
+	replica.high.watermark.checkpoint.interval.ms = 9223372036854775807
+	replica.lag.time.max.ms = 30000
+	replica.selector.class = null
+	replica.socket.receive.buffer.bytes = 65536
+	replica.socket.timeout.ms = 1000
+	replication.quota.window.num = 11
+	replication.quota.window.size.seconds = 1
+	request.timeout.ms = 30000
+	reserved.broker.max.id = 1000
+	sasl.client.callback.handler.class = null
+	sasl.enabled.mechanisms = [GSSAPI]
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.principal.to.local.rules = [DEFAULT]
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism.controller.protocol = GSSAPI
+	sasl.mechanism.inter.broker.protocol = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	sasl.server.callback.handler.class = null
+	sasl.server.max.receive.size = 524288
+	security.inter.broker.protocol = PLAINTEXT
+	security.providers = null
+	server.max.startup.time.ms = 9223372036854775807
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	socket.listen.backlog.size = 50
+	socket.receive.buffer.bytes = 102400
+	socket.request.max.bytes = 104857600
+	socket.send.buffer.bytes = 102400
+	ssl.allow.dn.changes = false
+	ssl.allow.san.changes = false
+	ssl.cipher.suites = []
+	ssl.client.auth = none
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.principal.mapping.rules = DEFAULT
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	telemetry.max.bytes = 1048576
+	transaction.abort.timed.out.transaction.cleanup.interval.ms = 10000
+	transaction.max.timeout.ms = 900000
+	transaction.partition.verification.enable = true
+	transaction.remove.expired.transaction.cleanup.interval.ms = 3600000
+	transaction.state.log.load.buffer.size = 5242880
+	transaction.state.log.min.isr = 2
+	transaction.state.log.num.partitions = 50
+	transaction.state.log.replication.factor = 1
+	transaction.state.log.segment.bytes = 104857600
+	transactional.id.expiration.ms = 604800000
+	unclean.leader.election.enable = false
+	unclean.leader.election.interval.ms = 300000
+	unstable.api.versions.enable = true
+	unstable.feature.versions.enable = true
+	zookeeper.clientCnxnSocket = null
+	zookeeper.connect = 127.0.0.1:59085
+	zookeeper.connection.timeout.ms = 10000
+	zookeeper.max.in.flight.requests = 10
+	zookeeper.metadata.migration.enable = false
+	zookeeper.metadata.migration.min.batch.size = 200
+	zookeeper.session.timeout.ms = 18000
+	zookeeper.set.acl = false
+	zookeeper.ssl.cipher.suites = null
+	zookeeper.ssl.client.enable = false
+	zookeeper.ssl.crl.enable = false
+	zookeeper.ssl.enabled.protocols = null
+	zookeeper.ssl.endpoint.identification.algorithm = HTTPS
+	zookeeper.ssl.keystore.location = null
+	zookeeper.ssl.keystore.password = null
+	zookeeper.ssl.keystore.type = null
+	zookeeper.ssl.ocsp.enable = false
+	zookeeper.ssl.protocol = TLSv1.2
+	zookeeper.ssl.truststore.location = null
+	zookeeper.ssl.truststore.password = null
+	zookeeper.ssl.truststore.type = null
+
+2026-06-27T02:54:03.151+05:30  INFO 17452 --- [notification-service] [nelReaper-Fetch] lientQuotaManager$ThrottledChannelReaper : [ThrottledChannelReaper-Fetch]: Starting
+2026-06-27T02:54:03.153+05:30  INFO 17452 --- [notification-service] [lReaper-Produce] lientQuotaManager$ThrottledChannelReaper : [ThrottledChannelReaper-Produce]: Starting
+2026-06-27T02:54:03.155+05:30  INFO 17452 --- [notification-service] [lReaper-Request] lientQuotaManager$ThrottledChannelReaper : [ThrottledChannelReaper-Request]: Starting
+2026-06-27T02:54:03.160+05:30  INFO 17452 --- [notification-service] [trollerMutation] lientQuotaManager$ThrottledChannelReaper : [ThrottledChannelReaper-ControllerMutation]: Starting
+2026-06-27T02:54:03.171+05:30  INFO 17452 --- [notification-service] [           main] kafka.server.KafkaServer                 : [KafkaServer id=0] Rewriting C:\Users\jitee\AppData\Local\Temp\spring.kafka.ac936aa1-2031-447e-bafe-a0d34a475ca615441773443179439406\meta.properties
+2026-06-27T02:54:03.230+05:30  INFO 17452 --- [notification-service] [           main] kafka.log.LogManager                     : Loading logs from log dirs ArrayBuffer(C:\Users\jitee\AppData\Local\Temp\spring.kafka.ac936aa1-2031-447e-bafe-a0d34a475ca615441773443179439406)
+2026-06-27T02:54:03.238+05:30  INFO 17452 --- [notification-service] [           main] kafka.log.LogManager                     : No logs found to be loaded in C:\Users\jitee\AppData\Local\Temp\spring.kafka.ac936aa1-2031-447e-bafe-a0d34a475ca615441773443179439406
+2026-06-27T02:54:03.250+05:30  INFO 17452 --- [notification-service] [           main] kafka.log.LogManager                     : Loaded 0 logs in 20ms
+2026-06-27T02:54:03.251+05:30  INFO 17452 --- [notification-service] [           main] kafka.log.LogManager                     : Starting log cleanup with a period of 300000 ms.
+2026-06-27T02:54:03.253+05:30  INFO 17452 --- [notification-service] [           main] kafka.log.LogManager                     : Starting log flusher with a default period of 9223372036854775807 ms.
+2026-06-27T02:54:03.269+05:30  INFO 17452 --- [notification-service] [           main] kafka.log.LogCleaner                     : Starting the log cleaner
+2026-06-27T02:54:03.282+05:30  INFO 17452 --- [notification-service] [leaner-thread-0] kafka.log.LogCleaner$CleanerThread       : [kafka-log-cleaner-thread-0]: Starting
+2026-06-27T02:54:03.309+05:30  INFO 17452 --- [notification-service] [-process-thread] stener$ChangeNotificationProcessorThread : [feature-zk-node-event-process-thread]: Starting
+2026-06-27T02:54:03.320+05:30  INFO 17452 --- [notification-service] [-process-thread] k.server.FinalizedFeatureChangeListener  : Feature ZK node at path: /feature does not exist
+2026-06-27T02:54:03.359+05:30  INFO 17452 --- [notification-service] [channel-manager] k.server.NodeToControllerRequestThread   : [zk-broker-0-to-controller-forwarding-channel-manager]: Starting
+2026-06-27T02:54:03.923+05:30  INFO 17452 --- [notification-service] [           main] kafka.network.ConnectionQuotas           : Updated connection-accept-rate max connection creation rate to 2147483647
+2026-06-27T02:54:03.932+05:30  INFO 17452 --- [notification-service] [           main] kafka.network.DataPlaneAcceptor          : Awaiting socket connections on localhost:59087.
+2026-06-27T02:54:03.933+05:30  INFO 17452 --- [notification-service] [           main] kafka.network.DataPlaneAcceptor          : Opened wildcard endpoint localhost:59087
+2026-06-27T02:54:03.981+05:30  INFO 17452 --- [notification-service] [           main] kafka.network.SocketServer               : [SocketServer listenerType=ZK_BROKER, nodeId=0] Created data-plane acceptor and processors for endpoint : ListenerName(PLAINTEXT)
+2026-06-27T02:54:03.991+05:30  INFO 17452 --- [notification-service] [channel-manager] k.server.NodeToControllerRequestThread   : [zk-broker-0-to-controller-alter-partition-channel-manager]: Starting
+2026-06-27T02:54:04.033+05:30  INFO 17452 --- [notification-service] [eaper-0-Produce] perationPurgatory$ExpiredOperationReaper : [ExpirationReaper-0-Produce]: Starting
+2026-06-27T02:54:04.034+05:30  INFO 17452 --- [notification-service] [nReaper-0-Fetch] perationPurgatory$ExpiredOperationReaper : [ExpirationReaper-0-Fetch]: Starting
+2026-06-27T02:54:04.035+05:30  INFO 17452 --- [notification-service] [0-DeleteRecords] perationPurgatory$ExpiredOperationReaper : [ExpirationReaper-0-DeleteRecords]: Starting
+2026-06-27T02:54:04.036+05:30  INFO 17452 --- [notification-service] [r-0-ElectLeader] perationPurgatory$ExpiredOperationReaper : [ExpirationReaper-0-ElectLeader]: Starting
+2026-06-27T02:54:04.037+05:30  INFO 17452 --- [notification-service] [r-0-RemoteFetch] perationPurgatory$ExpiredOperationReaper : [ExpirationReaper-0-RemoteFetch]: Starting
+2026-06-27T02:54:04.062+05:30  INFO 17452 --- [notification-service] [rFailureHandler] k.s.ReplicaManager$LogDirFailureHandler  : [LogDirFailureHandler]: Starting
+2026-06-27T02:54:04.062+05:30  INFO 17452 --- [notification-service] [nSenderThread-0] kafka.server.AddPartitionsToTxnManager   : [AddPartitionsToTxnSenderThread-0]: Starting
+2026-06-27T02:54:04.102+05:30  INFO 17452 --- [notification-service] [           main] kafka.zk.KafkaZkClient                   : Creating /brokers/ids/0 (is it secure? false)
+2026-06-27T02:54:04.132+05:30  INFO 17452 --- [notification-service] [           main] kafka.zk.KafkaZkClient                   : Stat of the created znode at /brokers/ids/0 is: 25,25,1782509044123,1782509044123,1,0,0,72075948030164992,204,0,25
+
+2026-06-27T02:54:04.133+05:30  INFO 17452 --- [notification-service] [           main] kafka.zk.KafkaZkClient                   : Registered broker 0 at path /brokers/ids/0 with addresses: PLAINTEXT://localhost:59087, czxid (broker epoch): 25
+2026-06-27T02:54:04.207+05:30  INFO 17452 --- [notification-service] [er-event-thread] rollerEventManager$ControllerEventThread : [ControllerEventThread controllerId=0] Starting
+2026-06-27T02:54:04.222+05:30  INFO 17452 --- [notification-service] [nReaper-0-topic] perationPurgatory$ExpiredOperationReaper : [ExpirationReaper-0-topic]: Starting
+2026-06-27T02:54:04.240+05:30  INFO 17452 --- [notification-service] [per-0-Heartbeat] perationPurgatory$ExpiredOperationReaper : [ExpirationReaper-0-Heartbeat]: Starting
+2026-06-27T02:54:04.241+05:30  INFO 17452 --- [notification-service] [per-0-Rebalance] perationPurgatory$ExpiredOperationReaper : [ExpirationReaper-0-Rebalance]: Starting
+2026-06-27T02:54:04.243+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.zk.KafkaZkClient                   : Successfully created /controller_epoch with initial epoch 0
+2026-06-27T02:54:04.256+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] 0 successfully elected as the controller. Epoch incremented to 1 and epoch zk version is now 1
+2026-06-27T02:54:04.261+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] Creating FeatureZNode at path: /feature with contents: FeatureZNode(2,Enabled,Map())
+2026-06-27T02:54:04.265+05:30  INFO 17452 --- [notification-service] [ain-EventThread] k.server.FinalizedFeatureChangeListener  : Feature ZK node created at path: /feature
+2026-06-27T02:54:04.280+05:30  INFO 17452 --- [notification-service] [           main] k.coordinator.group.GroupCoordinator     : [GroupCoordinator 0]: Starting up.
+2026-06-27T02:54:04.287+05:30  INFO 17452 --- [notification-service] [           main] k.coordinator.group.GroupCoordinator     : [GroupCoordinator 0]: Startup complete.
+2026-06-27T02:54:04.330+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] Registering handlers
+2026-06-27T02:54:04.331+05:30  INFO 17452 --- [notification-service] [-process-thread] kafka.server.metadata.ZkMetadataCache    : [MetadataCache brokerId=0] Updated cache from existing None to latest Features(metadataVersion=3.9-IV0, finalizedFeatures={}, finalizedFeaturesEpoch=0).
+2026-06-27T02:54:04.337+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] Deleting log dir event notifications
+2026-06-27T02:54:04.343+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] Deleting isr change notifications
+2026-06-27T02:54:04.348+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] Initializing controller context
+2026-06-27T02:54:04.352+05:30  INFO 17452 --- [notification-service] [           main] k.c.transaction.TransactionCoordinator   : [TransactionCoordinator id=0] Starting up.
+2026-06-27T02:54:04.356+05:30  INFO 17452 --- [notification-service] [rSenderThread-0] k.c.t.TransactionMarkerChannelManager    : [TxnMarkerSenderThread-0]: Starting
+2026-06-27T02:54:04.356+05:30  INFO 17452 --- [notification-service] [           main] k.c.transaction.TransactionCoordinator   : [TransactionCoordinator id=0] Startup complete.
+2026-06-27T02:54:04.378+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] Initialized broker epochs cache: HashMap(0 -> 25)
+2026-06-27T02:54:04.414+05:30  INFO 17452 --- [notification-service] [r-0-send-thread] kafka.controller.RequestSendThread       : [RequestSendThread controllerId=0] Starting
+2026-06-27T02:54:04.420+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] Currently active brokers in the cluster: Set(0)
+2026-06-27T02:54:04.421+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] Currently shutting brokers in the cluster: HashSet()
+2026-06-27T02:54:04.422+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] Current list of topics in the cluster: HashSet()
+2026-06-27T02:54:04.423+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] Fetching topic deletions in progress
+2026-06-27T02:54:04.428+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] List of topics to be deleted: 
+2026-06-27T02:54:04.429+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] List of topics ineligible for deletion: 
+2026-06-27T02:54:04.430+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] Initializing topic deletion manager
+2026-06-27T02:54:04.431+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.TopicDeletionManager    : [Topic Deletion Manager 0] Initializing manager with initial deletions: Set(), initial ineligible deletions: HashSet()
+2026-06-27T02:54:04.434+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] Sending update metadata request
+2026-06-27T02:54:04.442+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Sending UpdateMetadata request to brokers HashSet(0) for 0 partitions
+2026-06-27T02:54:04.461+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.ZkReplicaStateMachine   : [ReplicaStateMachine controllerId=0] Initializing replica state
+2026-06-27T02:54:04.462+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.ZkReplicaStateMachine   : [ReplicaStateMachine controllerId=0] Triggering online replica state changes
+2026-06-27T02:54:04.485+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.ZkReplicaStateMachine   : [ReplicaStateMachine controllerId=0] Triggering offline replica state changes
+2026-06-27T02:54:04.486+05:30  INFO 17452 --- [notification-service] [er-event-thread] k.controller.ZkPartitionStateMachine     : [PartitionStateMachine controllerId=0] Initializing partition state
+2026-06-27T02:54:04.489+05:30  INFO 17452 --- [notification-service] [er-event-thread] k.controller.ZkPartitionStateMachine     : [PartitionStateMachine controllerId=0] Triggering online partition state changes
+2026-06-27T02:54:04.501+05:30  INFO 17452 --- [notification-service] [r-0-send-thread] kafka.controller.RequestSendThread       : [RequestSendThread controllerId=0] Controller 0 connected to localhost:59087 (id: 0 rack: null) for sending state change requests
+2026-06-27T02:54:04.502+05:30  INFO 17452 --- [notification-service] [per-0-AlterAcls] perationPurgatory$ExpiredOperationReaper : [ExpirationReaper-0-AlterAcls]: Starting
+2026-06-27T02:54:04.511+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] Ready to serve as the new controller with epoch 1
+2026-06-27T02:54:04.526+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] Partitions undergoing preferred replica election: 
+2026-06-27T02:54:04.528+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] Partitions that completed preferred replica election: 
+2026-06-27T02:54:04.529+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] Skipping preferred replica election for partitions due to topic deletion: 
+2026-06-27T02:54:04.530+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] Resuming preferred replica election for partitions: 
+2026-06-27T02:54:04.535+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] Starting replica leader election (PREFERRED) for partitions  triggered by ZkTriggered
+2026-06-27T02:54:04.583+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] Starting the controller scheduler
+2026-06-27T02:54:04.620+05:30  INFO 17452 --- [notification-service] [-process-thread] icationListener$ChangeEventProcessThread : [/config/changes-event-process-thread]: Starting
+2026-06-27T02:54:04.635+05:30  INFO 17452 --- [notification-service] [           main] kafka.network.SocketServer               : [SocketServer listenerType=ZK_BROKER, nodeId=0] Enabling request processing.
+2026-06-27T02:54:04.641+05:30  INFO 17452 --- [notification-service] [           main] kafka.server.KafkaServer                 : [KafkaServer id=0] Start processing authorizer futures
+2026-06-27T02:54:04.642+05:30  INFO 17452 --- [notification-service] [           main] kafka.server.KafkaServer                 : [KafkaServer id=0] End processing authorizer futures
+2026-06-27T02:54:04.642+05:30  INFO 17452 --- [notification-service] [           main] kafka.server.KafkaServer                 : [KafkaServer id=0] Start processing enable request processing future
+2026-06-27T02:54:04.643+05:30  INFO 17452 --- [notification-service] [           main] kafka.server.KafkaServer                 : [KafkaServer id=0] End processing enable request processing future
+2026-06-27T02:54:04.648+05:30  INFO 17452 --- [notification-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.9.1
+2026-06-27T02:54:04.648+05:30  INFO 17452 --- [notification-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: f745dfdcee2b9851
+2026-06-27T02:54:04.648+05:30  INFO 17452 --- [notification-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1782509044643
+2026-06-27T02:54:04.651+05:30  INFO 17452 --- [notification-service] [           main] kafka.server.KafkaServer                 : [KafkaServer id=0] started
+2026-06-27T02:54:04.665+05:30  INFO 17452 --- [notification-service] [           main] o.a.k.clients.admin.AdminClientConfig    : AdminClientConfig values: 
+	auto.include.jmx.reporter = true
+	bootstrap.controllers = []
+	bootstrap.servers = [127.0.0.1:59087]
+	client.dns.lookup = use_all_dns_ips
+	client.id = 
+	connections.max.idle.ms = 300000
+	default.api.timeout.ms = 60000
+	enable.metrics.push = true
+	metadata.max.age.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.header.urlencode = false
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+
+2026-06-27T02:54:04.743+05:30  INFO 17452 --- [notification-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.9.1
+2026-06-27T02:54:04.743+05:30  INFO 17452 --- [notification-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: f745dfdcee2b9851
+2026-06-27T02:54:04.743+05:30  INFO 17452 --- [notification-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1782509044743
+2026-06-27T02:54:04.755+05:30  INFO 17452 --- [notification-service] [channel-manager] k.server.NodeToControllerRequestThread   : [zk-broker-0-to-controller-alter-partition-channel-manager]: Recorded new ZK controller, from now on will use node localhost:59087 (id: 0 rack: null)
+2026-06-27T02:54:04.768+05:30  INFO 17452 --- [notification-service] [channel-manager] k.server.NodeToControllerRequestThread   : [zk-broker-0-to-controller-forwarding-channel-manager]: Recorded new ZK controller, from now on will use node localhost:59087 (id: 0 rack: null)
+2026-06-27T02:54:04.891+05:30  INFO 17452 --- [notification-service] [quest-handler-5] kafka.zk.AdminZkClient                   : Creating topic claim-rejected-topic with configuration {} and initial partition assignment HashMap(0 -> ArrayBuffer(0))
+2026-06-27T02:54:04.942+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] New topics: [Set(claim-rejected-topic)], deleted topics: [HashSet()], new partition replica assignment [Set(TopicIdReplicaAssignment(claim-rejected-topic,Some(Ff4WDYYNRGSjt0H7uFwv5w),Map(claim-rejected-topic-0 -> ReplicaAssignment(replicas=0, addingReplicas=, removingReplicas=))))]
+2026-06-27T02:54:04.944+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] New partition creation callback for claim-rejected-topic-0
+2026-06-27T02:54:04.949+05:30  INFO 17452 --- [notification-service] [quest-handler-5] kafka.zk.AdminZkClient                   : Creating topic claim-approved-topic with configuration {} and initial partition assignment HashMap(0 -> ArrayBuffer(0))
+2026-06-27T02:54:04.951+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Changed partition claim-rejected-topic-0 state from NonExistentPartition to NewPartition with assigned replicas 0
+2026-06-27T02:54:04.951+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Sending UpdateMetadata request to brokers HashSet() for 0 partitions
+2026-06-27T02:54:04.966+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Sending UpdateMetadata request to brokers HashSet() for 0 partitions
+2026-06-27T02:54:05.017+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Changed partition claim-rejected-topic-0 from NewPartition to OnlinePartition with state LeaderAndIsr(leader=0, leaderEpoch=0, isrWithBrokerEpoch=List(BrokerState(brokerId=0, brokerEpoch=-1)), leaderRecoveryState=RECOVERED, partitionEpoch=0)
+2026-06-27T02:54:05.022+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Sending LeaderAndIsr request to broker 0 with 1 become-leader and 0 become-follower partitions
+2026-06-27T02:54:05.025+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Sending UpdateMetadata request to brokers HashSet(0) for 1 partitions
+2026-06-27T02:54:05.027+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Sending UpdateMetadata request to brokers HashSet() for 0 partitions
+2026-06-27T02:54:05.032+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] New topics: [Set(claim-approved-topic)], deleted topics: [HashSet()], new partition replica assignment [Set(TopicIdReplicaAssignment(claim-approved-topic,Some(q5awyqKuQMGR0JX36odB0g),Map(claim-approved-topic-0 -> ReplicaAssignment(replicas=0, addingReplicas=, removingReplicas=))))]
+2026-06-27T02:54:05.033+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] New partition creation callback for claim-approved-topic-0
+2026-06-27T02:54:05.033+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Changed partition claim-approved-topic-0 state from NonExistentPartition to NewPartition with assigned replicas 0
+2026-06-27T02:54:05.033+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Sending UpdateMetadata request to brokers HashSet() for 0 partitions
+2026-06-27T02:54:05.034+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Sending UpdateMetadata request to brokers HashSet() for 0 partitions
+2026-06-27T02:54:05.036+05:30  INFO 17452 --- [notification-service] [quest-handler-0] state.change.logger                      : [Broker id=0] Handling LeaderAndIsr request correlationId 1 from controller 0 for 1 partitions
+2026-06-27T02:54:05.044+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Changed partition claim-approved-topic-0 from NewPartition to OnlinePartition with state LeaderAndIsr(leader=0, leaderEpoch=0, isrWithBrokerEpoch=List(BrokerState(brokerId=0, brokerEpoch=-1)), leaderRecoveryState=RECOVERED, partitionEpoch=0)
+2026-06-27T02:54:05.044+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Sending LeaderAndIsr request to broker 0 with 1 become-leader and 0 become-follower partitions
+2026-06-27T02:54:05.044+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Sending UpdateMetadata request to brokers HashSet(0) for 1 partitions
+2026-06-27T02:54:05.045+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Sending UpdateMetadata request to brokers HashSet() for 0 partitions
+2026-06-27T02:54:05.090+05:30  INFO 17452 --- [notification-service] [quest-handler-0] kafka.server.ReplicaFetcherManager       : [ReplicaFetcherManager on broker 0] Removed fetcher for partitions Set(claim-rejected-topic-0)
+2026-06-27T02:54:05.092+05:30  INFO 17452 --- [notification-service] [quest-handler-0] state.change.logger                      : [Broker id=0] Stopped fetchers as part of LeaderAndIsr request correlationId 1 from controller 0 epoch 1 as part of the become-leader transition for 1 partitions
+2026-06-27T02:54:05.272+05:30  INFO 17452 --- [notification-service] [quest-handler-0] kafka.log.UnifiedLog$                    : [LogLoader partition=claim-rejected-topic-0, dir=C:\Users\jitee\AppData\Local\Temp\spring.kafka.ac936aa1-2031-447e-bafe-a0d34a475ca615441773443179439406] Loading producer state till offset 0 with message format version 2
+2026-06-27T02:54:05.300+05:30  INFO 17452 --- [notification-service] [quest-handler-0] kafka.log.LogManager                     : Created log for partition claim-rejected-topic-0 in C:\Users\jitee\AppData\Local\Temp\spring.kafka.ac936aa1-2031-447e-bafe-a0d34a475ca615441773443179439406\claim-rejected-topic-0 with properties {}
+2026-06-27T02:54:05.303+05:30  INFO 17452 --- [notification-service] [quest-handler-0] kafka.cluster.Partition                  : [Partition claim-rejected-topic-0 broker=0] No checkpointed highwatermark is found for partition claim-rejected-topic-0
+2026-06-27T02:54:05.307+05:30  INFO 17452 --- [notification-service] [quest-handler-0] kafka.cluster.Partition                  : [Partition claim-rejected-topic-0 broker=0] Log loaded for partition claim-rejected-topic-0 with initial high watermark 0
+2026-06-27T02:54:05.313+05:30  INFO 17452 --- [notification-service] [quest-handler-0] state.change.logger                      : [Broker id=0] Leader claim-rejected-topic-0 with topic id Some(Ff4WDYYNRGSjt0H7uFwv5w) starts at leader epoch 0 from offset 0 with partition epoch 0, high watermark 0, ISR [0], adding replicas [] and removing replicas [] . Previous leader None and previous leader epoch was -1.
+2026-06-27T02:54:05.338+05:30  INFO 17452 --- [notification-service] [quest-handler-0] state.change.logger                      : [Broker id=0] Finished LeaderAndIsr request in 307ms correlationId 1 from controller 0 for 1 partitions
+2026-06-27T02:54:05.354+05:30  INFO 17452 --- [notification-service] [quest-handler-2] state.change.logger                      : [Broker id=0] Add 1 partitions and deleted 0 partitions from metadata cache in response to UpdateMetadata request sent by controller 0 epoch 1 with correlation id 2
+2026-06-27T02:54:05.359+05:30  INFO 17452 --- [notification-service] [quest-handler-4] state.change.logger                      : [Broker id=0] Handling LeaderAndIsr request correlationId 3 from controller 0 for 1 partitions
+2026-06-27T02:54:05.360+05:30  INFO 17452 --- [notification-service] [quest-handler-4] kafka.server.ReplicaFetcherManager       : [ReplicaFetcherManager on broker 0] Removed fetcher for partitions Set(claim-approved-topic-0)
+2026-06-27T02:54:05.361+05:30  INFO 17452 --- [notification-service] [quest-handler-4] state.change.logger                      : [Broker id=0] Stopped fetchers as part of LeaderAndIsr request correlationId 3 from controller 0 epoch 1 as part of the become-leader transition for 1 partitions
+2026-06-27T02:54:05.373+05:30  INFO 17452 --- [notification-service] [quest-handler-4] kafka.log.UnifiedLog$                    : [LogLoader partition=claim-approved-topic-0, dir=C:\Users\jitee\AppData\Local\Temp\spring.kafka.ac936aa1-2031-447e-bafe-a0d34a475ca615441773443179439406] Loading producer state till offset 0 with message format version 2
+2026-06-27T02:54:05.375+05:30  INFO 17452 --- [notification-service] [quest-handler-4] kafka.log.LogManager                     : Created log for partition claim-approved-topic-0 in C:\Users\jitee\AppData\Local\Temp\spring.kafka.ac936aa1-2031-447e-bafe-a0d34a475ca615441773443179439406\claim-approved-topic-0 with properties {}
+2026-06-27T02:54:05.382+05:30  INFO 17452 --- [notification-service] [quest-handler-4] kafka.cluster.Partition                  : [Partition claim-approved-topic-0 broker=0] No checkpointed highwatermark is found for partition claim-approved-topic-0
+2026-06-27T02:54:05.383+05:30  INFO 17452 --- [notification-service] [quest-handler-4] kafka.cluster.Partition                  : [Partition claim-approved-topic-0 broker=0] Log loaded for partition claim-approved-topic-0 with initial high watermark 0
+2026-06-27T02:54:05.383+05:30  INFO 17452 --- [notification-service] [quest-handler-4] state.change.logger                      : [Broker id=0] Leader claim-approved-topic-0 with topic id Some(q5awyqKuQMGR0JX36odB0g) starts at leader epoch 0 from offset 0 with partition epoch 0, high watermark 0, ISR [0], adding replicas [] and removing replicas [] . Previous leader None and previous leader epoch was -1.
+2026-06-27T02:54:05.389+05:30  INFO 17452 --- [notification-service] [quest-handler-4] state.change.logger                      : [Broker id=0] Finished LeaderAndIsr request in 30ms correlationId 3 from controller 0 for 1 partitions
+2026-06-27T02:54:05.392+05:30  INFO 17452 --- [notification-service] [quest-handler-3] state.change.logger                      : [Broker id=0] Add 1 partitions and deleted 0 partitions from metadata cache in response to UpdateMetadata request sent by controller 0 epoch 1 with correlation id 4
+2026-06-27T02:54:05.419+05:30  INFO 17452 --- [notification-service] [| adminclient-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.admin.client for adminclient-1 unregistered
+2026-06-27T02:54:05.430+05:30  INFO 17452 --- [notification-service] [| adminclient-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-06-27T02:54:05.430+05:30  INFO 17452 --- [notification-service] [| adminclient-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-06-27T02:54:05.431+05:30  INFO 17452 --- [notification-service] [| adminclient-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-06-27T02:54:05.469+05:30  INFO 17452 --- [notification-service] [           main] .c.n.NotificationServiceApplicationTests : Starting NotificationServiceApplicationTests using Java 21.0.9 with PID 17452 (started by jitee in C:\Projects\ai-claims-processing-system\notification-service)
+2026-06-27T02:54:05.471+05:30 DEBUG 17452 --- [notification-service] [           main] .c.n.NotificationServiceApplicationTests : Running with Spring Boot v3.5.0, Spring v6.2.7
+2026-06-27T02:54:05.472+05:30  INFO 17452 --- [notification-service] [           main] .c.n.NotificationServiceApplicationTests : The following 1 profile is active: "test"
+2026-06-27T02:54:09.595+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] Processing automatic preferred replica leader election
+2026-06-27T02:54:11.179+05:30  WARN 17452 --- [notification-service] [           main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2026-06-27T02:54:12.291+05:30  INFO 17452 --- [notification-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoints beneath base path '/actuator'
+2026-06-27T02:54:12.597+05:30  INFO 17452 --- [notification-service] [           main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = earliest
+	bootstrap.servers = [127.0.0.1:59087]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-notification-service-test-group-1
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = notification-service-test-group
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.header.urlencode = false
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.springframework.kafka.support.serializer.JsonDeserializer
+
+2026-06-27T02:54:12.720+05:30  INFO 17452 --- [notification-service] [           main] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2026-06-27T02:54:12.845+05:30  INFO 17452 --- [notification-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.9.1
+2026-06-27T02:54:12.845+05:30  INFO 17452 --- [notification-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: f745dfdcee2b9851
+2026-06-27T02:54:12.845+05:30  INFO 17452 --- [notification-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1782509052845
+2026-06-27T02:54:12.851+05:30  INFO 17452 --- [notification-service] [           main] o.a.k.c.c.i.ClassicKafkaConsumer         : [Consumer clientId=consumer-notification-service-test-group-1, groupId=notification-service-test-group] Subscribed to topic(s): claim-approved-topic
+2026-06-27T02:54:12.890+05:30  INFO 17452 --- [notification-service] [           main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = earliest
+	bootstrap.servers = [127.0.0.1:59087]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-notification-service-test-group-2
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = notification-service-test-group
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.header.urlencode = false
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.springframework.kafka.support.serializer.JsonDeserializer
+
+2026-06-27T02:54:12.891+05:30  INFO 17452 --- [notification-service] [           main] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2026-06-27T02:54:12.910+05:30  INFO 17452 --- [notification-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.9.1
+2026-06-27T02:54:12.910+05:30  INFO 17452 --- [notification-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: f745dfdcee2b9851
+2026-06-27T02:54:12.911+05:30  INFO 17452 --- [notification-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1782509052910
+2026-06-27T02:54:12.911+05:30  INFO 17452 --- [notification-service] [           main] o.a.k.c.c.i.ClassicKafkaConsumer         : [Consumer clientId=consumer-notification-service-test-group-2, groupId=notification-service-test-group] Subscribed to topic(s): claim-rejected-topic
+2026-06-27T02:54:12.972+05:30  INFO 17452 --- [notification-service] [ntainer#0-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-notification-service-test-group-1, groupId=notification-service-test-group] Cluster ID: Dzsc0qpSTyKNPu6rmEBY2w
+2026-06-27T02:54:12.972+05:30  INFO 17452 --- [notification-service] [ntainer#1-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-notification-service-test-group-2, groupId=notification-service-test-group] Cluster ID: Dzsc0qpSTyKNPu6rmEBY2w
+2026-06-27T02:54:12.976+05:30  INFO 17452 --- [notification-service] [quest-handler-2] kafka.zk.AdminZkClient                   : Creating topic __consumer_offsets with configuration {compression.type=producer, cleanup.policy=compact, segment.bytes=104857600} and initial partition assignment HashMap(0 -> ArrayBuffer(0), 1 -> ArrayBuffer(0), 2 -> ArrayBuffer(0), 3 -> ArrayBuffer(0), 4 -> ArrayBuffer(0))
+2026-06-27T02:54:12.980+05:30  INFO 17452 --- [notification-service] [           main] .c.n.NotificationServiceApplicationTests : Started NotificationServiceApplicationTests in 12.675 seconds (process running for 14.494)
+2026-06-27T02:54:12.997+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] New topics: [Set(__consumer_offsets)], deleted topics: [HashSet()], new partition replica assignment [Set(TopicIdReplicaAssignment(__consumer_offsets,Some(1C0otnaBTEup-UMTDTHi-g),HashMap(__consumer_offsets-4 -> ReplicaAssignment(replicas=0, addingReplicas=, removingReplicas=), __consumer_offsets-3 -> ReplicaAssignment(replicas=0, addingReplicas=, removingReplicas=), __consumer_offsets-2 -> ReplicaAssignment(replicas=0, addingReplicas=, removingReplicas=), __consumer_offsets-0 -> ReplicaAssignment(replicas=0, addingReplicas=, removingReplicas=), __consumer_offsets-1 -> ReplicaAssignment(replicas=0, addingReplicas=, removingReplicas=))))]
+2026-06-27T02:54:13.000+05:30  INFO 17452 --- [notification-service] [er-event-thread] kafka.controller.KafkaController         : [Controller id=0] New partition creation callback for __consumer_offsets-4,__consumer_offsets-3,__consumer_offsets-2,__consumer_offsets-0,__consumer_offsets-1
+2026-06-27T02:54:13.001+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Changed partition __consumer_offsets-4 state from NonExistentPartition to NewPartition with assigned replicas 0
+2026-06-27T02:54:13.001+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Changed partition __consumer_offsets-3 state from NonExistentPartition to NewPartition with assigned replicas 0
+2026-06-27T02:54:13.001+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Changed partition __consumer_offsets-2 state from NonExistentPartition to NewPartition with assigned replicas 0
+2026-06-27T02:54:13.002+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Changed partition __consumer_offsets-0 state from NonExistentPartition to NewPartition with assigned replicas 0
+2026-06-27T02:54:13.002+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Changed partition __consumer_offsets-1 state from NonExistentPartition to NewPartition with assigned replicas 0
+2026-06-27T02:54:13.002+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Sending UpdateMetadata request to brokers HashSet() for 0 partitions
+2026-06-27T02:54:13.003+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Sending UpdateMetadata request to brokers HashSet() for 0 partitions
+2026-06-27T02:54:13.023+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Changed partition __consumer_offsets-4 from NewPartition to OnlinePartition with state LeaderAndIsr(leader=0, leaderEpoch=0, isrWithBrokerEpoch=List(BrokerState(brokerId=0, brokerEpoch=-1)), leaderRecoveryState=RECOVERED, partitionEpoch=0)
+2026-06-27T02:54:13.024+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Changed partition __consumer_offsets-3 from NewPartition to OnlinePartition with state LeaderAndIsr(leader=0, leaderEpoch=0, isrWithBrokerEpoch=List(BrokerState(brokerId=0, brokerEpoch=-1)), leaderRecoveryState=RECOVERED, partitionEpoch=0)
+2026-06-27T02:54:13.024+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Changed partition __consumer_offsets-2 from NewPartition to OnlinePartition with state LeaderAndIsr(leader=0, leaderEpoch=0, isrWithBrokerEpoch=List(BrokerState(brokerId=0, brokerEpoch=-1)), leaderRecoveryState=RECOVERED, partitionEpoch=0)
+2026-06-27T02:54:13.025+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Changed partition __consumer_offsets-0 from NewPartition to OnlinePartition with state LeaderAndIsr(leader=0, leaderEpoch=0, isrWithBrokerEpoch=List(BrokerState(brokerId=0, brokerEpoch=-1)), leaderRecoveryState=RECOVERED, partitionEpoch=0)
+2026-06-27T02:54:13.025+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Changed partition __consumer_offsets-1 from NewPartition to OnlinePartition with state LeaderAndIsr(leader=0, leaderEpoch=0, isrWithBrokerEpoch=List(BrokerState(brokerId=0, brokerEpoch=-1)), leaderRecoveryState=RECOVERED, partitionEpoch=0)
+2026-06-27T02:54:13.026+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Sending LeaderAndIsr request to broker 0 with 5 become-leader and 0 become-follower partitions
+2026-06-27T02:54:13.027+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Sending UpdateMetadata request to brokers HashSet(0) for 5 partitions
+2026-06-27T02:54:13.029+05:30  INFO 17452 --- [notification-service] [er-event-thread] state.change.logger                      : [Controller id=0 epoch=1] Sending UpdateMetadata request to brokers HashSet() for 0 partitions
+2026-06-27T02:54:13.030+05:30  INFO 17452 --- [notification-service] [quest-handler-4] state.change.logger                      : [Broker id=0] Handling LeaderAndIsr request correlationId 5 from controller 0 for 5 partitions
+2026-06-27T02:54:13.048+05:30  INFO 17452 --- [notification-service] [quest-handler-4] kafka.server.ReplicaFetcherManager       : [ReplicaFetcherManager on broker 0] Removed fetcher for partitions HashSet(__consumer_offsets-4, __consumer_offsets-3, __consumer_offsets-2, __consumer_offsets-0, __consumer_offsets-1)
+2026-06-27T02:54:13.049+05:30  INFO 17452 --- [notification-service] [quest-handler-4] state.change.logger                      : [Broker id=0] Stopped fetchers as part of LeaderAndIsr request correlationId 5 from controller 0 epoch 1 as part of the become-leader transition for 5 partitions
+2026-06-27T02:54:13.064+05:30  INFO 17452 --- [notification-service] [quest-handler-4] kafka.log.UnifiedLog$                    : [LogLoader partition=__consumer_offsets-3, dir=C:\Users\jitee\AppData\Local\Temp\spring.kafka.ac936aa1-2031-447e-bafe-a0d34a475ca615441773443179439406] Loading producer state till offset 0 with message format version 2
+2026-06-27T02:54:13.066+05:30  INFO 17452 --- [notification-service] [quest-handler-4] kafka.log.LogManager                     : Created log for partition __consumer_offsets-3 in C:\Users\jitee\AppData\Local\Temp\spring.kafka.ac936aa1-2031-447e-bafe-a0d34a475ca615441773443179439406\__consumer_offsets-3 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600}
+2026-06-27T02:54:13.068+05:30  INFO 17452 --- [notification-service] [quest-handler-4] kafka.cluster.Partition                  : [Partition __consumer_offsets-3 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-3
+2026-06-27T02:54:13.068+05:30  INFO 17452 --- [notification-service] [quest-handler-4] kafka.cluster.Partition                  : [Partition __consumer_offsets-3 broker=0] Log loaded for partition __consumer_offsets-3 with initial high watermark 0
+2026-06-27T02:54:13.069+05:30  INFO 17452 --- [notification-service] [quest-handler-4] state.change.logger                      : [Broker id=0] Leader __consumer_offsets-3 with topic id Some(1C0otnaBTEup-UMTDTHi-g) starts at leader epoch 0 from offset 0 with partition epoch 0, high watermark 0, ISR [0], adding replicas [] and removing replicas [] . Previous leader None and previous leader epoch was -1.
+2026-06-27T02:54:13.088+05:30  INFO 17452 --- [notification-service] [quest-handler-4] kafka.log.UnifiedLog$                    : [LogLoader partition=__consumer_offsets-2, dir=C:\Users\jitee\AppData\Local\Temp\spring.kafka.ac936aa1-2031-447e-bafe-a0d34a475ca615441773443179439406] Loading producer state till offset 0 with message format version 2
+2026-06-27T02:54:13.091+05:30  INFO 17452 --- [notification-service] [quest-handler-4] kafka.log.LogManager                     : Created log for partition __consumer_offsets-2 in C:\Users\jitee\AppData\Local\Temp\spring.kafka.ac936aa1-2031-447e-bafe-a0d34a475ca615441773443179439406\__consumer_offsets-2 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600}
+2026-06-27T02:54:13.091+05:30  INFO 17452 --- [notification-service] [quest-handler-4] kafka.cluster.Partition                  : [Partition __consumer_offsets-2 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-2
+2026-06-27T02:54:13.091+05:30  INFO 17452 --- [notification-service] [quest-handler-4] kafka.cluster.Partition                  : [Partition __consumer_offsets-2 broker=0] Log loaded for partition __consumer_offsets-2 with initial high watermark 0
+2026-06-27T02:54:13.092+05:30  INFO 17452 --- [notification-service] [quest-handler-4] state.change.logger                      : [Broker id=0] Leader __consumer_offsets-2 with topic id Some(1C0otnaBTEup-UMTDTHi-g) starts at leader epoch 0 from offset 0 with partition epoch 0, high watermark 0, ISR [0], adding replicas [] and removing replicas [] . Previous leader None and previous leader epoch was -1.
+2026-06-27T02:54:13.115+05:30  INFO 17452 --- [notification-service] [quest-handler-4] kafka.log.UnifiedLog$                    : [LogLoader partition=__consumer_offsets-4, dir=C:\Users\jitee\AppData\Local\Temp\spring.kafka.ac936aa1-2031-447e-bafe-a0d34a475ca615441773443179439406] Loading producer state till offset 0 with message format version 2
+2026-06-27T02:54:13.117+05:30  INFO 17452 --- [notification-service] [quest-handler-4] kafka.log.LogManager                     : Created log for partition __consumer_offsets-4 in C:\Users\jitee\AppData\Local\Temp\spring.kafka.ac936aa1-2031-447e-bafe-a0d34a475ca615441773443179439406\__consumer_offsets-4 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600}
+2026-06-27T02:54:13.118+05:30  INFO 17452 --- [notification-service] [quest-handler-4] kafka.cluster.Partition                  : [Partition __consumer_offsets-4 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-4
+2026-06-27T02:54:13.118+05:30  INFO 17452 --- [notification-service] [quest-handler-4] kafka.cluster.Partition                  : [Partition __consumer_offsets-4 broker=0] Log loaded for partition __consumer_offsets-4 with initial high watermark 0
+2026-06-27T02:54:13.118+05:30  INFO 17452 --- [notification-service] [quest-handler-4] state.change.logger                      : [Broker id=0] Leader __consumer_offsets-4 with topic id Some(1C0otnaBTEup-UMTDTHi-g) starts at leader epoch 0 from offset 0 with partition epoch 0, high watermark 0, ISR [0], adding replicas [] and removing replicas [] . Previous leader None and previous leader epoch was -1.
+2026-06-27T02:54:13.199+05:30  INFO 17452 --- [notification-service] [quest-handler-4] kafka.log.UnifiedLog$                    : [LogLoader partition=__consumer_offsets-1, dir=C:\Users\jitee\AppData\Local\Temp\spring.kafka.ac936aa1-2031-447e-bafe-a0d34a475ca615441773443179439406] Loading producer state till offset 0 with message format version 2
+2026-06-27T02:54:13.216+05:30  INFO 17452 --- [notification-service] [quest-handler-4] kafka.log.LogManager                     : Created log for partition __consumer_offsets-1 in C:\Users\jitee\AppData\Local\Temp\spring.kafka.ac936aa1-2031-447e-bafe-a0d34a475ca615441773443179439406\__consumer_offsets-1 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600}
+2026-06-27T02:54:13.217+05:30  INFO 17452 --- [notification-service] [quest-handler-4] kafka.cluster.Partition                  : [Partition __consumer_offsets-1 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-1
+2026-06-27T02:54:13.217+05:30  INFO 17452 --- [notification-service] [quest-handler-4] kafka.cluster.Partition                  : [Partition __consumer_offsets-1 broker=0] Log loaded for partition __consumer_offsets-1 with initial high watermark 0
+2026-06-27T02:54:13.220+05:30  INFO 17452 --- [notification-service] [quest-handler-4] state.change.logger                      : [Broker id=0] Leader __consumer_offsets-1 with topic id Some(1C0otnaBTEup-UMTDTHi-g) starts at leader epoch 0 from offset 0 with partition epoch 0, high watermark 0, ISR [0], adding replicas [] and removing replicas [] . Previous leader None and previous leader epoch was -1.
+]]></system-out>
+    <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (C:\Users\jitee\.m2\repository\net\bytebuddy\byte-buddy-agent\1.17.5\byte-buddy-agent-1.17.5.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+  </testcase>
+</testsuite>

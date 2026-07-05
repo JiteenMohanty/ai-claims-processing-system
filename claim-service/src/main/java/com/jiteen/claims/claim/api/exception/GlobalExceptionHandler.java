@@ -210,6 +210,18 @@ public class GlobalExceptionHandler {
                 .body(errorPayload);
     }
 
+    @ExceptionHandler(AiAnalysisNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleAiAnalysisNotFoundException(
+            AiAnalysisNotFoundException ex,
+            HttpServletRequest request) {
+
+        log.warn("AI analysis result look-up failure encountered: {} at path: {}",
+                ex.getMessage(), request.getRequestURI());
+
+        Map<String, Object> errorPayload = buildErrorResponse(HttpStatus.NOT_FOUND, ex.getMessage(), request);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorPayload);
+    }
+
     @ExceptionHandler(FileStorageException.class)
     public ResponseEntity<Map<String, Object>> handleFileStorageException(
             FileStorageException ex,

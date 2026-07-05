@@ -1,9 +1,12 @@
 package com.jiteen.claims.auth.security;
 
+import com.jiteen.claims.auth.config.CacheNames;
 import com.jiteen.claims.auth.domain.entity.User;
 import com.jiteen.claims.auth.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -89,6 +92,7 @@ public class CustomUserDetailsService implements UserDetailsService {
      *                                   account has been soft-deleted
      */
     @Override
+    @Cacheable(value = CacheNames.USERS, key = "#username.trim().toLowerCase()")
     public UserDetails loadUserByUsername(final String username)
             throws UsernameNotFoundException {
 
@@ -105,5 +109,21 @@ public class CustomUserDetailsService implements UserDetailsService {
                 });
 
         return UserPrincipal.fromUser(user);
+    }
+
+    /**
+     * Removes the cached {@link UserDetails} entry for the given email address.
+     *
+     * <p>
+     * Called by {@code AuthServiceImpl.logout()} after a refresh token is revoked
+     * to ensure that the next request for this user triggers a fresh database lookup
+     * rather than returning a potentially stale cached principal.
+     * </p>
+     *
+     * @param email the normalized email address whose cache entry should be removed
+     */
+    @CacheEvict(value = CacheNames.USERS, key = "#email")
+    public void evictUserCache(String email) {
+        log.debug("Evicted user cache entry for [{}]", email);
     }
 }
