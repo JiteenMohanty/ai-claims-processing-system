@@ -67,7 +67,7 @@ jobs:
 
       - name: Upload test results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: auth-service-test-results
           path: auth-service/target/surefire-reports/
@@ -102,7 +102,7 @@ jobs:
 
       - name: Upload test results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: claim-service-test-results
           path: claim-service/target/surefire-reports/
@@ -137,7 +137,7 @@ jobs:
 
       - name: Upload test results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ai-service-test-results
           path: ai-processing-service/target/surefire-reports/
@@ -172,7 +172,7 @@ jobs:
 
       - name: Upload test results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: notification-service-test-results
           path: notification-service/target/surefire-reports/
@@ -207,7 +207,7 @@ jobs:
 
       - name: Upload test results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: api-gateway-test-results
           path: api-gateway/target/surefire-reports/
